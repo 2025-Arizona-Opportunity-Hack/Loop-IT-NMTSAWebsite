@@ -1,7 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Music, MapPin, Phone, Mail, Facebook, Youtube } from "lucide-react";
+import {
+  Music,
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Youtube,
+  Send,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -17,6 +25,13 @@ const Footer = () => {
     { name: "Tax Credit", href: "/donate" },
     { name: "Corporate Sponsorship", href: "/contact" },
     { name: "Fundraising Events", href: "/contact" },
+  ];
+
+  const additionalLinks = [
+    { name: "Blog", href: "/blog" },
+    { name: "Get Involved", href: "/contact" },
+    { name: "Resources", href: "/programs" },
+    { name: "Privacy Policy", href: "/privacy" },
   ];
 
   const containerVariants = {
@@ -48,7 +63,40 @@ const Footer = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        {/* Newsletter Signup */}
+        <motion.div
+          className="bg-gradient-to-r from-nmtsa-600 to-nmtsa-700 rounded-2xl p-8 mb-12"
+          variants={itemVariants}
+        >
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-bold font-poppins mb-4">
+                Stay Connected with NMTSA
+              </h3>
+              <p className="text-nmtsa-100 mb-4">
+                Get the latest updates, research insights, and inspiring stories
+                delivered to your inbox.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-6 py-3 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+              />
+              <motion.button
+                className="bg-white text-nmtsa-600 font-semibold px-6 py-3 rounded-full hover:bg-nmtsa-50 transition-colors inline-flex items-center justify-center"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Send className="w-4 h-4 mr-2" />
+                Subscribe
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="grid md:grid-cols-5 gap-8 mb-8">
           {/* Brand */}
           <motion.div variants={itemVariants}>
             <div className="flex items-center mb-4">
@@ -105,6 +153,25 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4 font-poppins">Support</h3>
             <ul className="space-y-2">
               {supportLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Additional Links */}
+          <motion.div variants={itemVariants}>
+            <h3 className="font-semibold text-lg mb-4 font-poppins">
+              Resources
+            </h3>
+            <ul className="space-y-2">
+              {additionalLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
