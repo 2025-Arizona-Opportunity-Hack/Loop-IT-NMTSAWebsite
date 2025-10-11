@@ -12,15 +12,16 @@
 
 ## Team "Loop IT"
 
-- [Team Member 1](GitHub profile link)
-- [Team Member 2](GitHub profile link)
-- [Team Member 3](GitHub profile link)
-<!-- Add all team members -->
+- [Smit Patel](https://github.com/smit30patel)
+- [Shubham Tiwari](https://github.com/shubham17tiwari)
+- [Kirtan Thummar](https://github.com/VanGoghCode)
 
 ## Project Overview
 
 This project rebuilds the Neurologic Music Therapy Services of Arizona (NMTSA) website into a modern, intelligent, and accessible platform that better represents their mission of transforming lives through music and neuroscience.
+
 The new site combines high-performance design, AI-driven accessibility, and integrated e-commerce tools to help NMTSA engage donors, clients, and professionals more effectively.
+
 Our vision: a website that feels as responsive, adaptive, and human as the therapy it represents.
 
 ## Tech Stack
@@ -32,8 +33,7 @@ Our vision: a website that feels as responsive, adaptive, and human as the thera
 - **Marketplace:** Shopify Storefront API
 - **Payments:** PayPal Integration
 - **Hosting / Deployment:** Vercel or AWS Amplify
-- **Accessibility:** WCAG 2.1 compliant design, AI-guided accessibility assistant, captions, screen reader support
-- **Analytics:** Google Analytics 4, Vercel Analytics
+- **Accessibility:** AI-guided accessibility assistant chatbot
 
 ## Getting Started
 
