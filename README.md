@@ -12,9 +12,10 @@
 
 ## Team "Loop IT"
 
-- [Smit Patel](https://github.com/smit30patel)
-- [Shubham Tiwari](https://github.com/shubham17tiwari)
-- [Kirtan Thummar](https://github.com/VanGoghCode)
+- [Team Member 1](GitHub profile link)
+- [Team Member 2](GitHub profile link)
+- [Team Member 3](GitHub profile link)
+<!-- Add all team members -->
 
 ## Project Overview
 
