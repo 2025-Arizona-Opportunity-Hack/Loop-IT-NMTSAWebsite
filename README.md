@@ -11,7 +11,7 @@
 @kirtan thummar (on Slack)
 
 ## Team "Loop IT"
-- [Team Member 1](GitHub profile link)
+- [Team Member](GitHub profile link)
 - [Team Member 2](GitHub profile link)
 - [Team Member 3](GitHub profile link)
 <!-- Add all team members -->
