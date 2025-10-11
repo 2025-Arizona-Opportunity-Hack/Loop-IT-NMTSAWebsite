@@ -1,0 +1,29 @@
+<svg width="200" height="80" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="5" y="10" width="60" height="60" rx="12" fill="#F59E0B" opacity="0.1"/>
+  
+  <!-- Music note symbol -->
+  <path d="M20 45V25C20 23.9 20.9 23 22 23H27C28.1 23 29 23.9 29 25V35L42 31V20C42 18.9 42.9 18 44 18H49C50.1 18 51 18.9 51 20V28L51 45" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Music note heads -->
+  <ellipse cx="23" cy="48" rx="4" ry="2.5" fill="#F59E0B"/>
+  <ellipse cx="46" cy="48" rx="4" ry="2.5" fill="#F59E0B"/>
+  
+  <!-- Connecting beam -->
+  <line x1="29" y1="35" x2="49" y2="31" stroke="#F59E0B" stroke-width="2.5"/>
+  
+  <!-- Brain/neural pattern -->
+  <path d="M15 55C15 55 20 52 30 55C40 58 45 55 45 55" stroke="#D97706" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <path d="M12 52C12 52 17 49 27 52C37 55 42 52 42 52" stroke="#D97706" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <path d="M10 49C10 49 15 46 25 49C35 52 40 49 40 49" stroke="#D97706" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  
+  <!-- Main Text -->
+  <text x="80" y="30" fill="#1F2937" font-family="Arial, sans-serif" font-size="24" font-weight="bold">NMTSA</text>
+  
+  <!-- Subtitle -->
+  <text x="80" y="45" fill="#6B7280" font-family="Arial, sans-serif" font-size="12" font-weight="500">Neurologic Music Therapy</text>
+  <text x="80" y="58" fill="#6B7280" font-family="Arial, sans-serif" font-size="12" font-weight="500">Services of Arizona</text>
+  
+  <!-- Tagline -->
+  <text x="80" y="72" fill="#F59E0B" font-family="Arial, sans-serif" font-size="10" font-style="italic">Unleashing Unique Potential Since 1982</text>
+</svg>
