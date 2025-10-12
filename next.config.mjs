@@ -8,7 +8,6 @@ const nextConfig = {
     swcMinify: true,
     // Use more stable caching
     workerThreads: false,
-    cpus: 1,
   },
 
   // Configure webpack for better cache management
