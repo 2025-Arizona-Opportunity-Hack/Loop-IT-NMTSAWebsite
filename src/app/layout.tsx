@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import ConditionalLayout from "@/components/ConditionalLayout";
+import ChatbotWidget from "@/components/ChatbotWidget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,6 +55,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className="antialiased font-inter bg-nmtsa-50">
         <ConditionalLayout>{children}</ConditionalLayout>
+        <ChatbotWidget />
       </body>
     </html>
   );
