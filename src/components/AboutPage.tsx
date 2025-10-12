@@ -3,9 +3,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Heart, Users, ArrowRight, Music, Target, Eye } from "lucide-react";
+import { useContent, getContentValue, getMetadataArray, getMetadataValue } from "@/lib/hooks/useContent";
+import MusicalLoader from "./MusicalLoader";
 
 const AboutPage = () => {
-  const values = [
+  // Fetch all about page content
+  const { contentMap, loading } = useContent({ page: 'about' });
+
+  // Show loader while content is loading
+  if (loading) {
+    return <MusicalLoader />;
+  }
+
+  // Default fallback data
+  const defaultValues = [
     {
       icon: Music,
       title: "Evidence-Based",
@@ -26,7 +37,7 @@ const AboutPage = () => {
     },
   ];
 
-  const teamMembers = [
+  const defaultTeamMembers = [
     {
       name: "Dr. Sarah Johnson",
       role: "Director & Board-Certified Music Therapist",
@@ -77,6 +88,27 @@ const AboutPage = () => {
     },
   ];
 
+  // Get content from CMS or use defaults
+  const heroTitle = getContentValue(contentMap['about_hero_title'], 'Transforming Lives Through Music');
+  const heroDescription = getContentValue(contentMap['about_hero_description'], 'For over 40 years, Neurologic Music Therapy Services of Arizona has been at the forefront of evidence-based music therapy, helping individuals with neurologic conditions achieve their goals through the power of music.');
+  const missionStatement = getContentValue(contentMap['about_mission'], 'To provide evidence-based neurologic music therapy services that enhance the quality of life for individuals with neurologic conditions and their families.');
+  const visionStatement = getContentValue(contentMap['about_vision'], 'To be the leading provider of neurologic music therapy services in Arizona, recognized for clinical excellence, innovation, and compassionate care.');
+  const historyText = getContentValue(contentMap['about_history'], 'Founded in 1984, NMTSA has grown from a small practice to Arizona\'s leading provider of neurologic music therapy. Our team of board-certified music therapists brings decades of combined experience and continues to advance the field through clinical practice, research, and education.');
+  
+  const values = getMetadataArray(contentMap['about_values'], 'values', defaultValues);
+  const teamMembers = defaultTeamMembers; // Team members will be managed separately in the employees section
+
+  const getIconComponent = (iconName: string) => {
+    const icons: Record<string, any> = {
+      Music,
+      Users,
+      Heart,
+      Target,
+      Eye
+    };
+    return icons[iconName] || Music;
+  };
+
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
@@ -96,14 +128,10 @@ const AboutPage = () => {
                 About NMTSA
               </span>
               <h1 className="text-4xl lg:text-6xl font-bold font-poppins text-gray-900 mb-6">
-                Transforming Lives Through{" "}
-                <span className="gradient-text">Music</span>
+                <span className="gradient-text">{heroTitle}</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Since 1982, Neurologic Music Therapy Services of Arizona has
-                been dedicated to unleashing the unique potential of individuals
-                with disabilities through evidence-based music therapy
-                interventions.
+                {heroDescription}
               </p>
               <Link
                 href="/programs"
@@ -139,11 +167,7 @@ const AboutPage = () => {
                 Our Mission
               </h2>
               <p className="text-nmtsa-50 leading-relaxed">
-                To provide exceptional neurologic music therapy services that
-                enhance the quality of life for individuals with neurologic
-                impairments and support their families in achieving their goals.
-                We are committed to evidence-based practice, family-centered
-                care, and professional excellence.
+                {missionStatement}
               </p>
             </div>
 
@@ -153,10 +177,7 @@ const AboutPage = () => {
                 Our Vision
               </h2>
               <p className="text-blue-50 leading-relaxed">
-                To unleash the unique potential of individuals with disabilities
-                through the transformative power of music therapy. We envision a
-                world where every person has access to innovative, compassionate
-                care that empowers them to achieve their fullest potential.
+                {visionStatement}
               </p>
             </div>
           </div>
@@ -176,22 +197,25 @@ const AboutPage = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={value.title}
-                className="glass-card p-8 text-center rounded-2xl hover:scale-105 transition-transform duration-300"
-              >
-                <div className="w-16 h-16 bg-gradient-to-r from-nmtsa-500 to-nmtsa-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="w-8 h-8 text-white" />
+            {values.map((value, index) => {
+              const IconComponent = typeof value.icon === 'string' ? getIconComponent(value.icon) : value.icon;
+              return (
+                <div
+                  key={value.title || index}
+                  className="glass-card p-8 text-center rounded-2xl hover:scale-105 transition-transform duration-300"
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-nmtsa-500 to-nmtsa-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <IconComponent className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 font-poppins">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 font-poppins">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {value.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
