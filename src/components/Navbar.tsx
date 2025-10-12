@@ -81,11 +81,22 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:flex flex-shrink-0">
-            <Link href="/donate" className="btn-primary text-sm xl:text-base">
-              Donate Now
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center space-x-3 flex-shrink-0">
+            <Link
+              href="/marketplace"
+              className="btn-secondary text-sm xl:text-base"
+            >
+              Shop
             </Link>
+            <a
+              href="https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=J2RM9AGPDLDX6&ssrt=1760240758179"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-sm xl:text-base"
+            >
+              Donate Now
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -116,14 +127,23 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <div className="pt-4 border-t border-gray-200/50">
+            <div className="pt-4 border-t border-gray-200/50 space-y-2">
               <Link
-                href="/donate"
+                href="/marketplace"
+                className="btn-secondary w-full text-center block"
+                onClick={() => setIsOpen(false)}
+              >
+                Shop
+              </Link>
+              <a
+                href="https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=J2RM9AGPDLDX6&ssrt=1760240758179"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary w-full text-center block"
                 onClick={() => setIsOpen(false)}
               >
                 Donate Now
-              </Link>
+              </a>
             </div>
           </div>
         </div>

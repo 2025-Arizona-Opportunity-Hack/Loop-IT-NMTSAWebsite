@@ -23,6 +23,7 @@ const config: Config = {
       fontFamily: {
         inter: ["var(--font-inter)", "system-ui", "sans-serif"],
         poppins: ["var(--font-poppins)", "system-ui", "sans-serif"],
+        "red-hat": ["Red Hat Display", "system-ui", "sans-serif"],
       },
       // Smaller, more compact font sizes
       fontSize: {
