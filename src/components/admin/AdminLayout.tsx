@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import LogoutButton from "@/components/LogoutButton";
@@ -60,12 +60,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     { name: "Settings", href: "/admin/settings", icon: Settings },
   ];
 
-  useEffect(() => {
-    checkAuth();
-    loadPendingCounts();
-  }, []);
-
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     // Check for mock session from hardcoded login
     const mockSession = localStorage.getItem("mockAdminSession");
 
@@ -95,9 +90,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       localStorage.removeItem("mockAdminSession");
       router.push("/login");
     }
-  };
+  }, [router]);
 
-  const loadPendingCounts = async () => {
+  const loadPendingCounts = useCallback(async () => {
     const supabase = createClient();
 
     try {
@@ -119,7 +114,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     } catch (error) {
       console.error("Error loading pending counts:", error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    checkAuth();
+    loadPendingCounts();
+  }, [checkAuth, loadPendingCounts]);
 
   if (loading) {
     return (

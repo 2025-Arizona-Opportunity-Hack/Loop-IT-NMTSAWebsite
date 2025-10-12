@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
 interface ContentItem {
@@ -55,7 +55,10 @@ export function useContent(options: UseContentOptions = {}): UseContentReturn {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchContent = async () => {
+  // Memoize keys to prevent infinite loop
+  const keysString = keys?.join(',') || '';
+
+  const fetchContent = useCallback(async () => {
     setLoading(true);
     setError(null);
 
@@ -77,12 +80,13 @@ export function useContent(options: UseContentOptions = {}): UseContentReturn {
         } else {
           setContent(data);
         }
-      } else if (keys && keys.length > 0) {
+      } else if (keysString) {
         // Fetch multiple content items
+        const keysArray = keysString.split(',');
         const { data, error: fetchError } = await supabase
           .from('page_content')
           .select('*')
-          .in('page_key', keys)
+          .in('page_key', keysArray)
           .eq('is_active', true);
 
         if (fetchError) {
@@ -141,13 +145,13 @@ export function useContent(options: UseContentOptions = {}): UseContentReturn {
     } finally {
       setLoading(false);
     }
-  };
+  }, [key, keysString, page]);
 
   useEffect(() => {
     if (autoLoad) {
       fetchContent();
     }
-  }, [key, keys?.join(','), page, autoLoad]);
+  }, [autoLoad, fetchContent]);
 
   return {
     content,

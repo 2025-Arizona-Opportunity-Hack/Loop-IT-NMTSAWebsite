@@ -4,6 +4,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Plus, Edit, Trash2, Search, DollarSign, Package } from "lucide-react";
+import Image from "next/image";
 
 export default function MerchandisePage() {
   const [products, setProducts] = useState<any[]>([]);
@@ -141,10 +142,11 @@ export default function MerchandisePage() {
               >
                 <div className="aspect-square bg-gray-200 relative">
                   {product.image_url && (
-                    <img
+                    <Image
                       src={product.image_url}
                       alt={product.name}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                   )}
                   {product.stock_quantity < 10 && (

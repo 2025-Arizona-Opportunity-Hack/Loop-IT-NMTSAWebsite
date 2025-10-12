@@ -708,7 +708,7 @@ export default function FormsPage() {
                 ) : (
                   <div className="text-center py-8 text-gray-500">
                     <Code className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                    <p>No fields yet. Click "Add Field" to start.</p>
+                    <p>No fields yet. Click &ldquo;Add Field&rdquo; to start.</p>
                   </div>
                 )}
               </div>
