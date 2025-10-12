@@ -1,15 +1,12 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Blog - NMTSA Insights & Updates",
-  description:
-    "Stay updated with the latest insights, research, and stories from Neurologic Music Therapy Services of Arizona.",
-};
-
+import { useState } from "react";
 import Link from "next/link";
 import { Calendar, ArrowRight, User, Clock } from "lucide-react";
 
 export default function Blog() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   const blogPosts = [
     {
       id: 1,
@@ -59,7 +56,7 @@ export default function Blog() {
       id: 5,
       title: "Understanding Neuroplasticity and Music",
       excerpt:
-        "How music therapy leverages the brain&apos;s ability to reorganize and form new neural connections...",
+        "How music therapy leverages the brain's ability to reorganize and form new neural connections...",
       date: "September 8, 2024",
       readTime: "7 min read",
       author: "Dr. Sarah Johnson",
@@ -80,6 +77,15 @@ export default function Blog() {
   ];
 
   const categories = ["All", "Research", "Community", "Stories"];
+
+  const filteredPosts =
+    selectedCategory === "All"
+      ? blogPosts.filter((post) => !post.featured)
+      : blogPosts.filter(
+          (post) => !post.featured && post.category === selectedCategory
+        );
+
+  const featuredPost = blogPosts.find((post) => post.featured);
 
   return (
     <div className="min-h-screen pt-20">
@@ -107,8 +113,9 @@ export default function Blog() {
             {categories.map((category) => (
               <button
                 key={category}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-full font-semibold transition-colors ${
-                  category === "All"
+                  category === selectedCategory
                     ? "bg-nmtsa-600 text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-nmtsa-100 hover:text-nmtsa-700"
                 }`}
@@ -119,63 +126,75 @@ export default function Blog() {
           </div>
 
           {/* Featured Post */}
-          {blogPosts
-            .filter((post) => post.featured)
-            .map((post) => (
-              <div key={post.id} className="glass-card p-8 rounded-2xl mb-12">
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="bg-nmtsa-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        Featured
-                      </span>
-                      <span className="bg-nmtsa-100 text-nmtsa-700 px-3 py-1 rounded-full text-sm font-semibold">
-                        {post.category}
-                      </span>
-                    </div>
-                    <h2 className="text-3xl lg:text-4xl font-bold font-poppins text-gray-900 mb-4">
-                      {post.title}
-                    </h2>
-                    <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
-                      <div className="flex items-center gap-2">
-                        <User className="w-4 h-4" />
-                        {post.author}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        {post.date}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
-                        {post.readTime}
-                      </div>
-                    </div>
-                    <Link
-                      href={`/blog/${post.id}`}
-                      className="btn-primary text-white font-semibold px-6 py-3 rounded-full inline-flex items-center"
-                    >
-                      Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
+          {featuredPost && selectedCategory === "All" && (
+            <div className="glass-card p-8 rounded-2xl mb-12">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="bg-nmtsa-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      Featured
+                    </span>
+                    <span className="bg-nmtsa-100 text-nmtsa-700 px-3 py-1 rounded-full text-sm font-semibold">
+                      {featuredPost.category}
+                    </span>
                   </div>
-                  <div className="bg-gradient-to-br from-nmtsa-100 to-nmtsa-200 rounded-2xl h-80 flex items-center justify-center">
-                    <div className="text-center text-nmtsa-600">
-                      <Calendar className="w-16 h-16 mx-auto mb-4" />
-                      <p className="font-semibold">Featured Article</p>
+                  <h2 className="text-3xl lg:text-4xl font-bold font-poppins text-gray-900 mb-4">
+                    {featuredPost.title}
+                  </h2>
+                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                    {featuredPost.excerpt}
+                  </p>
+                  <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
+                    <div className="flex items-center gap-2">
+                      <User className="w-4 h-4" />
+                      {featuredPost.author}
                     </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      {featuredPost.date}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      {featuredPost.readTime}
+                    </div>
+                  </div>
+                  <Link
+                    href={`/blog/${featuredPost.id}`}
+                    className="btn-primary text-white font-semibold px-6 py-3 rounded-full inline-flex items-center"
+                  >
+                    Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </div>
+                <div className="bg-gradient-to-br from-nmtsa-100 to-nmtsa-200 rounded-2xl h-80 flex items-center justify-center">
+                  <div className="text-center text-nmtsa-600">
+                    <Calendar className="w-16 h-16 mx-auto mb-4" />
+                    <p className="font-semibold">Featured Article</p>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+          )}
 
           {/* Blog Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts
-              .filter((post) => !post.featured)
-              .map((post) => (
-                <article key={post.id} className="glass-card p-6 rounded-2xl">
+          {filteredPosts.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Calendar className="w-10 h-10 text-gray-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-600 mb-2">
+                No articles found
+              </h3>
+              <p className="text-gray-500">
+                Try selecting a different category.
+              </p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPosts.map((post) => (
+                <article
+                  key={post.id}
+                  className="glass-card p-6 rounded-2xl hover:shadow-lg transition-shadow"
+                >
                   <div className="bg-gradient-to-br from-nmtsa-100 to-nmtsa-200 rounded-xl h-48 flex items-center justify-center mb-6">
                     <div className="text-center text-nmtsa-600">
                       <Calendar className="w-12 h-12 mx-auto mb-2" />
@@ -220,11 +239,12 @@ export default function Blog() {
                   </div>
                 </article>
               ))}
-          </div>
+            </div>
+          )}
 
           {/* Load More Button */}
           <div className="text-center mt-12">
-            <button className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg">
+            <button className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg hover:bg-nmtsa-100 transition-colors">
               Load More Articles <ArrowRight className="w-5 h-5 ml-2" />
             </button>
           </div>
