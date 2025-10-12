@@ -1,348 +1,133 @@
-# NMTSA Website - Loop IT
+## Team Loop IT
 
-> Transforming lives through music and neuroscience
+## About NPO - Neurologic Music Therapy Services of Arizona (NMTSA)
+- [About NMTSA](https://www.nmtsa.org/)
 
-## Team "Loop IT"
+## Introduction
+The Neurologic Music Therapy Services of Arizona (NMTSA) Website is a comprehensive digital platform designed to transform how the organization manages its operations and connects with its community. NMTSA provides specialized music therapy services for individuals with neurological conditions, and this platform empowers them to streamline volunteer management, donor tracking, internship programs, merchandise sales, and content management—all while showcasing their mission to transform lives through music and neuroscience.
 
-- **Smit Patel** - [GitHub](https://github.com/smit30patel)
-- **Shubham Tiwari** - [GitHub](https://github.com/shubham17tiwari)
-- **Kirtan Thummar** - [GitHub](https://github.com/VanGoghCode)
+This solution reduces administrative overhead by providing an intuitive admin dashboard, automated form submissions, secure role-based access, and a modern public-facing website that properly represents NMTSA's life-changing work.
 
-**Slack Channel:** [#loopit](https://opportunity-hack.slack.com/app_redirect?channel=loopit)
+## Quick Preview
+1. [Live Demo](https://loop-it-nmtsa-website.vercel.app)
+2. [4-minute Quick Demo Video](https://youtu.be/MNueC1TDn28)
 
-## Problem Statement
+## Technologies Used 
+| Purpose | Technologies |
+| --- | --- |
+| Frontend Framework | Next.js 14, React 18, TypeScript |
+| Styling | Tailwind CSS, Framer Motion |
+| Form Management | React Hook Form, Zod Validation |
+| Backend API | Next.js API Routes (RESTful) |
+| Database | Supabase (PostgreSQL) |
+| Authentication | Supabase Auth with Row-Level Security |
+| AI Integration | AWS Bedrock (Chatbot) |
+| Deployment | Vercel |
+| Version Control | Git, GitHub |
 
-Neurologic Music Therapy Services of Arizona (NMTSA) needed a modern, accessible website platform to better represent their mission and streamline operations for managing donors, volunteers, interns, and merchandise sales.
+## Overall Architecture
 
-## Solution
+![Architecture Diagram](./public/images/architecture-diagram.png)
 
-A full-stack web application with:
+---
 
-- Modern, responsive design built with Next.js 14 and Tailwind CSS
-- Secure admin dashboard with role-based access control
-- Comprehensive management systems for volunteers, interns, donors, and merchandise
-- RESTful API for all data operations
-- Row-level security for data protection
+## Database Schema
 
-## Tech Stack
+![Database Schema](./public/images/Database_Schema.png)
 
-- **Frontend:** Next.js 14, React 18, TypeScript, Tailwind CSS
-- **Forms:** React Hook Form with Zod validation
-- **Backend:** Next.js API Routes
-- **Database:** Supabase (PostgreSQL)
-- **Authentication:** Supabase Auth
-- **Hosting:** Vercel
+---
 
-## Web Wireframe
+## REST APIs
 
+![Rest APIs](./public/images/rest_apis.png)
 
-
-
-## 🚀 Quick Start
-
-### Development Setup
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/2025-Arizona-Opportunity-Hack/Loop-IT-NMTSAWebsite.git
-cd Loop-IT-NMTSAWebsite
-```
-
-2. Install dependencies
-
-```bash
-npm install
-```
-
-3. Set up environment variables
-   Create a `.env.local` file:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-```
-
-4. Run the development server
-
-```bash
-npm run dev
-```
-
-5. Open [http://localhost:3000](http://localhost:3000)
-
-### 🔐 Admin Access (Demo/Testing)
-
-**Login URL:** http://localhost:3000/login
-
-**Demo Credentials:**
-
-```
-Email:    admin@nmtsa.org
-Password: Admin@123
-```
-
-**Quick Access:**
-
-- The login page includes an "auto-fill credentials" button for easy testing
-- After login, you'll be redirected to the admin dashboard at `/admin`
-- See `LOGIN_CREDENTIALS.md` for complete documentation
+---
 
 ## Key Features
 
-### 🔐 Admin Dashboard
+### Public Website
+- **Modern Design:** Fully responsive, accessible interface built with Next.js and Tailwind CSS
+- **Service Showcase:** Detailed program information including Music Therapy, Professional Development, Music Lessons
+- **About Page:** Mission, team profiles, impact stories
+- **Get Involved:** Interactive cards for Volunteer, Intern, and Employment opportunities
+- **Marketplace:** Browse and purchase NMTSA merchandise with shopping cart
+- **Blog:** Latest news and updates from NMTSA
 
-- Role-based access control (admin/employee/intern/volunteer)
-- Content management system
-- User management
+### Admin Dashboard
+- **Role-Based Access Control:** Secure authentication with admin, employee, intern, and volunteer roles
+- **Dashboard Stats:** Real-time analytics on volunteers, interns, donors, orders, and revenue
+- **Content Management:** Easy editing of website content without code changes
+- **User Management:** Manage all users, roles, and permissions from one place
 
-### 🛍️ Marketplace
+### Volunteer Management
+- Volunteer application forms with validation
+- Profile management (contact info, skills, availability)
+- Hours tracking and verification system
+- Background check status tracking
+- Activity history and impact metrics
 
-- Product catalog with categories
-- Inventory management
-- Order tracking and management
+### Intern Management
+- Comprehensive internship application forms
+- Intern profiles with academic information
+- Mentor assignment and tracking
+- Hours logging and verification
+- Academic credit coordination
 
-### 💰 Donor Management
-
-- Donation tracking
-- Recurring donation support
+### Donor Management
+- Donor profiles and contact management
+- Donation tracking (one-time and recurring)
+- Donation history and analytics
 - Tax receipt tracking
+- Donor engagement metrics
 
-### 🤝 Volunteer & Intern Management
+### Marketplace
+- Product catalog with categories and filters
+- Inventory management
+- Shopping cart and checkout
+- Order tracking and fulfillment
+- Sales analytics
 
-- Profile management
-- Hours tracking and verification
-- Background check tracking
-- Mentor assignment
-
-### 📝 Content Management
-
-- Dynamic page content
-- Service offerings
-- Employee profiles
-
-### 📋 Custom Forms System
-- React Hook Form with Zod validation
-- Modal-based form interface for better UX
-- Contact, volunteer, internship, donation, and service request forms
-- Direct Supabase integration
-- Type-safe form handling
+### Advanced Forms System
+- **React Hook Form + Zod:** Type-safe validation with excellent UX
+- **Modal-Based Interface:** Clean, non-intrusive form experience
 - **Active Forms:**
-  - ✅ Contact Form
-  - ✅ Volunteer Application (Professional Consultation)
-  - ✅ Internship Application
-  - ✅ Service Request Forms
+  - Contact Form
+  - Professional Consultation Request (Volunteer)
+  - Internship Application (Multi-section with e-signature)
+  - Donation Form
+  - Service Request Forms
+- **Features:**
+  - Real-time validation
+  - Conditional fields
+  - Auto-save drafts (planned)
+  - File uploads
+  - Success/error feedback
 
-### 🎯 Get Involved Features
-- Interactive card-based interface
-- Detailed information modals for each opportunity
-- Inline form applications with validation
-- Volunteer, Internship, and Employment opportunities
-- Real-time form submission with success feedback
+### AI Chatbot
+- AWS Bedrock integration for intelligent responses
+- Context-aware assistance for visitors
+- FAQ automation
+- Application guidance
 
-## API Endpoints
+## Contributors
 
-All endpoints support CRUD operations where applicable:
+### Team Loop IT - 2025 Arizona Opportunity Hack
 
-- `/api/content` - Page content management
-- `/api/services` - Service offerings
-- `/api/employees` - Staff management
-- `/api/merchandise` - Product catalog
-- `/api/orders` - Order management
-- `/api/donors` - Donor tracking
-- `/api/volunteers` - Volunteer management
-- `/api/volunteer-hours` - Hours tracking
-- `/api/interns` - Intern management
-- `/api/intern-hours` - Intern hours tracking
-- `/api/forms` - Form submissions
-- `/api/settings` - Site configuration
-- `/api/upload` - File uploads
+- **Kirtan Thummar** - Backend/AI Developer - [GitHub](https://github.com/VanGoghCode)
+- **Smit Patel** - Frontend Developer - [GitHub](https://github.com/smit30patel)
+- **Shubham Tiwari** - Project Manager - [GitHub](https://github.com/shubham17tiwari)
 
-## Quick Start
+## Contact
 
-### Prerequisites
-
-- Node.js 20.x or higher
-- Supabase account
-
-### Setup
-
-1. **Clone the repository**
-
-```bash
-git clone https://github.com/2025-Arizona-Opportunity-Hack/Loop-IT-NMTSAWebsite.git
-cd Loop-IT-NMTSAWebsite
-```
-
-2. **Install dependencies**
-
-```bash
-npm install
-```
-
-3. **Configure environment variables**
-
-Create `.env.local`:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-4. **Setup database**
-
-Run migrations in order from `supabase/migrations/`:
-
-- `001_initial_schema.sql`
-- `002_fix_rls_recursion.sql`
-- `003_add_marketplace_donors_tracking.sql`
-
-Then run `supabase/create_first_admin.sql` to create your admin user.
-
-5. **Start development server**
-
-```bash
-npm run dev
-```
-
-Visit [http://localhost:3000](http://localhost:3000)
-
-### Available Commands
-
-```bash
-npm run dev    # Start development server
-npm run build  # Build for production
-npm run start  # Start production server
-npm run lint   # Run linter
-```
-
-## Project Structure
-
-```
-├── src/
-│   ├── app/
-│   │   ├── admin/          # Admin dashboard
-│   │   ├── api/            # API routes
-│   │   ├── login/          # Auth pages
-│   │   ├── about/          # About page
-│   │   ├── programs/       # Programs pages
-│   │   ├── get-involved/   # Get involved page
-│   │   └── page.tsx        # Homepage
-│   ├── components/
-│   │   ├── forms/          # Custom form system
-│   │   │   ├── ContactForm.tsx           # Contact form
-│   │   │   ├── ConsultationForm.tsx      # Volunteer application
-│   │   │   ├── InternshipForm.tsx        # Internship application
-│   │   │   └── FormComponents.tsx        # Reusable form UI
-│   │   ├── HomePage.tsx        # Homepage component
-│   │   ├── GetInvolvedPage.tsx # Get involved with modals
-│   │   ├── ContactPage.tsx     # Contact page
-│   │   └── [other pages]       # Other page components
-│   ├── lib/
-│   │   ├── forms/          # Form schemas & actions
-│   │   │   ├── schemas.ts  # Zod validation schemas
-│   │   │   └── actions.ts  # Form submission handlers
-│   │   └── supabase/       # Database utilities
-│   └── middleware.ts       # Auth middleware
-├── supabase/               # Database migrations
-└── public/                 # Static assets
-```
-
-## Forms Documentation
-
-### Active Forms
-
-#### 1. **Volunteer Application (Professional Consultation)**
-Modal-based form accessible from Get Involved page. Includes:
-- Section 1: Contact Information (Name, Organization, Job Title, Email, Phone)
-- Section 2: Consultation Details (Type, Description, Format, Dates, Participants)
-- Section 3: Additional Information (Previous Attendance, Referral Source, Notes)
-
-**Features:**
-- Professional consultation requests
-- Training and observation visits
-- Guest lectures and research collaboration
-- Conditional "Other" fields for flexible responses
-
-#### 2. **Internship Application**
-Comprehensive modal-based application form with:
-- Section 1: Personal Information (Name, Email, Phone, Address, School, Major, Academic Year)
-- Section 2: Internship Details (Focus Areas, Term, Dates, Hours Required)
-- Section 3: Experience & Goals (Motivation, Learning Objectives, Prior Experience)
-- Section 4: Availability & Logistics (Schedule, Academic Credit, Site Agreement)
-- Section 5: Consent & Signature (Electronic signature with date)
-
-**Features:**
-- Multi-checkbox selection for internship types
-- Date pickers for start/end dates
-- Conditional fields based on selections
-- Auto-populated signature date
-- Full form validation with Zod
-
-#### 3. **Contact Form**
-Standard contact form with subject selection and message field.
-
-### Form Submission Flow
-
-1. User clicks on card or "Apply" button
-2. Information modal appears with full details (optional viewing)
-3. User clicks "Apply for [Role]" button
-4. Form modal opens with relevant application
-5. User fills out form with real-time validation
-6. On submit, data is saved to Supabase `form_submissions` table
-7. Success message displayed
-8. Modal auto-closes after 3 seconds
-
-### Adding New Forms
-
-See `FORMS_QUICK_START.md` for complete guide on creating new forms.
-
-**Schema Location:** `src/lib/forms/schemas.ts`
-**Action Location:** `src/lib/forms/actions.ts`
-**Component Location:** `src/components/forms/`
-
----
-
-## Recent Updates (October 2025)
-
-### Get Involved Page Enhancement
-- ✅ Added modal-based information display for all opportunities
-- ✅ Implemented Volunteer Application form (Professional Consultation)
-- ✅ Implemented Internship Application form with full validation
-- ✅ Removed expanding cards in favor of modal popups
-- ✅ Added "Click for more details" interaction on cards
-- ✅ Separate modals for info viewing and form submission
-- ✅ Auto-close feature for successful form submissions
-
-### Form System Improvements
-- ✅ Updated form schemas for new application types
-- ✅ Integrated React Hook Form with modal system
-- ✅ Added comprehensive field validation
-- ✅ Implemented conditional field rendering
-- ✅ Enhanced user feedback and error handling
-
----
-
-**Previous Status:**
-- ✅ Contact Form - Ready to use
-- ⏳ 8 additional forms - Schemas ready, need components
-
-**Current Status:**
-- ✅ Contact Form - Active
-- ✅ Volunteer Application (Consultation) - Active
-- ✅ Internship Application - Active
-- ⏳ Donation Form - Schema ready
-- ⏳ Service Request Form - Schema ready
-- ⏳ Music Lessons Form - Schema ready
-- ⏳ Employment Application - Schema ready
-- ⏳ Corporate Sponsorship - Schema ready
-
-## Links
-
-- **Nonprofit:** [NMTSA](https://ohack.dev/nonprofit/coDhSpsyG5uqgpmm0SdS)
+- **Project Repository:** [GitHub](https://github.com/2025-Arizona-Opportunity-Hack/Loop-IT-NMTSAWebsite)
+- **Nonprofit Partner:** [NMTSA](https://ohack.dev/nonprofit/coDhSpsyG5uqgpmm0SdS)
 - **Hackathon:** [2025 Fall Opportunity Hack](https://www.ohack.dev/hack/2025_fall)
-- **DevPost:** [Submit here](https://opportunity-hack-2025-arizona.devpost.com/)
+- **DevPost Submission:** [Submit here](https://devpost.com/software/nmtsa-website/)
 
 ## License
 
-MIT License
+MIT License - feel free to use this project for learning or building similar solutions for nonprofits.
+
+---
+
+**Built with ❤️ for NMTSA by Team Loop IT during the 2025 Arizona Opportunity Hack**
