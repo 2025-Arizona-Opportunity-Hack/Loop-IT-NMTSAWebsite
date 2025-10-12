@@ -370,31 +370,11 @@ const HomePage = () => {
                 Help Us Transform{" "}
                 <span className="gradient-text">More Lives</span>
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
                 Your generous support enables us to provide life-changing music
                 therapy services to individuals and families in need. Every
                 donation makes a direct impact.
               </p>
-
-              {/* Tax Credit Highlight */}
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-4 sm:p-6 mb-8">
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">$</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-green-800 mb-2">
-                      Arizona Tax Credit Available!
-                    </h3>
-                    <p className="text-green-700 text-sm sm:text-base">
-                      Arizona residents can claim up to{" "}
-                      <strong>$841 in tax credits</strong> for donations to
-                      NMTSA. Your donation not only helps transform lives but
-                      also reduces your state tax liability dollar-for-dollar.
-                    </p>
-                  </div>
-                </div>
-              </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -402,7 +382,7 @@ const HomePage = () => {
                   className="btn-primary text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full inline-flex items-center justify-center text-base sm:text-lg"
                 >
                   <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Donate & Claim Credit
+                  Donate Now
                 </Link>
                 <Link
                   href="/contact"
@@ -423,9 +403,6 @@ const HomePage = () => {
                 <p className="text-gray-600 text-xs sm:text-sm">
                   Funds one therapy session
                 </p>
-                <div className="text-green-600 text-xs mt-2 font-medium">
-                  Tax Credit: $50
-                </div>
               </div>
 
               <div className="glass-card p-4 sm:p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
@@ -435,9 +412,6 @@ const HomePage = () => {
                 <p className="text-gray-600 text-xs sm:text-sm">
                   Supports monthly programs
                 </p>
-                <div className="text-green-600 text-xs mt-2 font-medium">
-                  Tax Credit: $200
-                </div>
               </div>
 
               <div className="glass-card p-4 sm:p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
@@ -447,21 +421,15 @@ const HomePage = () => {
                 <p className="text-gray-600 text-xs sm:text-sm">
                   Sponsors a family&apos;s care
                 </p>
-                <div className="text-green-600 text-xs mt-2 font-medium">
-                  Tax Credit: $500
-                </div>
               </div>
 
               <div className="glass-card p-4 sm:p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
                 <div className="text-2xl sm:text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
-                  $841
+                  $1000
                 </div>
                 <p className="text-gray-600 text-xs sm:text-sm">
-                  Maximum tax credit
+                  Transforms multiple lives
                 </p>
-                <div className="text-green-600 text-xs mt-2 font-medium">
-                  Full Credit: $841
-                </div>
               </div>
 
               {/* Additional info card spanning full width on mobile */}
