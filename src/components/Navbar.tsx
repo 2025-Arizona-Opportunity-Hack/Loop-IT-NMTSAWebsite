@@ -59,7 +59,7 @@ const Navbar = () => {
             <div className="flex items-center flex-shrink-0 ml-6">
               <Link
                 href="/"
-                className="flex items-center rounded-2xl p-2 transition-all duration-500 ease-out hover:scale-110 hover:bg-white/15 hover:shadow-lg nav-hover-pop"
+                className="flex items-center transition-opacity duration-300 hover:opacity-80"
               >
                 <Image
                   src="/images/NMTSA Logo-2.png"
