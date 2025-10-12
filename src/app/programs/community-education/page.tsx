@@ -78,7 +78,7 @@ const CommunityEducationPage = () => {
         "Community wellness programs",
         "Awareness campaigns",
       ],
-      color: "from-emerald-500 to-teal-600",
+      color: "from-green-600 to-lime-600",
     },
     {
       icon: Presentation,
@@ -245,7 +245,7 @@ const CommunityEducationPage = () => {
           </Link>
 
           <div className="text-center">
-            <div className="w-20 h-20 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
+            <div className="w-20 h-20 bg-gradient-to-r from-green-600 to-lime-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
               <Users className="w-10 h-10 text-white" />
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold font-poppins text-gray-900 mb-6">
@@ -367,7 +367,7 @@ const CommunityEducationPage = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {impactAreas.map((area, index) => (
               <div key={area.title} className="glass-card p-8 rounded-2xl">
-                <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-lime-600 rounded-2xl flex items-center justify-center mb-6">
                   <area.icon className="w-8 h-8 text-white" />
                 </div>
 
@@ -440,7 +440,7 @@ const CommunityEducationPage = () => {
               },
             ].map((process, index) => (
               <div key={process.step} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-lime-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-bold text-lg">
                     {process.step}
                   </span>
@@ -498,7 +498,7 @@ const CommunityEducationPage = () => {
       </section>
 
       {/* Request Program */}
-      <section className="py-20 bg-gradient-to-r from-emerald-500 to-teal-600">
+      <section className="py-20 bg-gradient-to-r from-green-600 to-lime-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="text-4xl font-bold font-poppins mb-6">
             Bring Education to Your Community

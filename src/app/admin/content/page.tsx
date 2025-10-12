@@ -3,7 +3,8 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { Plus, Edit, Trash2, Search, Filter, X, Save, Eye, EyeOff, FileJson, Type, Image as ImageIcon } from "lucide-react";
+import { Plus, Edit, Trash2, Search, Filter, X, Save, Eye, EyeOff, FileJson, Type, Image as ImageIcon, Home, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 interface ContentItem {
   id: string;
@@ -26,15 +27,55 @@ interface ContentPage {
 // Helper function to convert page_key to readable description
 const getReadableDescription = (pageKey: string): string => {
   const descriptions: Record<string, string> = {
-    // Homepage
+    // Homepage - Hero Section
     'home_hero_title': 'Homepage - Main Hero Title',
     'home_hero_subtitle': 'Homepage - Hero Subtitle/Description',
     'home_hero_cta': 'Homepage - Hero Call-to-Action Buttons',
     'home_stats': 'Homepage - Statistics Section (Years, Families, Sessions)',
+    
+    // Homepage - About Preview
+    'home_about_preview_badge': 'Homepage - About Preview Badge Text',
+    'home_about_preview_text': 'Homepage - About Preview Description',
+    'home_about_preview_image': 'Homepage - About Preview Image URL + Metadata',
+    
+    // Homepage - Programs Section
+    'home_programs_badge': 'Homepage - Programs Section Badge',
+    'home_programs_heading': 'Homepage - Programs Section Heading',
+    'home_programs_subtitle': 'Homepage - Programs Section Subtitle',
     'home_programs_title': 'Homepage - Programs Section Title',
     'home_programs': 'Homepage - Programs Cards (Therapy, Lessons, Education)',
+    
+    // Homepage - Request Service
+    'home_request_service_title': 'Homepage - Request Service Section Title',
+    'home_request_service_description': 'Homepage - Request Service Description',
+    
+    // Homepage - Get Involved
+    'home_get_involved_badge': 'Homepage - Get Involved Badge',
+    'home_get_involved_title': 'Homepage - Get Involved Section Title',
+    'home_get_involved_subtitle': 'Homepage - Get Involved Subtitle',
+    'home_get_involved_options': 'Homepage - Get Involved Options (Volunteer, Internship, Employment)',
+    
+    // Homepage - Donate/Support
+    'home_donate_title': 'Homepage - Donate Section Title',
+    'home_donate_description': 'Homepage - Donate Section Description',
+    'home_donate_impact': 'Homepage - Donation Impact Cards',
+    'home_donate_why_choose': 'Homepage - Why Choose NMTSA Section',
+    
+    // Homepage - Testimonials
+    'home_testimonials_badge': 'Homepage - Testimonials Badge',
+    'home_testimonials_heading': 'Homepage - Testimonials Section Heading',
     'home_testimonials_title': 'Homepage - Testimonials Section Title',
-    'home_testimonials': 'Homepage - Client Testimonials',
+    'home_testimonials': 'Homepage - Client Testimonials with Ratings',
+    
+    // Homepage - Blog
+    'home_blog_badge': 'Homepage - Blog Section Badge',
+    'home_blog_heading': 'Homepage - Blog Section Heading',
+    'home_blog_subtitle': 'Homepage - Blog Section Subtitle',
+    'home_blog_posts': 'Homepage - Blog Post Previews',
+    
+    // Homepage - Final CTA
+    'home_final_cta_title': 'Homepage - Final CTA Title',
+    'home_final_cta_description': 'Homepage - Final CTA Description',
     'home_cta': 'Homepage - Bottom Call-to-Action Section',
     
     // About Page
@@ -281,6 +322,40 @@ export default function ContentManagementPage() {
             <Plus className="w-5 h-5" />
             <span>Add Content</span>
           </button>
+        </div>
+
+        {/* Homepage Quick Access Banner */}
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-lg p-6 text-white">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="bg-white/20 p-3 rounded-lg">
+                <Home className="w-8 h-8" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold mb-1">Homepage Content Manager</h2>
+                <p className="text-blue-100">
+                  Dedicated interface for managing all homepage sections with live preview
+                </p>
+              </div>
+            </div>
+            <div className="flex space-x-3">
+              <Link
+                href="/"
+                target="_blank"
+                className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>View Homepage</span>
+              </Link>
+              <Link
+                href="/admin/content/homepage"
+                className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-2 rounded-lg font-semibold flex items-center space-x-2 transition-colors"
+              >
+                <Home className="w-4 h-4" />
+                <span>Manage Homepage</span>
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* Quick Access Sections */}

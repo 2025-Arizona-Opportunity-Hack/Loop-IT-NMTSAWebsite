@@ -38,7 +38,6 @@ const Navbar = () => {
     { name: "Programs", href: "/programs" },
     { name: "Get Involved", href: "/get-involved" },
     { name: "Donate", href: "/donate" },
-    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ];
 

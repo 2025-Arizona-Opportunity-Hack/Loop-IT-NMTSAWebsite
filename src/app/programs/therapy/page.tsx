@@ -63,13 +63,15 @@ const TherapyProgramPage = () => {
               birthday: formData.birthday,
               address: formData.address,
             },
-            guardianInfo: formData.guardianName ? {
-              name: formData.guardianName,
-              relationship: formData.guardianRelationship,
-              phone: formData.guardianPhone,
-              email: formData.guardianEmail,
-              address: formData.guardianAddress,
-            } : null,
+            guardianInfo: formData.guardianName
+              ? {
+                  name: formData.guardianName,
+                  relationship: formData.guardianRelationship,
+                  phone: formData.guardianPhone,
+                  email: formData.guardianEmail,
+                  address: formData.guardianAddress,
+                }
+              : null,
             diagnoses: formData.diagnoses || [],
             diagnosisOther: formData.diagnosisOther,
             weeklyAvailability: formData.availability || {},
@@ -202,12 +204,18 @@ const TherapyProgramPage = () => {
   ];
 
   const conditions = [
-    { name: "Stroke/Brain Injury", icon: Brain, color: "text-blue-500" },
-    { name: "Parkinson's Disease", icon: Zap, color: "text-purple-500" },
-    { name: "Autism Spectrum", icon: Heart, color: "text-green-500" },
-    { name: "Cerebral Palsy", icon: User, color: "text-orange-500" },
-    { name: "Multiple Sclerosis", icon: Brain, color: "text-red-500" },
-    { name: "Alzheimer's/Dementia", icon: Brain, color: "text-indigo-500" },
+    { name: "ADHD", color: "text-blue-500" },
+    { name: "Autism", color: "text-purple-500" },
+    { name: "Cerebral Palsy", color: "text-green-500" },
+    { name: "Down's Syndrome", color: "text-orange-500" },
+    { name: "Epilepsy", color: "text-red-500" },
+    {
+      name: "Neurodevelopmental Disorder",
+      color: "text-indigo-500",
+    },
+    { name: "Parkinson's Disease", color: "text-pink-500" },
+    { name: "Stroke", color: "text-teal-500" },
+    { name: "Traumatic Brain Injury", color: "text-cyan-500" },
   ];
 
   return (
@@ -224,7 +232,7 @@ const TherapyProgramPage = () => {
           </Link>
 
           <div className="text-center">
-            <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
+            <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
               <User className="w-10 h-10 text-white" />
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold font-poppins text-gray-900 mb-6">
@@ -258,7 +266,7 @@ const TherapyProgramPage = () => {
                 key={type.title}
                 className="glass-card p-8 rounded-2xl text-center group"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                   <type.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3 font-poppins">
@@ -299,9 +307,8 @@ const TherapyProgramPage = () => {
             {conditions.map((condition, index) => (
               <div
                 key={condition.name}
-                className="glass-card p-6 rounded-xl flex items-center space-x-4"
+                className="glass-card p-6 rounded-xl flex items-center justify-center space-x-4 text-center"
               >
-                <condition.icon className={`w-8 h-8 ${condition.color}`} />
                 <span className="font-semibold text-gray-900">
                   {condition.name}
                 </span>
@@ -369,7 +376,7 @@ const TherapyProgramPage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
@@ -439,51 +446,61 @@ const RequestServiceForm = ({
   isSubmitting?: boolean;
 }) => {
   const [selectedDiagnoses, setSelectedDiagnoses] = useState<string[]>([]);
-  const [selectedTreatmentTypes, setSelectedTreatmentTypes] = useState<string[]>([]);
-  const [selectedDeliveryMethods, setSelectedDeliveryMethods] = useState<string[]>([]);
-  const [weeklyAvailability, setWeeklyAvailability] = useState<Record<string, boolean>>({});
+  const [selectedTreatmentTypes, setSelectedTreatmentTypes] = useState<
+    string[]
+  >([]);
+  const [selectedDeliveryMethods, setSelectedDeliveryMethods] = useState<
+    string[]
+  >([]);
+  const [weeklyAvailability, setWeeklyAvailability] = useState<
+    Record<string, boolean>
+  >({});
 
-  const handleCheckboxChange = (category: string, value: string, checked: boolean) => {
-    if (category === 'diagnosis') {
-      const updated = checked 
+  const handleCheckboxChange = (
+    category: string,
+    value: string,
+    checked: boolean
+  ) => {
+    if (category === "diagnosis") {
+      const updated = checked
         ? [...selectedDiagnoses, value]
-        : selectedDiagnoses.filter(d => d !== value);
+        : selectedDiagnoses.filter((d) => d !== value);
       setSelectedDiagnoses(updated);
-      onChange('diagnoses', updated);
-    } else if (category === 'treatment') {
+      onChange("diagnoses", updated);
+    } else if (category === "treatment") {
       const updated = checked
         ? [...selectedTreatmentTypes, value]
-        : selectedTreatmentTypes.filter(t => t !== value);
+        : selectedTreatmentTypes.filter((t) => t !== value);
       setSelectedTreatmentTypes(updated);
-      onChange('treatmentTypes', updated);
-    } else if (category === 'delivery') {
+      onChange("treatmentTypes", updated);
+    } else if (category === "delivery") {
       const updated = checked
         ? [...selectedDeliveryMethods, value]
-        : selectedDeliveryMethods.filter(d => d !== value);
+        : selectedDeliveryMethods.filter((d) => d !== value);
       setSelectedDeliveryMethods(updated);
-      onChange('deliveryMethods', updated);
+      onChange("deliveryMethods", updated);
     }
   };
 
   const handleAvailabilityChange = (slot: string, checked: boolean) => {
     const updated = { ...weeklyAvailability, [slot]: checked };
     setWeeklyAvailability(updated);
-    onChange('availability', updated);
+    onChange("availability", updated);
   };
 
   const timeSlots = [
-    '9:00-10:00 AM',
-    '10:00-11:00 AM',
-    '11:00 AM-12:00 PM',
-    '12:00-1:00 PM',
-    '1:00-2:00 PM',
-    '2:00-3:00 PM',
-    '3:00-4:00 PM',
-    '4:00-5:00 PM',
-    '5:00-6:00 PM',
+    "9:00-10:00 AM",
+    "10:00-11:00 AM",
+    "11:00 AM-12:00 PM",
+    "12:00-1:00 PM",
+    "1:00-2:00 PM",
+    "2:00-3:00 PM",
+    "3:00-4:00 PM",
+    "4:00-5:00 PM",
+    "5:00-6:00 PM",
   ];
 
-  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
   return (
     <form onSubmit={onSubmit} className="space-y-8">
@@ -588,18 +605,31 @@ const RequestServiceForm = ({
       {/* Diagnosis */}
       <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl">
         <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <Brain className="w-5 h-5 mr-2 text-purple-600" />
+          <Brain className="w-5 h-5 mr-2 text-blue-600" />
           Diagnosis (check all that apply)
         </h4>
         <div className="grid md:grid-cols-2 gap-3">
-          {['ADHD', 'Autism', 'Cerebral Palsy', 'Down\'s Syndrome', 'Epilepsy', 
-            'Neurodevelopmental Disorder', 'Parkinson\'s Disease', 'Stroke', 
-            'Traumatic Brain Injury'].map((diagnosis) => (
-            <label key={diagnosis} className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors">
+          {[
+            "ADHD",
+            "Autism",
+            "Cerebral Palsy",
+            "Down's Syndrome",
+            "Epilepsy",
+            "Neurodevelopmental Disorder",
+            "Parkinson's Disease",
+            "Stroke",
+            "Traumatic Brain Injury",
+          ].map((diagnosis) => (
+            <label
+              key={diagnosis}
+              className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors"
+            >
               <input
                 type="checkbox"
-                className="w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-2 focus:ring-purple-500"
-                onChange={(e) => handleCheckboxChange('diagnosis', diagnosis, e.target.checked)}
+                className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-purple-500"
+                onChange={(e) =>
+                  handleCheckboxChange("diagnosis", diagnosis, e.target.checked)
+                }
               />
               <span className="text-gray-700">{diagnosis}</span>
             </label>
@@ -629,7 +659,10 @@ const RequestServiceForm = ({
                   Time
                 </th>
                 {days.map((day) => (
-                  <th key={day} className="border border-gray-300 bg-gray-100 p-2 text-center text-sm font-semibold text-gray-700">
+                  <th
+                    key={day}
+                    className="border border-gray-300 bg-gray-100 p-2 text-center text-sm font-semibold text-gray-700"
+                  >
                     {day.slice(0, 3)}
                   </th>
                 ))}
@@ -644,11 +677,16 @@ const RequestServiceForm = ({
                   {days.map((day) => {
                     const slotKey = `${day}-${slot}`;
                     return (
-                      <td key={slotKey} className="border border-gray-300 p-2 text-center">
+                      <td
+                        key={slotKey}
+                        className="border border-gray-300 p-2 text-center"
+                      >
                         <input
                           type="checkbox"
                           className="w-5 h-5 text-orange-600 border-gray-300 rounded focus:ring-2 focus:ring-orange-500"
-                          onChange={(e) => handleAvailabilityChange(slotKey, e.target.checked)}
+                          onChange={(e) =>
+                            handleAvailabilityChange(slotKey, e.target.checked)
+                          }
                         />
                       </td>
                     );
@@ -666,16 +704,27 @@ const RequestServiceForm = ({
           <Heart className="w-5 h-5 mr-2 text-teal-600" />
           Treatment Type & Delivery Method
         </h4>
-        
+
         <div className="mb-6">
-          <p className="text-sm font-semibold text-gray-700 mb-3">Delivery Method (Select all that apply):</p>
+          <p className="text-sm font-semibold text-gray-700 mb-3">
+            Delivery Method (Select all that apply):
+          </p>
           <div className="space-y-2">
-            {['In-clinic', 'Telehealth', 'Hybrid (In-clinic and Telehealth)'].map((method) => (
-              <label key={method} className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors">
+            {[
+              "In-clinic",
+              "Telehealth",
+              "Hybrid (In-clinic and Telehealth)",
+            ].map((method) => (
+              <label
+                key={method}
+                className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors"
+              >
                 <input
                   type="checkbox"
                   className="w-5 h-5 text-teal-600 border-gray-300 rounded focus:ring-2 focus:ring-teal-500"
-                  onChange={(e) => handleCheckboxChange('delivery', method, e.target.checked)}
+                  onChange={(e) =>
+                    handleCheckboxChange("delivery", method, e.target.checked)
+                  }
                 />
                 <span className="text-gray-700">{method}</span>
               </label>
@@ -684,21 +733,32 @@ const RequestServiceForm = ({
         </div>
 
         <div>
-          <p className="text-sm font-semibold text-gray-700 mb-3">Treatment Type(s) (Select all that apply):</p>
+          <p className="text-sm font-semibold text-gray-700 mb-3">
+            Treatment Type(s) (Select all that apply):
+          </p>
           <div className="space-y-2">
             {[
-              'Individual Neurologic Music Therapy Treatment',
-              'Group Neurologic Music Therapy',
-              'Home Program Development',
-              'Speller Consultation',
-              'Adaptive Lessons (30, 45, or 60 minutes)',
-              'Connections Speller Group',
+              "Individual Neurologic Music Therapy Treatment",
+              "Group Neurologic Music Therapy",
+              "Home Program Development",
+              "Speller Consultation",
+              "Adaptive Lessons (30, 45, or 60 minutes)",
+              "Connections Speller Group",
             ].map((treatment) => (
-              <label key={treatment} className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors">
+              <label
+                key={treatment}
+                className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors"
+              >
                 <input
                   type="checkbox"
                   className="w-5 h-5 text-teal-600 border-gray-300 rounded focus:ring-2 focus:ring-teal-500"
-                  onChange={(e) => handleCheckboxChange('treatment', treatment, e.target.checked)}
+                  onChange={(e) =>
+                    handleCheckboxChange(
+                      "treatment",
+                      treatment,
+                      e.target.checked
+                    )
+                  }
                 />
                 <span className="text-gray-700">{treatment}</span>
               </label>
@@ -720,8 +780,11 @@ const RequestServiceForm = ({
           Funding Source
         </h4>
         <div className="space-y-2">
-          {['Private Pay', 'ESA Account'].map((source) => (
-            <label key={source} className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors">
+          {["Private Pay", "ESA Account"].map((source) => (
+            <label
+              key={source}
+              className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white/50 rounded-lg transition-colors"
+            >
               <input
                 type="radio"
                 name="fundingSource"
@@ -736,7 +799,9 @@ const RequestServiceForm = ({
               type="radio"
               name="fundingSource"
               className="w-5 h-5 text-indigo-600 border-gray-300 focus:ring-2 focus:ring-indigo-500"
-              onChange={(e) => e.target.checked && onChange("fundingSource", "Other")}
+              onChange={(e) =>
+                e.target.checked && onChange("fundingSource", "Other")
+              }
             />
             <input
               type="text"
@@ -766,7 +831,7 @@ const RequestServiceForm = ({
         type="submit"
         disabled={isSubmitting}
         className={`w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center ${
-          isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+          isSubmitting ? "opacity-70 cursor-not-allowed" : ""
         }`}
       >
         {isSubmitting ? (
@@ -851,7 +916,7 @@ const ClinicalObservationForm = ({
       type="submit"
       disabled={isSubmitting}
       className={`w-full bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center ${
-        isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+        isSubmitting ? "opacity-70 cursor-not-allowed" : ""
       }`}
     >
       {isSubmitting ? (

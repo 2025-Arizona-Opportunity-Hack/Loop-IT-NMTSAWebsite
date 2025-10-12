@@ -134,10 +134,7 @@ const GetInvolvedPage = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
 
         <div className="container-responsive relative text-center">
-          <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-6 border border-white/20">
-            Join Our Mission
-          </span>
-          <h1 className="font-bold font-poppins mb-6 text-4xl sm:text-5xl lg:text-6xl">
+          <h1 className="font-bold font-poppins mb-6 text-4xl sm:text-5xl lg:text-6xl pt-[50px]">
             Get <span className="text-nmtsa-200">Involved</span>
           </h1>
           <p className="text-nmtsa-100 max-w-3xl mx-auto text-lg sm:text-xl leading-relaxed mb-8">
@@ -182,11 +179,11 @@ const GetInvolvedPage = () => {
             {getInvolvedOptions.map((option, index) => (
               <div
                 key={option.title}
-                className="get-involved-card p-8 rounded-2xl transition-all duration-300 group hover:shadow-xl"
+                className="get-involved-card p-8 rounded-2xl transition-all duration-300 group hover:shadow-xl flex flex-col"
               >
                 <div
                   onClick={() => setSelectedInfo(option.title)}
-                  className="cursor-pointer"
+                  className="cursor-pointer flex-grow flex flex-col"
                 >
                   <div
                     className={`w-16 h-16 bg-gradient-to-br ${option.color} rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:scale-105 shadow-lg`}
@@ -202,7 +199,7 @@ const GetInvolvedPage = () => {
                     {option.description}
                   </p>
 
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-4 mb-6 flex-grow">
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-3 text-sm flex items-center justify-center">
                         <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
@@ -320,11 +317,11 @@ const GetInvolvedPage = () => {
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-responsive text-center">
           <h2 className="font-bold font-poppins text-gray-900 mb-6 text-3xl sm:text-4xl lg:text-5xl">
-            Ready to Get <span className="gradient-text">Started</span>?
+            Do You Have More <span className="gradient-text">Questions</span>?
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg sm:text-xl mb-8">
-            Take the first step towards making a difference. Contact us to learn
-            more about current opportunities.
+            Contact us to get more information about our volunteer and
+            internship opportunities.
           </p>
           <Link href="/contact" className="btn-primary text-lg">
             Contact Us Today
@@ -337,14 +334,18 @@ const GetInvolvedPage = () => {
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
             {(() => {
-              const option = getInvolvedOptions.find(opt => opt.title === selectedInfo);
+              const option = getInvolvedOptions.find(
+                (opt) => opt.title === selectedInfo
+              );
               if (!option) return null;
-              
+
               return (
                 <>
                   <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between rounded-t-2xl z-10">
                     <div className="flex items-center gap-3">
-                      <div className={`w-12 h-12 bg-gradient-to-br ${option.color} rounded-xl flex items-center justify-center`}>
+                      <div
+                        className={`w-12 h-12 bg-gradient-to-br ${option.color} rounded-xl flex items-center justify-center`}
+                      >
                         <option.icon className="w-6 h-6 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold text-gray-900 font-poppins">
@@ -358,7 +359,7 @@ const GetInvolvedPage = () => {
                       <X className="w-6 h-6 text-gray-500" />
                     </button>
                   </div>
-                  
+
                   <div className="p-6 space-y-6">
                     {/* Description */}
                     <div className="bg-gray-50 p-6 rounded-xl">
@@ -451,9 +452,7 @@ const GetInvolvedPage = () => {
         title="Volunteer Application"
         maxWidth="3xl"
       >
-        <VolunteerApplicationForm
-          onClose={() => setShowVolunteerForm(false)}
-        />
+        <VolunteerApplicationForm onClose={() => setShowVolunteerForm(false)} />
       </ProgramFormModal>
 
       {/* Internship Application Form Modal */}
@@ -516,9 +515,9 @@ const VolunteerApplicationForm = ({ onClose }: { onClose: () => void }) => {
       if (!response.ok) {
         throw new Error(data.error || "Failed to submit application");
       }
-      
+
       setSubmitSuccess(true);
-      
+
       // Close modal after 2 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
@@ -533,7 +532,11 @@ const VolunteerApplicationForm = ({ onClose }: { onClose: () => void }) => {
       }, 2000);
     } catch (error) {
       console.error("Form submission error:", error);
-      setSubmitError(error instanceof Error ? error.message : "An error occurred. Please try again.");
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "An error occurred. Please try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -547,7 +550,8 @@ const VolunteerApplicationForm = ({ onClose }: { onClose: () => void }) => {
           <div>
             <h4 className="font-semibold text-green-900">Success!</h4>
             <p className="text-sm text-green-700">
-              Thank you for your volunteer application! We&apos;ll review your information and get back to you within 2-3 business days.
+              Thank you for your volunteer application! We&apos;ll review your
+              information and get back to you within 2-3 business days.
             </p>
           </div>
         </div>
@@ -715,9 +719,9 @@ const InternshipApplicationForm = ({ onClose }: { onClose: () => void }) => {
       if (!response.ok) {
         throw new Error(data.error || "Failed to submit application");
       }
-      
+
       setSubmitSuccess(true);
-      
+
       // Close modal after 2 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
@@ -752,7 +756,11 @@ const InternshipApplicationForm = ({ onClose }: { onClose: () => void }) => {
       }, 2000);
     } catch (error) {
       console.error("Form submission error:", error);
-      setSubmitError(error instanceof Error ? error.message : "An error occurred. Please try again.");
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "An error occurred. Please try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -766,7 +774,8 @@ const InternshipApplicationForm = ({ onClose }: { onClose: () => void }) => {
           <div>
             <h4 className="font-semibold text-green-900">Success!</h4>
             <p className="text-sm text-green-700">
-              Thank you for your internship application! We&apos;ll review your information and get back to you within 2-3 business days.
+              Thank you for your internship application! We&apos;ll review your
+              information and get back to you within 2-3 business days.
             </p>
           </div>
         </div>
@@ -1046,7 +1055,9 @@ const InternshipApplicationForm = ({ onClose }: { onClose: () => void }) => {
             <input
               type="checkbox"
               checked={formData.consentToContact}
-              onChange={(e) => handleChange("consentToContact", e.target.checked)}
+              onChange={(e) =>
+                handleChange("consentToContact", e.target.checked)
+              }
               className="mt-1 w-5 h-5 text-nmtsa-500 border-gray-300 rounded focus:ring-nmtsa-500"
               required
             />
@@ -1055,7 +1066,8 @@ const InternshipApplicationForm = ({ onClose }: { onClose: () => void }) => {
                 Consent to Contact <span className="text-red-500">*</span>
               </span>
               <p className="text-sm text-gray-600 mt-1">
-                I authorize NMTSA staff to contact me about internship opportunities.
+                I authorize NMTSA staff to contact me about internship
+                opportunities.
               </p>
             </div>
           </label>

@@ -17,6 +17,13 @@ import {
   Calendar,
   Star,
   Quote,
+  Award,
+  CheckCircle,
+  Target,
+  TrendingUp,
+  Clock,
+  MapPin,
+  Phone,
 } from "lucide-react";
 import { useContent, getContentValue, getMetadataArray, getMetadataValue } from "@/lib/hooks/useContent";
 import MusicalLoader from "./MusicalLoader";
@@ -64,18 +71,42 @@ const HomePage = () => {
         "NMTSA has transformed our daughter's life through music therapy. The progress she's made is incredible.",
       author: "Sarah M.",
       role: "Parent",
+      rating: 5,
     },
     {
       quote:
         "The music therapy sessions have helped me regain my speech and confidence after my stroke.",
       author: "Robert K.",
       role: "Client",
+      rating: 5,
     },
     {
       quote:
         "The compassionate care and professional expertise at NMTSA is unmatched.",
       author: "Linda T.",
       role: "Family Member",
+      rating: 5,
+    },
+    {
+      quote:
+        "As a healthcare provider, I confidently refer my patients to NMTSA. Their evidence-based approach delivers real results.",
+      author: "Dr. Michael Chen",
+      role: "Neurologist",
+      rating: 5,
+    },
+    {
+      quote:
+        "The music therapy program has been instrumental in my son's development. He's more engaged and communicative than ever.",
+      author: "Jennifer R.",
+      role: "Parent of Child with Autism",
+      rating: 5,
+    },
+    {
+      quote:
+        "Working with NMTSA's board-certified therapists has been life-changing for my recovery from traumatic brain injury.",
+      author: "David M.",
+      role: "TBI Survivor",
+      rating: 5,
     },
   ];
 
@@ -89,6 +120,9 @@ const HomePage = () => {
 
   // About Preview Section
   const aboutPreviewBadge = getContentValue(contentMap['home_about_preview_badge'], 'About NMTSA');
+  const aboutPreviewHeading = getContentValue(contentMap['home_about_preview_heading'], 'Unleashing the Unique Potential of Individuals with Disabilities');
+  const aboutPreviewDescription = getContentValue(contentMap['home_about_preview_text'], 'Since 1982, NMTSA has provided services to persons with neurologic impairments (ages 18 months to 75+ years) and their families in the greater Phoenix area, using evidence-based neurologic music therapy.');
+  const aboutPreviewButtonText = getContentValue(contentMap['home_about_preview_button_text'], 'Learn More About Us');
   const aboutPreviewText = getContentValue(contentMap['home_about_preview_text'], 'Since 1982, Neurologic Music Therapy Services of Arizona has been dedicated to unleashing the unique potential of individuals with disabilities through evidence-based music therapy interventions.');
   const aboutPreviewImage = getContentValue(contentMap['home_about_preview_image'], 'https://static.wixstatic.com/media/072f2d_a15cb6cb61a74ff8956322ba1d5028f1.jpg/v1/fill/w_600,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_MG_1270_JPG.jpg');
 
@@ -98,8 +132,20 @@ const HomePage = () => {
   const programsSubtitle = getContentValue(contentMap['home_programs_subtitle'], 'Evidence-based programs designed to meet diverse needs');
 
   // Request Service Section
+  const requestServiceHeading = getContentValue(contentMap['home_request_service_heading'], 'Ready to Transform Your Life with Music?');
+  const requestServiceIntro = getContentValue(contentMap['home_request_service_intro'], 'Join hundreds of families who have experienced the life-changing power of music therapy.');
   const requestServiceTitle = getContentValue(contentMap['home_request_service_title'], 'Ready to Get Started?');
   const requestServiceDescription = getContentValue(contentMap['home_request_service_description'], 'Take the first step towards transformation. Our team is here to guide you through our services and find the perfect program for your needs.');
+  
+  const defaultQuickStats = [
+    { icon: "Clock", label: "2-minute", description: "consultation form" },
+    { icon: "CheckCircle", label: "24-hour", description: "response time" },
+    { icon: "Users", label: "12 families", description: "started this month" }
+  ];
+  const quickStats = getMetadataArray(contentMap['home_request_service_quick_stats'], 'stats', defaultQuickStats);
+  
+  const requestServicePhone = getContentValue(contentMap['home_request_service_phone'], '(602) 588-7631');
+  const requestServicePhoneLabel = getContentValue(contentMap['home_request_service_phone_label'], 'Have questions? Call us today');
 
   // Get Involved Section
   const getInvolvedBadge = getContentValue(contentMap['home_get_involved_badge'], 'Opportunities');
@@ -128,23 +174,114 @@ const HomePage = () => {
   ];
   const getInvolvedOptions = getMetadataArray(contentMap['home_get_involved_options'], 'options', defaultGetInvolvedOptions);
 
-  // Support/Donate Section
-  const donateBadge = getContentValue(contentMap['home_donate_badge'], 'Support Our Mission');
-  const donateTitle = getContentValue(contentMap['home_donate_title'], 'Help Us Transform More Lives');
-  const donateDescription = getContentValue(contentMap['home_donate_description'], 'Your generous support enables us to provide life-changing music therapy services to individuals and families in need. Every donation makes a direct impact.');
+  // Use testimonials from CMS (already defined earlier)
+  // const testimonials is already defined from contentMap['home_testimonials']
+
+  // Trust & Credibility Section
+  const trustSectionTitle = getContentValue(contentMap['home_trust_section_title'], 'Why Choose NMTSA?');
+  const trustSectionSubtitle = getContentValue(contentMap['home_trust_section_subtitle'], 'Trusted by families across Arizona for evidence-based music therapy');
+  
+  const defaultTrustBuilders = [
+    {
+      icon: "Award",
+      title: "40+ Years of Excellence",
+      description: "Serving Arizona families since 1982",
+    },
+    {
+      icon: "CheckCircle",
+      title: "Board-Certified Therapists",
+      description: "Evidence-based, professional care",
+    },
+    {
+      icon: "Target",
+      title: "Proven Results",
+      description: "500+ families transformed",
+    },
+    {
+      icon: "TrendingUp",
+      title: "15,000+ Sessions",
+      description: "Delivering consistent outcomes",
+    },
+  ];
+  const trustBuilders = getMetadataArray(contentMap['home_trust_builders'], 'trustBuilders', defaultTrustBuilders);
+
+  const defaultTrustSignals = {
+    servingLabel: "Proudly Serving",
+    signals: [
+      { icon: "MapPin", text: "Greater Phoenix Area" },
+      { icon: "Award", text: "Board-Certified Staff" },
+      { icon: "CheckCircle", text: "Evidence-Based Approach" }
+    ]
+  };
+  const trustSignalsData = contentMap['home_trust_signals']?.metadata || defaultTrustSignals;
+  const trustServingLabel = trustSignalsData.servingLabel || defaultTrustSignals.servingLabel;
+  const trustSignals = trustSignalsData.signals || defaultTrustSignals.signals;
+
+  // Process / How It Works Section
+  const processTitle = getContentValue(contentMap['home_process_title'], 'How Music Therapy Works');
+  const processSubtitle = getContentValue(contentMap['home_process_subtitle'], 'Your journey with NMTSA: Simple, professional, and transformative');
+  const processCTAText = getContentValue(contentMap['home_process_cta_text'], 'Ready to start your transformation journey?');
+  
+  const defaultProcessSteps = [
+    {
+      number: "01",
+      title: "Initial Consultation",
+      description: "Free consultation to understand your needs and goals",
+      icon: "Phone",
+    },
+    {
+      number: "02",
+      title: "Assessment",
+      description: "Comprehensive evaluation by our certified therapists",
+      icon: "CheckCircle",
+    },
+    {
+      number: "03",
+      title: "Personalized Plan",
+      description: "Custom therapy program designed for you",
+      icon: "Target",
+    },
+    {
+      number: "04",
+      title: "Ongoing Sessions",
+      description: "Regular therapy sessions with progress tracking",
+      icon: "Music",
+    },
+    {
+      number: "05",
+      title: "Progress Tracking",
+      description: "Continuous evaluation and plan adjustments",
+      icon: "TrendingUp",
+    },
+  ];
+  const processSteps = getMetadataArray(contentMap['home_process_steps'], 'steps', defaultProcessSteps);
+
+  // Donate Section
+  const donateTitle = getContentValue(contentMap['home_donate_title'], 'Transform Lives Through Music');
+  const donateDescription = getContentValue(contentMap['home_donate_description'], 'Your support helps us provide life-changing music therapy services to individuals with neurologic impairments and their families.');
   
   const defaultDonateImpact = [
-    { amount: "$50", description: "Funds one therapy session" },
-    { amount: "$200", description: "Supports monthly programs" },
-    { amount: "$500", description: "Sponsors a family's care" },
-    { amount: "$1000", description: "Transforms multiple lives" }
+    { amount: "$50", description: "One therapy session" },
+    { amount: "$100", description: "Two therapy sessions" },
+    { amount: "$250", description: "Five therapy sessions" },
+    { amount: "$500", description: "Full month of therapy" },
   ];
+  
   const donateImpact = getMetadataArray(contentMap['home_donate_impact'], 'impactCards', defaultDonateImpact);
   const whyChooseNMTSA = getContentValue(contentMap['home_donate_why_choose'], 'Why Choose NMTSA?');
 
   // Testimonials Section
   const testimonialsBadge = getContentValue(contentMap['home_testimonials_badge'], 'Testimonials');
   const testimonialsHeading = getContentValue(contentMap['home_testimonials_heading'], 'Stories of Transformation');
+  const testimonialsSubtitle = getContentValue(contentMap['home_testimonials_subtitle'], 'Hear from families, clients, and healthcare professionals');
+  
+  const defaultOverallRating = { rating: 5.0, maxRating: 5, reviewCount: "120+" };
+  const overallRatingData = contentMap['home_testimonials_overall_rating']?.metadata || defaultOverallRating;
+  const overallRating = overallRatingData.rating || defaultOverallRating.rating;
+  const maxRating = overallRatingData.maxRating || defaultOverallRating.maxRating;
+  const reviewCount = overallRatingData.reviewCount || defaultOverallRating.reviewCount;
+  
+  const testimonialsScrollHint = getContentValue(contentMap['home_testimonials_scroll_hint'], '← Swipe to see more testimonials →');
 
   // Blog Section
   const blogBadge = getContentValue(contentMap['home_blog_badge'], 'Latest News');
@@ -179,6 +316,8 @@ const HomePage = () => {
   // Final CTA Section
   const finalCTATitle = getContentValue(contentMap['home_final_cta_title'], 'Ready to Begin Your Journey?');
   const finalCTADescription = getContentValue(contentMap['home_final_cta_description'], 'Whether you\'re seeking music therapy services, want to get involved, or have questions about our programs, we\'re here to help you take the next step.');
+  const finalCTAPhoneLabel = getContentValue(contentMap['home_final_cta_phone_label'], 'Prefer to talk? We\'re here to help');
+  const finalCTAHours = getContentValue(contentMap['home_final_cta_hours'], 'Mon-Fri 9AM-5PM MST');
 
   const scrollToSection = () => {
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
@@ -244,12 +383,22 @@ const HomePage = () => {
         <div className="container-responsive">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div className="order-2 lg:order-1">
-              <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full font-semibold mb-6 text-responsive-base">
-                {aboutPreviewBadge}
-              </span>
-              <p className="text-gray-600 mb-8 leading-relaxed text-responsive-lg">
-                {aboutPreviewText}
+              <h2 className="text-3xl lg:text-4xl font-bold font-poppins text-gray-900 mb-6">
+                {aboutPreviewHeading.split(' ').slice(0, -3).join(' ')}{' '}
+                <span className="gradient-text">
+                  {aboutPreviewHeading.split(' ').slice(-3).join(' ')}
+                </span>
+              </h2>
+              <p className="text-gray-600 mb-6 leading-relaxed text-responsive-lg">
+                {aboutPreviewDescription}
               </p>
+              <Link
+                href="/about"
+                className="btn-primary text-white font-semibold px-6 py-3 rounded-full inline-flex items-center"
+              >
+                {aboutPreviewButtonText}
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
             </div>
 
             <div className="relative order-1 lg:order-2">
@@ -267,13 +416,61 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Trust & Credibility Section */}
+      <section className="py-16 bg-gradient-to-br from-nmtsa-600 to-nmtsa-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold font-poppins text-white mb-4">
+              {trustSectionTitle.split(' ').slice(0, -1).join(' ')}{' '}
+              <span className="text-nmtsa-200">{trustSectionTitle.split(' ').slice(-1)[0]}</span>
+            </h2>
+            <p className="text-nmtsa-100 text-lg max-w-2xl mx-auto">
+              {trustSectionSubtitle}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trustBuilders.map((item, index) => {
+              const IconComponent = typeof item.icon === 'string' ? getIconComponent(item.icon) : item.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl text-center hover:bg-white/20 transition-all duration-300 border border-white/20"
+                >
+                  <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <IconComponent className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2 font-poppins">
+                    {item.title}
+                  </h3>
+                  <p className="text-nmtsa-100">{item.description}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Additional Trust Signals */}
+          <div className="mt-12 text-center">
+            <p className="text-nmtsa-100 text-sm mb-4">{trustServingLabel}</p>
+            <div className="flex flex-wrap justify-center items-center gap-6">
+              {trustSignals.map((signal: any, index: number) => {
+                const IconComponent = typeof signal.icon === 'string' ? getIconComponent(signal.icon) : signal.icon;
+                return (
+                  <div key={index} className="flex items-center text-white">
+                    <IconComponent className="w-5 h-5 mr-2 text-nmtsa-200" />
+                    <span className="font-semibold">{signal.text}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Programs Overview Section */}
       <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-nmtsa-50 to-nmtsa-100">
         <div className="container-responsive">
           <header className="text-center mb-8 lg:mb-12">
-            <span className="inline-block px-3 py-1.5 bg-nmtsa-600 text-white rounded-full font-medium mb-4 text-sm">
-              {programsBadge}
-            </span>
             <h2 className="font-bold font-poppins text-gray-900 mb-4 text-2xl sm:text-3xl lg:text-4xl">
               {programsHeading.split(' ').slice(0, -1).join(' ')}{' '}
               <span className="gradient-text">{programsHeading.split(' ').slice(-1)[0]}</span>
@@ -309,7 +506,66 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Request Service Section */}
+      {/* How It Works - Process Section - NEW */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
+              {processTitle.split(' ').slice(0, -1).join(' ')}{' '}
+              <span className="gradient-text">{processTitle.split(' ').slice(-1)[0]}</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {processSubtitle}
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Connection Line */}
+            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-nmtsa-200 via-nmtsa-400 to-nmtsa-200 transform -translate-y-1/2"></div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 relative">
+              {processSteps.map((step, index) => {
+                const IconComponent = typeof step.icon === 'string' ? getIconComponent(step.icon) : step.icon;
+                return (
+                  <div key={index} className="relative flex">
+                    <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-nmtsa-100 hover:border-nmtsa-400 relative z-10 flex flex-col w-full">
+                      <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-nmtsa-500 to-nmtsa-600 rounded-2xl mx-auto mb-4 shadow-lg">
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="text-center mb-3">
+                        <span className="text-4xl font-bold text-nmtsa-200 font-poppins">
+                          {step.number}
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 font-poppins text-center">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm text-center leading-relaxed flex-grow">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-gray-600 mb-6">
+              {processCTAText}
+            </p>
+            <Link
+              href="/contact"
+              className="btn-primary text-white font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg"
+            >
+              <Calendar className="w-5 h-5 mr-2" />
+              Schedule Free Consultation
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Request Service Section - MOVED HERE */}
       <section
         className="py-12 sm:py-16 lg:py-20 bg-white"
         id="get-started"
@@ -322,34 +578,50 @@ const HomePage = () => {
               className="font-bold font-poppins text-gray-900 mb-6"
               style={{ fontSize: "clamp(2rem, 6vw, 3rem)" }}
             >
-              {requestServiceTitle.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="gradient-text">{requestServiceTitle.split(' ').slice(-1)[0]}</span>
+              {requestServiceHeading.split(' ').slice(0, -1).join(' ')}{' '}
+              <span className="gradient-text">{requestServiceHeading.split(' ').slice(-1)[0]}</span>
             </h2>
             <p
-              className="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
+              className="text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed"
               style={{ fontSize: "clamp(1rem, 3vw, 1.25rem)" }}
             >
-              {requestServiceDescription}
+              {requestServiceIntro}
             </p>
+
+            {/* Quick Stats */}
+            <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm text-gray-600">
+              {quickStats.map((stat: any, index: number) => {
+                const IconComponent = typeof stat.icon === 'string' ? getIconComponent(stat.icon) : stat.icon;
+                return (
+                  <div key={index} className="flex items-center">
+                    <IconComponent className="w-5 h-5 text-nmtsa-600 mr-2" />
+                    <span>
+                      <strong>{stat.label}</strong> {stat.description}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
             <div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
               role="group"
               aria-label="Get started actions"
             >
               <Link
                 href="/contact"
-                className="btn-primary text-white font-semibold px-8 py-4 rounded-full inline-flex items-center
+                className="btn-primary text-white font-semibold px-8 py-4 rounded-full inline-flex items-center justify-center
                          focus:outline-none focus:ring-4 focus:ring-nmtsa-400 focus:ring-opacity-50
-                         transition-all duration-250 touch-target-large"
+                         transition-all duration-250 touch-target-large shadow-lg hover:shadow-xl"
                 style={{
                   fontSize: "clamp(1rem, 2.5vw, 1.125rem)",
                   minHeight: "48px",
-                  minWidth: "180px",
+                  minWidth: "200px",
                 }}
                 aria-describedby="request-service-description"
               >
                 <Calendar className="w-5 h-5 mr-2" aria-hidden="true" />
-                Request Service
+                Schedule Free Consultation
               </Link>
               <div id="request-service-description" className="sr-only">
                 Contact NMTSA to request music therapy services
@@ -357,7 +629,7 @@ const HomePage = () => {
 
               <Link
                 href="/programs"
-                className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center
+                className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center justify-center
                          focus:outline-none focus:ring-4 focus:ring-nmtsa-400 focus:ring-opacity-50
                          transition-all duration-250 touch-target-large"
                 style={{
@@ -368,11 +640,25 @@ const HomePage = () => {
                 aria-describedby="view-programs-description"
               >
                 <Music className="w-5 h-5 mr-2" aria-hidden="true" />
-                View Programs
+                View All Programs
               </Link>
               <div id="view-programs-description" className="sr-only">
                 Browse all available NMTSA programs and services
               </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="pt-6 border-t border-gray-200">
+              <p className="text-gray-600 mb-2">
+                {requestServicePhoneLabel}
+              </p>
+              <a
+                href={`tel:${getMetadataValue(contentMap['home_request_service_phone'], 'raw', '602-588-7631')}`}
+                className="text-2xl font-bold text-nmtsa-600 hover:text-nmtsa-700 inline-flex items-center"
+              >
+                <Phone className="w-6 h-6 mr-2" />
+                {requestServicePhone}
+              </a>
             </div>
           </div>
         </div>
@@ -385,9 +671,6 @@ const HomePage = () => {
 
         <div className="container-responsive relative">
           <header className="text-center mb-8 lg:mb-12">
-            <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-4 border border-white/20">
-              {getInvolvedBadge}
-            </span>
             <h2 className="font-bold font-poppins mb-4 text-2xl sm:text-3xl lg:text-4xl">
               {getInvolvedTitle.split(' ').slice(0, -1).join(' ')}{' '}
               <span className="text-nmtsa-200">{getInvolvedTitle.split(' ').slice(-1)[0]}</span>
@@ -398,35 +681,38 @@ const HomePage = () => {
           </header>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {getInvolvedOptions.map((option, index) => {
-              const IconComponent = typeof option.icon === 'string' ? getIconComponent(option.icon) : option.icon;
-              return (
-                <article
-                  key={option.title || index}
-                  className="get-involved-card p-6 sm:p-8 rounded-3xl text-center transition-all duration-500 ease-out group hover-lift"
-                >
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/30 to-white/10 rounded-3xl flex items-center justify-center mx-auto mb-6 transition-all duration-500 ease-out group-hover:scale-[1.15] group-hover:from-white/40 group-hover:to-white/20 shadow-lg">
-                    <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-sm" />
-                  </div>
-                  <h3 className="font-bold mb-4 font-poppins text-xl sm:text-2xl text-white drop-shadow-sm">
-                    {option.title}
-                  </h3>
-                  <p className="text-nmtsa-100 mb-6 text-base sm:text-lg leading-relaxed">
-                    {option.description}
-                  </p>
-                  <div className="flex flex-col gap-3">
-                    <button
-                      className="form-btn-white text-nmtsa-600 font-semibold px-6 py-3 rounded-full text-base sm:text-lg group/btn"
-                      onClick={() => {
-                        window.location.href = option.link || "/get-involved";
-                      }}
-                    >
-                      Explore {option.title}
-                    </button>
-                  </div>
-                </article>
-              );
-            })}
+            {getInvolvedOptions.map((option, index) => (
+              <article
+                key={option.title}
+                className="get-involved-card p-6 sm:p-8 rounded-3xl text-center transition-all duration-500 ease-out group hover-lift flex flex-col"
+              >
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/30 to-white/10 rounded-3xl flex items-center justify-center mx-auto mb-6 transition-all duration-500 ease-out group-hover:scale-[1.15] group-hover:from-white/40 group-hover:to-white/20 shadow-lg">
+                  <option.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-sm" />
+                </div>
+                <h3 className="font-bold mb-4 font-poppins text-xl sm:text-2xl text-white drop-shadow-sm">
+                  {option.title}
+                </h3>
+                <p className="text-nmtsa-100 mb-6 text-base sm:text-lg leading-relaxed flex-grow">
+                  {option.description}
+                </p>
+                <div className="flex flex-col gap-3 mt-auto">
+                  <Link
+                    href={
+                      option.title === "Volunteer"
+                        ? "/get-involved#volunteer"
+                        : option.title === "Internship"
+                        ? "/get-involved#internship"
+                        : option.title === "Employment"
+                        ? "/get-involved#employment"
+                        : "/get-involved"
+                    }
+                    className="form-btn-white text-nmtsa-600 font-semibold px-6 py-3 rounded-full text-base sm:text-lg group/btn inline-block"
+                  >
+                    Explore {option.title}
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -436,9 +722,6 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center">
             <div>
-              <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
-                {donateBadge}
-              </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
                 {donateTitle.split(' ').slice(0, -2).join(' ')}{' '}
                 <span className="gradient-text">{donateTitle.split(' ').slice(-2).join(' ')}</span>
@@ -496,90 +779,75 @@ const HomePage = () => {
       <section className="py-20 bg-gradient-to-br from-nmtsa-50 to-nmtsa-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-nmtsa-600 text-white rounded-full text-sm font-semibold mb-6">
-              {testimonialsBadge}
-            </span>
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
               {testimonialsHeading.split(' ').slice(0, -1).join(' ')}{' '}
               <span className="gradient-text">{testimonialsHeading.split(' ').slice(-1)[0]}</span>
             </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={testimonial.author || index} className="glass-card p-8 rounded-2xl">
-                <Quote className="w-8 h-8 text-nmtsa-400 mb-4" />
-                <p className="text-gray-600 mb-6 italic">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-nmtsa-200 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-nmtsa-600 font-bold">
-                      {testimonial.author?.[0] || '?'}
-                    </span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900">
-                      {testimonial.author}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {testimonial.role}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Latest Blog Posts */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
-              {blogBadge}
-            </span>
-            <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
-              {blogHeading.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="gradient-text">{blogHeading.split(' ').slice(-1)[0]}</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {blogSubtitle}
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              {testimonialsSubtitle}
             </p>
+            {/* Overall Rating */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              {[...Array(Math.floor(maxRating))].map((_, i) => (
+                <Star
+                  key={i}
+                  className="w-6 h-6 fill-nmtsa-500 text-nmtsa-500"
+                />
+              ))}
+              <span className="ml-2 text-2xl font-bold text-gray-900">{overallRating}</span>
+              <span className="text-gray-600">out of {maxRating} ({reviewCount} reviews)</span>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <article key={index} className="glass-card p-6 rounded-2xl">
-                <div className="flex items-center text-sm text-gray-500 mb-4">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {post.date}
-                  <span className="mx-2">•</span>
-                  {post.readTime}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 font-poppins">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                <Link
-                  href={post.link || "/blog"}
-                  className="text-nmtsa-600 font-semibold hover:text-nmtsa-700 inline-flex items-center"
-                >
-                  Read More <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </article>
-            ))}
-          </div>
+          {/* Scrollable Testimonials Container */}
+          <div className="relative mb-12">
+            <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+              <div className="flex gap-6 px-4">
+                {testimonials.map((testimonial, index) => (
+                  <div
+                    key={index}
+                    className="glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 flex-shrink-0 snap-start w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+                  >
+                    {/* Star Rating */}
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-5 h-5 fill-nmtsa-500 text-nmtsa-500"
+                        />
+                      ))}
+                    </div>
 
-          <div className="text-center mt-12">
-            <Link
-              href="/blog"
-              className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg"
-            >
-              <BookOpen className="w-5 h-5 mr-2" />
-              View All Posts
-            </Link>
+                    <Quote className="w-8 h-8 text-nmtsa-400 mb-4" />
+                    <p className="text-gray-600 mb-6 italic leading-relaxed">
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </p>
+                    <div className="flex items-center">
+                      <div className="w-12 h-12 bg-nmtsa-200 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-nmtsa-600 font-bold text-lg">
+                          {testimonial.author[0]}
+                        </span>
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-900">
+                          {testimonial.author}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {testimonial.role}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="text-center mt-4">
+              <p className="text-gray-500 text-sm">
+                {testimonialsScrollHint}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -595,21 +863,42 @@ const HomePage = () => {
             <p className="text-xl text-nmtsa-100 mb-8 max-w-2xl mx-auto leading-relaxed">
               {finalCTADescription}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
                 href="/contact"
-                className="bg-white text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg hover:bg-nmtsa-50 transition-colors"
+                className="bg-white text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center justify-center text-lg hover:bg-nmtsa-50 transition-all shadow-lg hover:shadow-xl"
               >
-                <Users className="w-5 h-5 mr-2" />
-                Contact Us Today
+                <Calendar className="w-5 h-5 mr-2" />
+                Schedule Free Consultation
               </Link>
               <Link
                 href="/programs"
-                className="border-2 border-white text-white font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg hover:bg-white hover:text-nmtsa-600 transition-colors"
+                className="border-2 border-white text-white font-semibold px-8 py-4 rounded-full inline-flex items-center justify-center text-lg hover:bg-white hover:text-nmtsa-600 transition-all"
               >
                 <Music className="w-5 h-5 mr-2" />
                 Explore Programs
               </Link>
+            </div>
+
+            {/* Additional Contact Options */}
+            <div className="pt-8 border-t border-white/30">
+              <p className="text-nmtsa-100 mb-4">
+                {finalCTAPhoneLabel}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a
+                  href={`tel:${getMetadataValue(contentMap['home_request_service_phone'], 'raw', '602-588-7631')}`}
+                  className="flex items-center text-white hover:text-nmtsa-200 transition-colors"
+                >
+                  <Phone className="w-5 h-5 mr-2" />
+                  <span className="font-semibold text-lg">{requestServicePhone}</span>
+                </a>
+                <span className="hidden sm:block text-nmtsa-200">•</span>
+                <div className="flex items-center text-nmtsa-100">
+                  <Clock className="w-5 h-5 mr-2" />
+                  <span>{finalCTAHours}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
