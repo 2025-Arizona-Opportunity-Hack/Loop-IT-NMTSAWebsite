@@ -631,4 +631,15 @@ div[class*="bg-white"]:not(nav):not(.glass-navbar):hover {
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Snap scrolling utilities */
+  .snap-x {
+    scroll-snap-type: x mandatory;
+  }
+  .snap-mandatory {
+    scroll-snap-type: x mandatory;
+  }
+  .snap-start {
+    scroll-snap-align: start;
+  }
 }

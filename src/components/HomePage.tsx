@@ -455,63 +455,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Impact Stories Section - NEW */}
-      <section className="py-20 bg-gradient-to-br from-nmtsa-50 to-nmtsa-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
-              Real Stories, Real{" "}
-              <span className="gradient-text">Transformations</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See the measurable impact of music therapy on our clients' lives
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {impactStories.map((story, index) => (
-              <div
-                key={index}
-                className="glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 group"
-              >
-                <div className="mb-6">
-                  <div className="inline-block px-4 py-2 bg-nmtsa-600 text-white rounded-full text-sm font-semibold mb-4">
-                    {story.condition}
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 font-poppins">
-                    {story.title}
-                  </h3>
-                </div>
-
-                <div className="mb-6 p-4 bg-gradient-to-r from-nmtsa-500 to-nmtsa-600 rounded-xl">
-                  <div className="text-3xl font-bold text-white text-center mb-1">
-                    {story.improvement}
-                  </div>
-                </div>
-
-                <div className="border-l-4 border-nmtsa-400 pl-4 mb-4">
-                  <Quote className="w-6 h-6 text-nmtsa-400 mb-2" />
-                  <p className="text-gray-700 italic text-lg mb-2">
-                    "{story.quote}"
-                  </p>
-                  <p className="text-gray-600 font-semibold">- {story.name}</p>
-                </div>
-
-                <div className="pt-4 border-t border-gray-200">
-                  <Link
-                    href="/about"
-                    className="text-nmtsa-600 font-semibold hover:text-nmtsa-700 inline-flex items-center group-hover:translate-x-1 transition-transform"
-                  >
-                    Read More Success Stories
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Request Service Section - MOVED HERE */}
       <section
         className="py-12 sm:py-16 lg:py-20 bg-white"
@@ -651,23 +594,20 @@ const HomePage = () => {
                   {option.description}
                 </p>
                 <div className="flex flex-col gap-3 mt-auto">
-                  <button
-                    className="form-btn-white text-nmtsa-600 font-semibold px-6 py-3 rounded-full text-base sm:text-lg group/btn"
-                    onClick={() => {
-                      // Create form URL based on the option type
-                      const formUrl =
-                        option.title === "Volunteer Opportunities"
-                          ? "/get-involved"
-                          : option.title === "Internships"
-                          ? "/get-involved"
-                          : option.title === "Employment Opportunities"
-                          ? "/get-involved"
-                          : "";
-                      window.location.href = formUrl;
-                    }}
+                  <Link
+                    href={
+                      option.title === "Volunteer"
+                        ? "/get-involved#volunteer"
+                        : option.title === "Internship"
+                        ? "/get-involved#internship"
+                        : option.title === "Employment"
+                        ? "/get-involved#employment"
+                        : "/get-involved"
+                    }
+                    className="form-btn-white text-nmtsa-600 font-semibold px-6 py-3 rounded-full text-base sm:text-lg group/btn inline-block"
                   >
                     Explore {option.title}
-                  </button>
+                  </Link>
                 </div>
               </article>
             ))}
@@ -786,12 +726,12 @@ const HomePage = () => {
 
           {/* Scrollable Testimonials Container */}
           <div className="relative mb-12">
-            <div className="overflow-x-auto pb-4 scrollbar-hide">
-              <div className="flex gap-8 min-w-max px-4">
+            <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+              <div className="flex gap-6 px-4">
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
-                    className="glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 w-[400px] flex-shrink-0"
+                    className="glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 flex-shrink-0 snap-start w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
                   >
                     {/* Star Rating */}
                     <div className="flex gap-1 mb-4">
@@ -830,7 +770,7 @@ const HomePage = () => {
             {/* Scroll Indicator */}
             <div className="text-center mt-4">
               <p className="text-gray-500 text-sm">
-                ← Scroll to see more testimonials →
+                ← Swipe to see more testimonials →
               </p>
             </div>
           </div>
@@ -846,9 +786,9 @@ const HomePage = () => {
               <span className="text-nmtsa-200">Journey</span>?
             </h2>
             <p className="text-xl text-nmtsa-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Whether you're seeking music therapy services, want to get
-              involved, or have questions about our programs, we're here to help
-              you take the next step.
+              Whether you&apos;re seeking music therapy services, want to get
+              involved, or have questions about our programs, we&apos;re here to
+              help you take the next step.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
@@ -870,7 +810,7 @@ const HomePage = () => {
             {/* Additional Contact Options */}
             <div className="pt-8 border-t border-white/30">
               <p className="text-nmtsa-100 mb-4">
-                Prefer to talk? We're here to help
+                Prefer to talk? We&apos;re here to help
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
