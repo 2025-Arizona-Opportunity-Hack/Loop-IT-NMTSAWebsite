@@ -18,7 +18,6 @@ import {
   Star,
   Quote,
 } from "lucide-react";
-import ParticlesBackground from "@/components/ParticlesBackground";
 
 const HomePage = () => {
   const stats = [
@@ -38,13 +37,13 @@ const HomePage = () => {
       icon: GraduationCap,
       title: "Music Lessons",
       description: "Adaptive music education for all skill levels",
-      color: "bg-orange-500",
+      color: "bg-nmtsa-600",
     },
     {
       icon: Users,
       title: "Community Education",
       description: "Workshops and training for families and professionals",
-      color: "bg-amber-500",
+      color: "bg-nmtsa-700",
     },
   ];
 
@@ -72,7 +71,7 @@ const HomePage = () => {
   const testimonials = [
     {
       quote:
-        "NMTSA has transformed our daughter's life through music therapy. The progress she's made is incredible.",
+        "NMTSA has transformed our daughter&apos;s life through music therapy. The progress she&apos;s made is incredible.",
       author: "Sarah M.",
       role: "Parent",
     },
@@ -119,27 +118,22 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <ParticlesBackground />
-
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-nmtsa-50 via-nmtsa-100 to-nmtsa-200" />
-
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-nmtsa-50 via-nmtsa-100 to-nmtsa-200">
         {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container-responsive text-center py-20">
           <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-nmtsa-600 shadow-lg">
+            <span className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full font-medium text-nmtsa-600 shadow-lg text-responsive-sm">
               ✨ Transforming Lives Since 1982
             </span>
           </div>
 
-          <h1 className="font-poppins font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-gray-900 mb-6 leading-tight">
+          <h1 className="font-poppins font-bold text-gray-900 mb-6 leading-tight text-responsive-4xl">
             Unleashing <span className="gradient-text">Unique Potential</span>
             <br />
             Through Music Therapy
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto text-responsive-lg">
             NMTSA provides comprehensive music therapy services to individuals
             with neurologic impairments and their families in the greater
             Phoenix area, creating positive change through the power of music.
@@ -147,104 +141,79 @@ const HomePage = () => {
 
           {/* Call-to-Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <Link
-              href="/programs"
-              className="btn-primary text-white font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg shadow-lg"
-            >
+            <Link href="/programs" className="btn-primary group">
               <PlayCircle className="w-5 h-5 mr-2" />
               Explore Our Programs
             </Link>
-            <Link
-              href="/about"
-              className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg"
-            >
+
+            <Link href="/about" className="btn-secondary group">
               <Heart className="w-5 h-5 mr-2" />
               Learn Our Story
             </Link>
           </div>
 
           {/* Statistics */}
-          <div className="grid grid-cols-3 gap-8 max-w-md mx-auto lg:max-w-lg">
+          <div className="grid grid-cols-1 xs:grid-cols-3 gap-6 sm:gap-8 max-w-md mx-auto lg:max-w-lg">
             {stats.map((stat, index) => (
               <div key={stat.label} className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-nmtsa-600 font-poppins">
+                <div className="font-bold text-nmtsa-600 font-poppins text-responsive-xl">
                   {stat.number}
                 </div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
+                <div className="text-gray-600 text-responsive-sm">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+        <button
+          type="button"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer rounded-full p-2 transition-all duration-300 hover:bg-white/20"
           onClick={scrollToSection}
         >
           <div className="flex flex-col items-center text-gray-600">
-            <span className="text-sm mb-2">Learn More</span>
-            <ChevronDown className="w-6 h-6 animate-bounce-slow" />
+            <span className="mb-2 font-medium text-responsive-base">
+              Learn More
+            </span>
+            <ChevronDown className="w-6 h-6 animate-gentle-float" />
           </div>
-        </div>
-
-        {/* Floating Statistics for Desktop */}
-        <div className="hidden lg:block">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className="absolute glass-card p-4 rounded-2xl"
-              style={{
-                top: `${20 + index * 15}%`,
-                right: index % 2 === 0 ? "10%" : "auto",
-                left: index % 2 === 1 ? "10%" : "auto",
-              }}
-            >
-              <div className="text-center">
-                <div className="text-2xl font-bold text-nmtsa-600 font-poppins">
-                  {stat.number}
-                </div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+        </button>
       </section>
 
       {/* About Preview Section */}
-      <section className="py-20 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white relative">
+        <div className="container-responsive">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full font-semibold mb-6 text-responsive-base">
                 About NMTSA
               </span>
-              <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
+              <h2 className="font-bold font-poppins text-gray-900 mb-6 text-responsive-3xl">
                 Transforming Lives Through{" "}
                 <span className="gradient-text">Music</span>
               </h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-gray-600 mb-8 leading-relaxed text-responsive-lg">
                 Since 1982, Neurologic Music Therapy Services of Arizona has
                 been dedicated to unleashing the unique potential of individuals
                 with disabilities through evidence-based music therapy
                 interventions.
               </p>
-              <Link
-                href="/about"
-                className="btn-primary text-white font-semibold px-6 py-3 rounded-full inline-flex items-center"
-              >
-                <ArrowRight className="w-5 h-5 mr-2" />
+              <Link href="/about" className="btn-primary group">
+                <ArrowRight className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
                 Learn More About Us
               </Link>
             </div>
 
-            <div className="relative">
-              <div className="glass-card overflow-hidden rounded-3xl">
+            <div className="relative order-1 lg:order-2">
+              <div className="glass-card overflow-hidden rounded-3xl transition-all duration-300 hover:shadow-xl">
                 <Image
                   src="https://static.wixstatic.com/media/072f2d_a15cb6cb61a74ff8956322ba1d5028f1.jpg/v1/fill/w_600,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_MG_1270_JPG.jpg"
                   alt="Music therapy session at NMTSA"
                   width={600}
                   height={384}
-                  className="w-full h-96 object-cover"
+                  className="w-full object-cover aspect-[4/3] h-96 transition-transform duration-300 hover:scale-[1.01]"
                 />
               </div>
             </div>
@@ -253,113 +222,155 @@ const HomePage = () => {
       </section>
 
       {/* Programs Overview Section */}
-      <section className="py-20 bg-gradient-to-br from-nmtsa-50 to-nmtsa-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-nmtsa-600 text-white rounded-full text-sm font-semibold mb-6">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-nmtsa-50 to-nmtsa-100">
+        <div className="container-responsive">
+          <header className="text-center mb-8 lg:mb-12">
+            <span className="inline-block px-3 py-1.5 bg-nmtsa-600 text-white rounded-full font-medium mb-4 text-sm">
               Our Programs
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
+            <h2 className="font-bold font-poppins text-gray-900 mb-4 text-2xl sm:text-3xl lg:text-4xl">
               Comprehensive <span className="gradient-text">Services</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We offer a range of evidence-based programs designed to meet
-              diverse needs
+            <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
+              Evidence-based programs designed to meet diverse needs
             </p>
-          </div>
+          </header>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {programs.map((program, index) => (
-              <div
+              <article
                 key={program.title}
-                className="glass-card p-8 rounded-2xl text-center hover:scale-105 transition-transform duration-300"
+                className="glass-card p-4 sm:p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 group"
               >
                 <div
-                  className={`w-16 h-16 ${program.color} rounded-2xl flex items-center justify-center mx-auto mb-6`}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 ${program.color} rounded-xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-[1.05]`}
                 >
-                  <program.icon className="w-8 h-8 text-white" />
+                  <program.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 font-poppins">
+                <h3 className="font-bold text-gray-900 mb-3 font-poppins text-lg sm:text-xl">
                   {program.title}
                 </h3>
-                <p className="text-gray-600 mb-6">{program.description}</p>
+                <p className="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
+                  {program.description}
+                </p>
                 <Link
                   href="/programs"
-                  className="text-nmtsa-600 font-semibold hover:text-nmtsa-700 inline-flex items-center"
+                  className="text-nmtsa-600 font-medium hover:text-nmtsa-700 inline-flex items-center transition-all duration-250 text-sm sm:text-base group"
                 >
-                  Learn More <ArrowRight className="w-4 h-4 ml-2" />
+                  Learn More
+                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* Request Service Section */}
-      <section className="py-20 bg-white">
+      <section
+        className="py-12 sm:py-16 lg:py-20 bg-white"
+        id="get-started"
+        aria-labelledby="get-started-heading"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div>
-            <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
+            <h2
+              id="get-started-heading"
+              className="font-bold font-poppins text-gray-900 mb-6"
+              style={{ fontSize: "clamp(2rem, 6vw, 3rem)" }}
+            >
               Ready to Get <span className="gradient-text">Started</span>?
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p
+              className="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
+              style={{ fontSize: "clamp(1rem, 3vw, 1.25rem)" }}
+            >
               Take the first step towards transformation. Our team is here to
               guide you through our services and find the perfect program for
               your needs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              role="group"
+              aria-label="Get started actions"
+            >
               <Link
                 href="/contact"
-                className="btn-primary text-white font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg"
+                className="btn-primary text-white font-semibold px-8 py-4 rounded-full inline-flex items-center
+                         focus:outline-none focus:ring-4 focus:ring-nmtsa-400 focus:ring-opacity-50
+                         transition-all duration-250 touch-target-large"
+                style={{
+                  fontSize: "clamp(1rem, 2.5vw, 1.125rem)",
+                  minHeight: "48px",
+                  minWidth: "180px",
+                }}
+                aria-describedby="request-service-description"
               >
-                <Calendar className="w-5 h-5 mr-2" />
+                <Calendar className="w-5 h-5 mr-2" aria-hidden="true" />
                 Request Service
               </Link>
+              <div id="request-service-description" className="sr-only">
+                Contact NMTSA to request music therapy services
+              </div>
+
               <Link
                 href="/programs"
-                className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg"
+                className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center
+                         focus:outline-none focus:ring-4 focus:ring-nmtsa-400 focus:ring-opacity-50
+                         transition-all duration-250 touch-target-large"
+                style={{
+                  fontSize: "clamp(1rem, 2.5vw, 1.125rem)",
+                  minHeight: "48px",
+                  minWidth: "180px",
+                }}
+                aria-describedby="view-programs-description"
               >
-                <Music className="w-5 h-5 mr-2" />
+                <Music className="w-5 h-5 mr-2" aria-hidden="true" />
                 View Programs
               </Link>
+              <div id="view-programs-description" className="sr-only">
+                Browse all available NMTSA programs and services
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Get Involved Highlights */}
-      <section className="py-20 bg-gradient-to-br from-nmtsa-600 to-nmtsa-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold font-poppins mb-6">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-nmtsa-600 to-nmtsa-700 text-white">
+        <div className="container-responsive">
+          <header className="text-center mb-8 lg:mb-12">
+            <h2 className="font-bold font-poppins mb-4 text-2xl sm:text-3xl lg:text-4xl">
               Get <span className="text-nmtsa-200">Involved</span>
             </h2>
-            <p className="text-xl text-nmtsa-100 max-w-3xl mx-auto">
-              Join our mission and make a meaningful impact in the lives of
-              others
+            <p className="text-nmtsa-100 max-w-2xl mx-auto text-base sm:text-lg">
+              Join our mission and make a meaningful impact
             </p>
-          </div>
+          </header>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {getInvolvedOptions.map((option, index) => (
-              <div
+              <article
                 key={option.title}
-                className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-center"
+                className="bg-white/10 backdrop-blur-sm p-4 sm:p-6 rounded-xl text-center hover:bg-white/15 transition-all duration-300 group"
               >
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <option.icon className="w-8 h-8 text-white" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-[1.05]">
+                  <option.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 font-poppins">
+                <h3 className="font-bold mb-3 font-poppins text-lg sm:text-xl">
                   {option.title}
                 </h3>
-                <p className="text-nmtsa-100 mb-6">{option.description}</p>
+                <p className="text-nmtsa-100 mb-4 text-sm sm:text-base leading-relaxed">
+                  {option.description}
+                </p>
                 <Link
                   href={option.link}
-                  className="bg-white text-nmtsa-600 font-semibold px-6 py-3 rounded-full hover:bg-nmtsa-50 transition-colors inline-flex items-center"
+                  className="bg-white text-nmtsa-600 font-medium px-4 py-2 sm:px-6 sm:py-3 rounded-full hover:bg-nmtsa-50 transition-all duration-300 inline-flex items-center text-sm sm:text-base group"
                 >
-                  Learn More <ArrowRight className="w-4 h-4 ml-2" />
+                  Learn More
+                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </div>
+              </article>
             ))}
           </div>
         </div>
