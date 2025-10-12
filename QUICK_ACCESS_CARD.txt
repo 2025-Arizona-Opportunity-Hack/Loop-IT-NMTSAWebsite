@@ -1,0 +1,117 @@
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│           🎯 NMTSA ADMIN PANEL - QUICK ACCESS              │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  📋 LOGIN CREDENTIALS (Demo/Testing)                        │
+│                                                             │
+│  ┌───────────────────────────────────────────────────┐    │
+│  │  Email:     admin@nmtsa.org                       │    │
+│  │  Password:  Admin@123                             │    │
+│  │  Role:      admin (Full Access)                   │    │
+│  └───────────────────────────────────────────────────┘    │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  🌐 ACCESS URLS                                             │
+│                                                             │
+│  Local Development:                                         │
+│  → http://localhost:3000/login                             │
+│  → http://localhost:3000/admin                             │
+│                                                             │
+│  Production:                                                │
+│  → https://your-domain.com/login                           │
+│  → https://your-domain.com/admin                           │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  📂 ADMIN SECTIONS                                          │
+│                                                             │
+│  ✅ /admin              → Dashboard & Stats                │
+│  ✅ /admin/content      → Content Management               │
+│  ✅ /admin/merchandise  → Product Catalog                  │
+│  ✅ /admin/orders       → Order Management                 │
+│  ✅ /admin/donors       → Donor Tracking                   │
+│  ✅ /admin/volunteers   → Volunteer Management             │
+│  ✅ /admin/settings     → Site Settings                    │
+│                                                             │
+│  ⬜ /admin/services     → Services (To be created)         │
+│  ⬜ /admin/employees    → Staff (To be created)            │
+│  ⬜ /admin/interns      → Interns (To be created)          │
+│  ⬜ /admin/forms        → Forms (To be created)            │
+│  ⬜ /admin/media        → Media Library (To be created)    │
+│  ⬜ /admin/reports      → Reports (To be created)          │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  🚀 QUICK START                                             │
+│                                                             │
+│  1. npm run dev                                             │
+│  2. Open http://localhost:3000/login                       │
+│  3. Click "Click to auto-fill credentials" button          │
+│  4. Click "Sign in"                                         │
+│  5. You're in the admin dashboard! 🎉                       │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ⚠️  IMPORTANT NOTES                                        │
+│                                                             │
+│  • Demo credentials are for TESTING ONLY                    │
+│  • Change passwords before production deployment            │
+│  • Never commit real credentials to Git                     │
+│  • See LOGIN_CREDENTIALS.md for full details               │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  📚 DOCUMENTATION                                           │
+│                                                             │
+│  • LOGIN_CREDENTIALS.md  → Full login guide                │
+│  • ADMIN_DOCUMENTATION.md → Complete admin docs            │
+│  • QUICK_START.md → Developer quick start                  │
+│  • ADMIN_VISUAL_GUIDE.md → UI/UX reference                 │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  🔧 TROUBLESHOOTING                                         │
+│                                                             │
+│  Login fails?                                               │
+│  → Check email/password are correct                         │
+│  → Ensure user exists in Supabase                          │
+│  → Verify user has 'admin' role                            │
+│                                                             │
+│  Can't access /admin?                                       │
+│  → Must be logged in first                                 │
+│  → User must have 'admin' role                             │
+│  → Check Supabase connection                               │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  📞 SUPPORT                                                 │
+│                                                             │
+│  Check documentation files first                            │
+│  Review Supabase dashboard for user status                 │
+│  Verify .env.local has correct Supabase credentials        │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+
+╔═════════════════════════════════════════════════════════════╗
+║                    MOCKUP/DEMO READY! ✨                    ║
+╠═════════════════════════════════════════════════════════════╣
+║                                                             ║
+║  The login page now includes:                               ║
+║  ✅ Visible demo credentials box                            ║
+║  ✅ "Auto-fill credentials" button                          ║
+║  ✅ One-click demo login experience                         ║
+║                                                             ║
+║  Perfect for:                                               ║
+║  • Client presentations                                     ║
+║  • Demo videos                                              ║
+║  • Screenshots                                              ║
+║  • Testing workflows                                        ║
+║  • Development                                              ║
+║                                                             ║
+╚═════════════════════════════════════════════════════════════╝
+
+Last Updated: October 12, 2025
+Version: 1.0.0

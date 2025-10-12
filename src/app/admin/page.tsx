@@ -1,347 +1,327 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { createClient } from '@/lib/supabase/client'
-import LogoutButton from '@/components/LogoutButton'
+import AdminLayout from "@/components/admin/AdminLayout";
+import DashboardStats from "@/components/admin/DashboardStats";
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+import {
+  ShoppingCart,
+  Users,
+  Heart,
+  FileText,
+  Clock,
+  AlertCircle,
+  CheckCircle,
+  TrendingUp,
+} from "lucide-react";
 
-export default function AdminPage() {
-  const [users, setUsers] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState('')
-  const [currentUser, setCurrentUser] = useState<any>(null)
+interface Activity {
+  id: string;
+  type: string;
+  description: string;
+  time: string;
+  icon: any;
+  color: string;
+}
 
-  // Form state for creating new admin
-  const [newAdmin, setNewAdmin] = useState({
-    email: '',
-    password: '',
-    full_name: '',
-    role: 'admin' as 'admin' | 'volunteer' | 'user'
-  })
+export default function AdminDashboard() {
+  const [recentActivity, setRecentActivity] = useState<Activity[]>([]);
+  const [lowStockItems, setLowStockItems] = useState<any[]>([]);
+  const [pendingOrders, setPendingOrders] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    checkAuth()
-    loadUsers()
-  }, [])
+    loadDashboardData();
+  }, []);
 
-  const checkAuth = async () => {
-    const supabase = createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    
-    if (!user) {
-      setError('Please log in first')
-      setLoading(false)
-      return
-    }
+  const loadDashboardData = async () => {
+    const supabase = createClient();
 
-    // Check if user is admin
-    const { data: profile } = await supabase
-      .from('users_profile')
-      .select('*')
-      .eq('id', user.id)
-      .single()
-
-    if (profile?.role !== 'admin') {
-      setError('Access denied. Admin only.')
-      setLoading(false)
-      return
-    }
-
-    setCurrentUser(profile)
-  }
-
-  const loadUsers = async () => {
     try {
-      const supabase = createClient()
-      const { data, error } = await supabase
-        .from('users_profile')
-        .select('*')
-        .order('created_at', { ascending: false })
+      // Load low stock items
+      const { data: lowStock } = await supabase
+        .from("merchandise")
+        .select("*")
+        .lt("stock_quantity", 10)
+        .eq("is_active", true)
+        .limit(5);
 
-      if (error) throw error
-      setUsers(data || [])
-    } catch (err: any) {
-      setError(err.message)
+      setLowStockItems(lowStock || []);
+
+      // Load pending orders
+      const { data: orders } = await supabase
+        .from("orders")
+        .select("*")
+        .eq("status", "pending")
+        .order("created_at", { ascending: false })
+        .limit(5);
+
+      setPendingOrders(orders || []);
+
+      // Mock recent activity (you can replace with actual data)
+      setRecentActivity([
+        {
+          id: "1",
+          type: "order",
+          description: "New order #1234 received",
+          time: "5 minutes ago",
+          icon: ShoppingCart,
+          color: "text-blue-600",
+        },
+        {
+          id: "2",
+          type: "donation",
+          description: "New donation of $500 from John Doe",
+          time: "15 minutes ago",
+          icon: Heart,
+          color: "text-pink-600",
+        },
+        {
+          id: "3",
+          type: "volunteer",
+          description: "New volunteer application submitted",
+          time: "1 hour ago",
+          icon: Users,
+          color: "text-green-600",
+        },
+        {
+          id: "4",
+          type: "content",
+          description: "Homepage content updated",
+          time: "2 hours ago",
+          icon: FileText,
+          color: "text-purple-600",
+        },
+      ]);
+    } catch (error) {
+      console.error("Error loading dashboard data:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
-
-  const handleCreateAdmin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-    setSuccess('')
-    setLoading(true)
-
-    try {
-      const supabase = createClient()
-
-      // 1. Create auth user
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: newAdmin.email,
-        password: newAdmin.password,
-        options: {
-          data: {
-            full_name: newAdmin.full_name
-          }
-        }
-      })
-
-      if (authError) throw authError
-      if (!authData.user) throw new Error('Failed to create user')
-
-      // 2. Create user profile
-      const { error: profileError } = await supabase
-        .from('users_profile')
-        .insert({
-          id: authData.user.id,
-          email: newAdmin.email,
-          full_name: newAdmin.full_name,
-          role: newAdmin.role
-        })
-
-      if (profileError) throw profileError
-
-      setSuccess(`Admin user created successfully! Email: ${newAdmin.email}`)
-      setNewAdmin({ email: '', password: '', full_name: '', role: 'admin' })
-      loadUsers()
-    } catch (err: any) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const handleUpdateRole = async (userId: string, newRole: string) => {
-    try {
-      const supabase = createClient()
-      const { error } = await supabase
-        .from('users_profile')
-        .update({ role: newRole as 'admin' | 'volunteer' | 'user' })
-        .eq('id', userId)
-
-      if (error) throw error
-      setSuccess('Role updated successfully')
-      loadUsers()
-    } catch (err: any) {
-      setError(err.message)
-    }
-  }
-
-  const handleDeleteUser = async (userId: string) => {
-    if (!confirm('Are you sure you want to delete this user?')) return
-
-    try {
-      const supabase = createClient()
-      const { error } = await supabase
-        .from('users_profile')
-        .delete()
-        .eq('id', userId)
-
-      if (error) throw error
-      setSuccess('User deleted successfully')
-      loadUsers()
-    } catch (err: any) {
-      setError(err.message)
-    }
-  }
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-xl">Loading...</div>
-      </div>
-    )
-  }
-
-  if (!currentUser) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md">
-          <h2 className="text-xl font-bold text-red-800 mb-2">Access Denied</h2>
-          <p className="text-red-600">{error || 'You need to be logged in as an admin.'}</p>
-          <a href="/login" className="mt-4 inline-block text-blue-600 hover:underline">
-            Go to Login
-          </a>
-        </div>
-      </div>
-    )
-  }
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="mb-8 flex items-start justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Admin Panel</h1>
-            <p className="text-gray-600 mt-2">Manage users and administrators</p>
-            <p className="text-sm text-gray-500 mt-1">Logged in as: {currentUser.email} ({currentUser.role})</p>
-          </div>
-          <LogoutButton />
+    <AdminLayout>
+      <div className="space-y-6">
+        {/* Page Header */}
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+          <p className="text-gray-600 mt-2">
+            Welcome back! Here's what's happening today.
+          </p>
         </div>
 
-        {/* Alerts */}
-        {error && (
-          <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
-            <p className="text-red-800">{error}</p>
-            <button 
-              onClick={() => setError('')}
-              className="text-sm text-red-600 hover:underline mt-2"
-            >
-              Dismiss
-            </button>
-          </div>
-        )}
+        {/* Stats Cards */}
+        <DashboardStats />
 
-        {success && (
-          <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
-            <p className="text-green-800">{success}</p>
-            <button 
-              onClick={() => setSuccess('')}
-              className="text-sm text-green-600 hover:underline mt-2"
-            >
-              Dismiss
-            </button>
-          </div>
-        )}
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Create New Admin Form */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Recent Activity */}
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Create New User</h2>
-            <form onSubmit={handleCreateAdmin} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={newAdmin.email}
-                  onChange={(e) => setNewAdmin({ ...newAdmin, email: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="admin@example.com"
-                />
-              </div>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-gray-900">
+                Recent Activity
+              </h2>
+              <Clock className="w-5 h-5 text-gray-400" />
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Password *
-                </label>
-                <input
-                  type="password"
-                  required
-                  minLength={6}
-                  value={newAdmin.password}
-                  onChange={(e) => setNewAdmin({ ...newAdmin, password: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Min 6 characters"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={newAdmin.full_name}
-                  onChange={(e) => setNewAdmin({ ...newAdmin, full_name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="John Doe"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Role *
-                </label>
-                <select
-                  value={newAdmin.role}
-                  onChange={(e) => setNewAdmin({ ...newAdmin, role: e.target.value as any })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="admin">Admin</option>
-                  <option value="volunteer">Volunteer</option>
-                  <option value="user">User</option>
-                </select>
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
-              >
-                {loading ? 'Creating...' : 'Create User'}
-              </button>
-            </form>
-          </div>
-
-          {/* Users List */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">
-              All Users ({users.length})
-            </h2>
-            <div className="space-y-3 max-h-[600px] overflow-y-auto">
-              {users.length === 0 ? (
-                <p className="text-gray-500 text-center py-8">No users found</p>
-              ) : (
-                users.map((user) => (
+            <div className="space-y-4">
+              {recentActivity.map((activity) => {
+                const Icon = activity.icon;
+                return (
                   <div
-                    key={user.id}
-                    className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                    key={activity.id}
+                    className="flex items-start space-x-4 pb-4 border-b border-gray-100 last:border-0"
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900">
-                          {user.full_name || 'No name'}
-                        </h3>
-                        <p className="text-sm text-gray-600">{user.email}</p>
-                        <p className="text-xs text-gray-500 mt-1">
-                          ID: {user.id.substring(0, 8)}...
-                        </p>
-                      </div>
-                      <div className="ml-4">
-                        <select
-                          value={user.role}
-                          onChange={(e) => handleUpdateRole(user.id, e.target.value)}
-                          className="text-sm px-2 py-1 border border-gray-300 rounded"
-                          disabled={user.id === currentUser.id}
-                        >
-                          <option value="admin">Admin</option>
-                          <option value="volunteer">Volunteer</option>
-                          <option value="user">User</option>
-                        </select>
-                      </div>
+                    <div
+                      className={`p-2 rounded-lg bg-gray-50 ${activity.color}`}
+                    >
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <span className={`text-xs px-2 py-1 rounded ${
-                        user.role === 'admin' 
-                          ? 'bg-purple-100 text-purple-800' 
-                          : user.role === 'volunteer'
-                          ? 'bg-blue-100 text-blue-800'
-                          : 'bg-gray-100 text-gray-800'
-                      }`}>
-                        {user.role}
-                      </span>
-                      {user.id !== currentUser.id && (
-                        <button
-                          onClick={() => handleDeleteUser(user.id)}
-                          className="text-xs text-red-600 hover:text-red-800 hover:underline"
-                        >
-                          Delete
-                        </button>
-                      )}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-900">
+                        {activity.description}
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {activity.time}
+                      </p>
                     </div>
                   </div>
-                ))
-              )}
+                );
+              })}
+            </div>
+
+            <a
+              href="/admin/reports"
+              className="block text-center mt-6 text-sm font-medium text-blue-600 hover:text-blue-700"
+            >
+              View all activity →
+            </a>
+          </div>
+
+          {/* Low Stock Alerts */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-gray-900">
+                Low Stock Alerts
+              </h2>
+              <AlertCircle className="w-5 h-5 text-red-500" />
+            </div>
+
+            {lowStockItems.length === 0 ? (
+              <div className="text-center py-8">
+                <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-3" />
+                <p className="text-gray-600">All items are well stocked!</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {lowStockItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-100"
+                  >
+                    <div className="flex-1">
+                      <p className="font-medium text-gray-900">{item.name}</p>
+                      <p className="text-sm text-gray-600">
+                        Stock: {item.stock_quantity} units
+                      </p>
+                    </div>
+                    <span className="text-sm font-semibold text-red-600">
+                      Low
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <a
+              href="/admin/merchandise"
+              className="block text-center mt-6 text-sm font-medium text-blue-600 hover:text-blue-700"
+            >
+              Manage inventory →
+            </a>
+          </div>
+
+          {/* Pending Orders */}
+          <div className="bg-white rounded-lg shadow-md p-6 lg:col-span-2">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-gray-900">
+                Pending Orders
+              </h2>
+              <span className="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">
+                {pendingOrders.length} Pending
+              </span>
+            </div>
+
+            {pendingOrders.length === 0 ? (
+              <div className="text-center py-8">
+                <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-3" />
+                <p className="text-gray-600">No pending orders</p>
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-gray-200">
+                      <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                        Order #
+                      </th>
+                      <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                        Customer
+                      </th>
+                      <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                        Date
+                      </th>
+                      <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                        Total
+                      </th>
+                      <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                        Status
+                      </th>
+                      <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                        Action
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {pendingOrders.map((order) => (
+                      <tr
+                        key={order.id}
+                        className="border-b border-gray-100 hover:bg-gray-50"
+                      >
+                        <td className="py-3 px-4 font-medium text-blue-600">
+                          {order.order_number}
+                        </td>
+                        <td className="py-3 px-4">{order.customer_name}</td>
+                        <td className="py-3 px-4 text-sm text-gray-600">
+                          {new Date(order.created_at).toLocaleDateString()}
+                        </td>
+                        <td className="py-3 px-4 font-semibold">
+                          ${order.total.toFixed(2)}
+                        </td>
+                        <td className="py-3 px-4">
+                          <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded-full">
+                            {order.status}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4">
+                          <a
+                            href={`/admin/orders/${order.id}`}
+                            className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                          >
+                            View
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            <a
+              href="/admin/orders"
+              className="block text-center mt-6 text-sm font-medium text-blue-600 hover:text-blue-700"
+            >
+              View all orders →
+            </a>
+          </div>
+
+          {/* Quick Actions */}
+          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-md p-6 text-white lg:col-span-2">
+            <h2 className="text-xl font-bold mb-4">Quick Actions</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <a
+                href="/admin/merchandise"
+                className="bg-white/20 hover:bg-white/30 rounded-lg p-4 text-center transition-colors"
+              >
+                <ShoppingCart className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-sm font-medium">Add Product</p>
+              </a>
+              <a
+                href="/admin/donors"
+                className="bg-white/20 hover:bg-white/30 rounded-lg p-4 text-center transition-colors"
+              >
+                <Heart className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-sm font-medium">Add Donor</p>
+              </a>
+              <a
+                href="/admin/volunteers"
+                className="bg-white/20 hover:bg-white/30 rounded-lg p-4 text-center transition-colors"
+              >
+                <Users className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-sm font-medium">Add Volunteer</p>
+              </a>
+              <a
+                href="/admin/content"
+                className="bg-white/20 hover:bg-white/30 rounded-lg p-4 text-center transition-colors"
+              >
+                <FileText className="w-8 h-8 mx-auto mb-2" />
+                <p className="text-sm font-medium">Edit Content</p>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+    </AdminLayout>
+  );
 }

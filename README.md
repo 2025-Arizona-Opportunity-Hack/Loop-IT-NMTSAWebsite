@@ -17,6 +17,7 @@ Neurologic Music Therapy Services of Arizona (NMTSA) needed a modern, accessible
 ## Solution
 
 A full-stack web application with:
+
 - Modern, responsive design built with Next.js 14 and Tailwind CSS
 - Secure admin dashboard with role-based access control
 - Comprehensive management systems for volunteers, interns, donors, and merchandise
@@ -31,30 +32,85 @@ A full-stack web application with:
 - **Authentication:** Supabase Auth
 - **Hosting:** Vercel
 
+## 🚀 Quick Start
+
+### Development Setup
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/2025-Arizona-Opportunity-Hack/Loop-IT-NMTSAWebsite.git
+cd Loop-IT-NMTSAWebsite
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Set up environment variables
+   Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+```
+
+4. Run the development server
+
+```bash
+npm run dev
+```
+
+5. Open [http://localhost:3000](http://localhost:3000)
+
+### 🔐 Admin Access (Demo/Testing)
+
+**Login URL:** http://localhost:3000/login
+
+**Demo Credentials:**
+
+```
+Email:    admin@nmtsa.org
+Password: Admin@123
+```
+
+**Quick Access:**
+
+- The login page includes an "auto-fill credentials" button for easy testing
+- After login, you'll be redirected to the admin dashboard at `/admin`
+- See `LOGIN_CREDENTIALS.md` for complete documentation
+
 ## Key Features
 
 ### 🔐 Admin Dashboard
+
 - Role-based access control (admin/employee/intern/volunteer)
 - Content management system
 - User management
 
 ### 🛍️ Marketplace
+
 - Product catalog with categories
 - Inventory management
 - Order tracking and management
 
 ### 💰 Donor Management
+
 - Donation tracking
 - Recurring donation support
 - Tax receipt tracking
 
 ### 🤝 Volunteer & Intern Management
+
 - Profile management
 - Hours tracking and verification
 - Background check tracking
 - Mentor assignment
 
 ### 📝 Content Management
+
 - Dynamic page content
 - Service offerings
 - Employee profiles
@@ -87,12 +143,14 @@ All endpoints support CRUD operations where applicable:
 ### Setup
 
 1. **Clone the repository**
+
 ```bash
 git clone https://github.com/2025-Arizona-Opportunity-Hack/Loop-IT-NMTSAWebsite.git
 cd Loop-IT-NMTSAWebsite
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
@@ -100,6 +158,7 @@ npm install
 3. **Configure environment variables**
 
 Create `.env.local`:
+
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -108,6 +167,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 4. **Setup database**
 
 Run migrations in order from `supabase/migrations/`:
+
 - `001_initial_schema.sql`
 - `002_fix_rls_recursion.sql`
 - `003_add_marketplace_donors_tracking.sql`
@@ -115,6 +175,7 @@ Run migrations in order from `supabase/migrations/`:
 Then run `supabase/create_first_admin.sql` to create your admin user.
 
 5. **Start development server**
+
 ```bash
 npm run dev
 ```
