@@ -3,9 +3,8 @@ import {
   BedrockRuntimeClient,
   ConverseCommand,
 } from '@aws-sdk/client-bedrock-runtime';
-import fs from 'fs';
-import path from 'path';
 import { chatbotConfig, getSystemPrompt, errorMessages } from '@/lib/chatbot/config';
+import { getWebsiteContext } from '@/lib/chatbot/website-context';
 
 // Initialize Bedrock client
 const client = new BedrockRuntimeClient({
@@ -16,15 +15,9 @@ const client = new BedrockRuntimeClient({
   },
 });
 
-// Load website context
-let websiteContext = '';
-try {
-  const contextPath = path.join(process.cwd(), chatbotConfig.contextPath);
-  websiteContext = fs.readFileSync(contextPath, 'utf-8');
-} catch (error) {
-  console.error('Error loading website context:', error);
-  websiteContext = 'NMTSA is a nonprofit organization providing neurologic music therapy services in Phoenix, Arizona since 1982.';
-}
+// Load website context from TypeScript constant (works reliably in Vercel)
+const websiteContext = getWebsiteContext();
+console.log('[Chatbot] Context loaded from TypeScript constant, length:', websiteContext.length);
 
 interface Message {
   role: 'user' | 'assistant';

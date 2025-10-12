@@ -1,0 +1,343 @@
+/**
+ * NMTSA Website Context for Chatbot RAG
+ * 
+ * This file contains comprehensive information about NMTSA that the chatbot
+ * uses to answer questions. By storing it as a TypeScript constant instead
+ * of a .txt file, we ensure it works reliably in Vercel and other production
+ * environments where file system access may be limited.
+ * 
+ * Last Updated: October 12, 2025
+ */
+
+export const WEBSITE_CONTEXT = `### Neurologic Music Therapy Services of Arizona (NMTSA) - Comprehensive Notes
+
+#### 1. Overview
+
+Neurologic Music Therapy Services of Arizona (NMTSA) is a nonprofit organization based in Phoenix, Arizona, dedicated to improving the lives of individuals with neurologic, developmental, and physical disabilities through the use of **Neurologic Music Therapy (NMT®)**. Founded in 1982, it has become one of the leading providers of evidence-based neurologic music therapy services in the United States. The organization operates as a **501(c)(3) public charity**, recognized by the Internal Revenue Service, with the Employer Identification Number (EIN) **20-2777059**. NMTSA is headquartered at **3221 N. 16th Street, Suite 201, Phoenix, AZ 85016**, and can be contacted via **(602) 840-6410** or **[info@nmtsa.org](mailto:info@nmtsa.org)**.
+
+The organization's mission, programs, and research partnerships reflect a deep commitment to blending scientific understanding of the brain with the emotional and motivational power of music. Their services are designed to promote neuroplasticity, rehabilitation, and improved functioning in areas such as motor coordination, speech and communication, cognition, and emotional regulation.
+
+---
+
+#### 2. Mission, Vision, and Philosophy
+
+**Mission Statement:** NMTSA's mission is to *"change the lives of individuals with disabilities through innovative and dynamic programs, education, and collaboration."* The organization seeks to create meaningful, evidence-based interventions that support the full potential of every individual, regardless of diagnosis or disability.
+
+**Vision Statement:** The vision of NMTSA is to *"unleash the unique potential of individuals with disabilities."* This guiding principle underscores the organization's focus on empowerment, dignity, and inclusion.
+
+**Philosophy:** NMTSA's philosophy integrates three essential elements:
+
+1. **Scientific Foundation:** All interventions are grounded in neuroscience and based on the standardized Neurologic Music Therapy (NMT) model, which uses rhythm, melody, and harmony as mechanisms for neural retraining.
+2. **Human Connection:** The organization believes that relationships and empathy are fundamental to the healing process. Each therapy session is individualized, compassionate, and focused on the person rather than the diagnosis.
+3. **Competence and Potential:** Every client is viewed as capable, with inherent strengths and value. The focus is on enabling each person to reach their fullest potential through adaptive and therapeutic strategies.
+
+These philosophical tenets create a therapeutic environment that honors scientific rigor while maintaining a deeply human and relational approach.
+
+---
+
+#### 3. Historical Background
+
+NMTSA traces its origins to 1982, when it began as a small private practice serving children and adults with neurological challenges. Over the years, it has evolved into a nationally recognized center for neurologic music therapy, maintaining partnerships with universities, healthcare organizations, and community programs.
+
+By 2006, the organization obtained 501(c)(3) nonprofit status, enabling it to expand its public programming and research initiatives. NMTSA has since played a key role in promoting **Neurologic Music Therapy (NMT®)** across the southwestern United States, both as a clinical service and an educational hub for music therapists seeking certification.
+
+Over the decades, NMTSA's contributions have extended beyond therapy services to community education, family support programs, and professional development for allied health and education professionals. The organization's founder and Executive Director, **Suzanne Oliver, MT-BC, NMT Fellow**, has been instrumental in shaping both local and international understanding of NMT applications for autism, brain injury, stroke, and movement disorders.
+
+---
+
+#### 4. Governance and Leadership
+
+NMTSA operates under a volunteer **Board of Directors**, composed of professionals from diverse fields including finance, business, healthcare, and education. The board provides strategic oversight, ensures regulatory compliance, and supports financial sustainability.
+
+**Key Leadership:**
+
+* **Suzanne Oliver, MT-BC, NMT Fellow** – Founder and Executive Director. A board-certified music therapist and NMT Fellow, Oliver oversees clinical programs, therapist training, and strategic partnerships.
+* **Brad Wheeler** – Board Chair. Wheeler joined the board in 2010, bringing personal experience as a parent of a child with autism who benefited from NMTSA services. He is President of AssetMark Trust Company.
+* **Ron Link, CPA** – Treasurer. Link is Chief Financial Officer at AssetMark and provides financial and compliance guidance.
+* **Nicole Hollenbeck** – Secretary and community advocate.
+* **Benjamin J. Shepherd** – Board Member involved in legal and nonprofit governance matters.
+
+The organization adheres to Arizona nonprofit law and IRS requirements, filing annual Form 990 reports for transparency. Board members typically serve without compensation, and leadership emphasizes fiscal responsibility, client safety, and program integrity.
+
+---
+
+#### 5. Neurologic Music Therapy: Scientific Foundation
+
+Neurologic Music Therapy (NMT®) is a clinical, evidence-based discipline developed from neuroscience and music perception research. Unlike traditional music therapy, NMT focuses on measurable, functional outcomes by applying standardized techniques that directly engage brain systems involved in motor, cognitive, and language processes.
+
+The **NMT model** identifies over 20 standardized techniques, grouped into three domains:
+
+1. **Sensorimotor Training:** Techniques such as Rhythmic Auditory Stimulation (RAS) and Patterned Sensory Enhancement (PSE) are used to improve movement, coordination, and gait.
+2. **Speech and Language Training:** Melodic Intonation Therapy (MIT) and Musical Speech Stimulation (MUSTIM) use melody and rhythm to facilitate language production and comprehension.
+3. **Cognitive Training:** Musical Executive Function Training (MEFT) and Musical Mnemonics Training (MMT) enhance memory, attention, and executive functioning.
+
+NMTSA therapists receive specialized certification in these methods and tailor interventions to individual neurologic needs. Music's rhythmic and structural elements stimulate multiple brain regions simultaneously, promoting neuroplasticity—the brain's ability to reorganize and form new neural connections.
+
+---
+
+#### 6. Programs and Services
+
+NMTSA provides a range of clinical and educational services, ensuring accessibility for diverse populations.
+
+**1. Individual Neurologic Music Therapy:**
+Clients receive one-on-one therapy tailored to functional goals, such as walking, speech production, fine motor control, or attention. Each session involves a formal assessment, goal setting, and periodic progress evaluations.
+
+**2. Group Therapy Sessions:**
+Small group interventions promote social communication, rhythm synchronization, and peer engagement. Group programs include activities like drum circles, vocal ensembles, and movement-based rhythm therapy.
+
+**3. Adapted Music Lessons:**
+These lessons integrate therapeutic support into instrumental or vocal training. Clients can learn instruments such as piano, guitar, drums, or voice with adaptations for physical, cognitive, or sensory needs.
+
+**4. ACT/Life Access Program:**
+A comprehensive day program designed for adults with disabilities, focusing on independence, employment readiness, and community participation. The program operates Monday through Friday and integrates functional communication, sensory supports, and social engagement.
+
+**5. Community Education & Caregiver Training:**
+NMTSA offers workshops and online courses teaching families and professionals how to use music-based strategies at home or in classrooms. Monthly sessions titled "Ask the Director" provide direct Q&A opportunities for caregivers.
+
+**6. Telehealth and Online Services:**
+Recognizing the need for accessibility, NMTSA provides teletherapy and remote consultation, especially for rural families or individuals outside Arizona.
+
+---
+
+#### 7. Client Populations and Impact
+
+NMTSA serves individuals ranging from infants to seniors, addressing conditions such as:
+
+* Autism Spectrum Disorder (ASD)
+* Cerebral Palsy
+* Down Syndrome
+* Traumatic Brain Injury (TBI)
+* Stroke and neurological rehabilitation
+* Parkinson's Disease and movement disorders
+* Alzheimer's and dementia
+
+Each therapy plan is personalized, outcome-driven, and often coordinated with other healthcare providers. Clients experience measurable improvements in communication, mobility, and emotional well-being. Many families report enhanced quality of life, improved self-regulation, and greater social inclusion.
+
+---
+
+#### 8. Facilities and Infrastructure
+
+The NMTSA clinic is purpose-built for therapy delivery. It includes:
+
+* Eight private therapy rooms designed for sensory and acoustic control.
+* A large group therapy room for ensemble-based sessions.
+* A professional recording studio where clients can create and record original music.
+* Administrative and educational offices for program coordination.
+* A sensory-friendly waiting area and fragrance-free policy for clients with sensitivities.
+
+The environment reflects NMTSA's belief in accessibility, comfort, and inclusion. The design ensures minimal distractions while optimizing acoustic and sensory conditions conducive to neurologic rehabilitation.
+
+---
+
+#### 9. Financial Overview and Sustainability
+
+According to publicly available IRS Form 990 filings (2023 data via ProPublica and Guidestar):
+
+* **Revenue:** $324,466
+* **Expenses:** $354,040
+* **Net Income:** -$29,574 (Deficit)
+* **Total Assets:** $15,600
+* **Liabilities:** $108,000
+
+Funding comes from client service fees, donations, grants, and community fundraising events. NMTSA also participates in Arizona's **Qualified Charitable Organization (QCO)** tax credit program, allowing state taxpayers to direct donations and receive tax benefits.
+
+The organization's "Friends of NMTSA" program invites monthly donors to support ongoing therapy scholarships, training sessions, and community outreach.
+
+Despite modest resources, the nonprofit maintains a high program-to-expense ratio, claiming that **over 95% of funds** directly support therapeutic and educational activities.
+
+---
+
+#### 10. Strengths, Challenges, and Future Goals
+
+**Strengths:**
+
+* Over 40 years of specialized experience.
+* Grounded in neuroscience and evidence-based practice.
+* Comprehensive, individualized service model.
+* Strong leadership and dedicated board governance.
+* Deep integration within the Arizona disability community.
+
+**Challenges:**
+
+* Financial deficits in recent fiscal years.
+* Limited physical expansion due to facility constraints.
+* Dependence on philanthropic support.
+* Limited large-scale outcome research dissemination.
+
+**Future Goals:**
+
+* Expand telehealth and remote learning platforms.
+* Strengthen university and hospital research partnerships.
+* Improve long-term financial sustainability.
+* Develop outcome measurement systems and publish clinical findings.
+* Increase public awareness of NMT and its neurological benefits.
+
+---
+
+#### 11. Conclusion
+
+Neurologic Music Therapy Services of Arizona stands at the intersection of art and science. Through decades of dedicated service, it has transformed lives by using music as a bridge between the brain and behavior. Its legacy is built on compassion, innovation, and empirical evidence, making it a pioneering institution in neurologic rehabilitation.
+
+As NMTSA continues to evolve, it remains committed to its founding principles—to respect every individual's potential, integrate neuroscience with empathy, and advocate for inclusivity in therapeutic and community settings. The organization's model demonstrates how music, when applied with precision and care, can be one of the most powerful tools for healing, learning, and connection.
+
+---
+
+#### 12. Frequently Asked Questions (FAQ)
+
+**Q: What is Neurologic Music Therapy (NMT®)?**
+A: NMT is an evidence-based treatment system that uses standardized, research-based techniques to treat the brain using specific elements of music (rhythm, melody, dynamics, tempo, etc.). The neurologic music therapist is a "stimulus specialist" trained in the neuroscience of music perception, production, and cognition. They apply musical elements to address non-musical goals such as movement, speech, cognition, and other functional abilities. Music (especially rhythm) can prime motor, cognitive, and speech systems, facilitating neural reorganization (neuroplasticity) to improve brain function.
+
+**Q: What is the difference between Neurologic Music Therapy and general music therapy?**
+A: General music therapy often addresses broad emotional, psychological, or wellness goals through playing, listening, or creating music. In contrast, NMT uses specific, research-derived techniques aligned to neurologic functions. NMT therapists undergo additional training beyond standard music therapy certification to apply techniques consistently, systematically, and with neurologic purpose.
+
+**Q: What kind of training is required to become a Neurologic Music Therapist?**
+A: First, one must obtain standard music therapy training and certification (MT-BC, via the Certification Board for Music Therapists). Then, therapists must complete a 4-day, 30-hour training institute via the Academy of Neurologic Music Therapy® to practice as NMT for five years. During that five-year period, therapists engage in Fellowship training, present clinical work for peer review, and maintain advanced training every five years to sustain the NMT Fellow status. At NMTSA, all therapists are required to maintain Fellowship status and undergo periodic review as part of employment.
+
+**Q: What neurologic or developmental conditions does NMTSA serve?**
+A: NMTSA provides therapy for a wide range of neurologic, developmental, and movement disorders, including:
+- Autism Spectrum Disorder (ASD)
+- Cerebral Palsy
+- Down Syndrome
+- Sensory Integration Disorders
+- Traumatic Brain Injury (TBI)
+- Parkinson's Disease
+- Developmental Delay
+- Stroke and neurological rehabilitation
+- Movement disorders
+- Alzheimer's and dementia
+
+The techniques are adapted for each condition based on the client's functional needs (motor, speech, cognition).
+
+**Q: What happens during a therapy session?**
+A: A session's format depends on the client's goals. For example:
+- Clients working on speech might sing along with rhythmic accompaniment, use wind instruments, or do vocal warmups.
+- For attention/cognition, a client may play an instrument while maintaining focus and seated posture.
+- For movement/gait, clients may walk while playing instruments (e.g., drums) in a track or therapy room, using rhythmic cues to guide movement.
+
+In each session, the therapist actively manipulates musical parameters (tempo, rhythm, dynamics) to stimulate the neural systems relevant to the client's goals.
+
+**Q: How is therapy initiated / what is the referral process?**
+A: New clients begin with an assessment covering three major areas: sensorimotor, speech & language, and cognition. The outcome of the assessment is shared with the family/caregiver, and the therapist develops an individualized treatment plan with goals drawn from both assessment results and caregiver input. Regular therapy sessions follow (often weekly, one hour), and every six months the treatment plan is reviewed, goals are updated, and client progress is reported.
+
+**Q: Where and how are therapy sessions delivered?**
+A: Sessions may be conducted in the NMTSA clinic or via teletherapy (online) depending on client preference, location, and safety considerations. Group NMT sessions may also occur in clinic, via teletherapy, or in collaboration with community organizations (contracted settings). NMTSA continues offering both in-clinic and teletherapy treatment, with safety protocols in place.
+
+**Q: What are "Adapted Music Lessons"?**
+A: Adapted lessons are private music lessons (30 minutes) for individuals with disabilities, taught by neurologic music therapists who embed therapeutic supports into the instruction. Instruments offered include guitar, ukulele, drums, piano, and voice. The cost is $45 per 30-minute session. Registration is done via email (register@nmtsa.org).
+
+**Q: What is the ACT/Life Access program?**
+A: ACT/Life Access (ACT/LA) is an independence support program offered to individuals who have graduated high school and are seeking greater independence, engagement in work, volunteering, education, or enriched daily life. The program operates Monday through Friday, 9:00 a.m. to 4:45 p.m. Participants select time slots based on availability. Some offerings may initially run via Zoom; as the clinic reopens, some services may shift to in-person or hybrid formats. The goals include: supporting transitions into meaningful environments (work, education, volunteer), promoting functional communication, sensory supports, independence in daily tasks, and social participation.
+
+**Q: Who are the therapists/staff at NMTSA?**
+A: All therapists hold the MT-BC credential (Music Therapist, Board Certified). In addition, they are required to complete advanced clinical training in Neurologic Music Therapy and maintain NMT Fellowship status. Fellowship status is maintained through periodic reassessment and continuing education within the NMT Academy system. The clinical staff includes:
+- Suzanne Oliver – Founder & Executive Director, MT-BC, NMT Fellow
+- Leanna Moore – Clinical Training Director, MT-BC, NMT Fellow
+- Maggie Reynolds – Neurologic Music Therapist, MT-BC, NMT Fellow
+- Matt Valois – Neurologic Music Therapist, MT-BC, NMT Fellow
+- Jessi Teich – Neurologic Music Therapist, MT-BC, NMT Fellow
+- Ka I Ho – Neurologic Music Therapist, MT-BC, NMT Fellow
+
+---
+
+#### Main Pages
+Name: Homepage
+URL: https://loop-it-nmtsa-website.vercel.app/
+Description: Main landing page with hero section, about preview, programs overview, and statistics
+
+Name: About Page
+URL: https://loop-it-nmtsa-website.vercel.app/about
+Description: Information about NMTSA's mission, history, team, and services
+
+Name: Programs Page
+URL: https://loop-it-nmtsa-website.vercel.app/programs
+Description: Comprehensive overview of all music therapy programs and services offered
+
+Name: Get Involved Page
+URL: https://loop-it-nmtsa-website.vercel.app/get-involved
+Description: Volunteer, internship, and employment opportunities with modal-based applications
+
+Name: Contact Page
+URL: https://loop-it-nmtsa-website.vercel.app/contact
+Description: Contact information, office hours, and general inquiry form
+
+Name: Donate Page
+URL: https://loop-it-nmtsa-website.vercel.app/donate
+Description: Donation options, tax credit information, and giving opportunities
+
+#### Active Forms
+
+Contact Forms
+Name: General Contact Form
+URL: https://loop-it-nmtsa-website.vercel.app/contact
+Description: Standard contact form with subject selection (General Inquiry, Schedule Assessment, Program Information, Insurance/Billing, Volunteer Opportunities, Professional Development, Employment Opportunities, Media/Press, Other)
+
+Name: Volunteer Contact Form
+URL: https://loop-it-nmtsa-website.vercel.app/get-involved?form=volunteer
+Description: Contact page pre-configured for volunteer inquiries
+
+Name: Internship Contact Form
+URL: https://loop-it-nmtsa-website.vercel.app/get-involved?form=internship
+Description: Contact page pre-configured for internship inquiries
+
+Name: Employment Contact Form
+URL: https://loop-it-nmtsa-website.vercel.app/contact?form=employment
+Description: Contact page pre-configured for employment inquiries
+
+Application Forms (Modal-Based)
+Name: Volunteer Application (Professional Consultation)
+URL: https://loop-it-nmtsa-website.vercel.app/get-involved
+Description: Modal form accessible from Get Involved page. Click "Apply for Volunteer" button. Includes contact information, consultation details (training, observation, guest lecture, research, other), format preferences, and additional information
+
+Name: Internship Application
+URL: https://loop-it-nmtsa-website.vercel.app/get-involved
+Description: Modal form accessible from Get Involved page. Click "Apply for Internship" button. Comprehensive application with personal information, internship details, experience & goals, availability & logistics, and electronic signature consent
+
+Service Request Forms
+Name: Request Service Form
+URL: https://loop-it-nmtsa-website.vercel.app/programs/therapy?form=request
+Description: Form to request specialized music therapy services. Opens as a modal with initial consultation scheduling, service needs assessment, insurance verification assistance, and comprehensive intake process for therapy services
+
+Name: Clinical Observation Request
+URL: https://loop-it-nmtsa-website.vercel.app/programs/therapy?form=observation
+Description: Form for professional observation opportunities for students, researchers, and healthcare professionals. Includes supervised clinical observations, educational shadowing experiences, research collaboration opportunities, professional development credit, and certificate of completion provided
+
+Name: Music Lessons Form (Adapted Music Lessons)
+URL: https://loop-it-nmtsa-website.vercel.app/programs/music-lessons?form=music-lessons
+Description: Comprehensive form to enroll in adapted music lessons. Opens as a modal with student information, instrument preferences (piano, guitar, drums, voice), guardian information, diagnoses/support needs, communication methods, weekly availability, goals & interests, and special accommodations. Includes options for various instruments and therapeutic adaptations
+
+Name: Employment Application
+URL: https://loop-it-nmtsa-website.vercel.app/contact?form=employment
+Description: Contact form pre-configured for employment inquiries and applications. For music therapy positions and other employment opportunities at NMTSA
+
+Name: Corporate Sponsorship Form
+URL: https://loop-it-nmtsa-website.vercel.app/contact?form=corporate-sponsor
+Description: Contact form for corporate partnership and sponsorship inquiries. For businesses interested in partnering with NMTSA to create lasting change through program funding and community engagement
+
+#### Quick Navigation Links
+Name: View All Programs
+URL: https://loop-it-nmtsa-website.vercel.app/programs
+Description: Direct link to browse all NMTSA programs and services
+
+Name: Marketplace/Shop
+URL: https://loop-it-nmtsa-website.vercel.app/marketplace
+Description: Product catalog for NMTSA merchandise
+
+Name: Admin Login
+URL: https://loop-it-nmtsa-website.vercel.app/login
+Description: Authentication page for admin dashboard access
+
+#### Contact Information
+Phone: (602) 840-6410
+Email: info@nmtsa.org
+Office Hours:
+
+Monday - Friday: 8:00 AM - 5:00 PM
+Saturday: By appointment only`;
+
+/**
+ * Helper function to get website context
+ * This provides a consistent interface regardless of the context source
+ */
+export function getWebsiteContext(): string {
+  return WEBSITE_CONTEXT;
+}

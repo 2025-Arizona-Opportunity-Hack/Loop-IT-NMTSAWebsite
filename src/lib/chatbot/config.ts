@@ -47,9 +47,6 @@ export const chatbotConfig = {
     ],
   },
 
-  // Context Document Path
-  contextPath: 'src/lib/chatbot/website-context.txt',
-
   // Feature Flags
   features: {
     enableTypingIndicator: true,
