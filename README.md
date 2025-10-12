@@ -115,7 +115,7 @@ This solution reduces administrative overhead by providing an intuitive admin da
 
 - **Kirtan Thummar** - Backend/AI Developer - [GitHub](https://github.com/VanGoghCode)
 - **Smit Patel** - Frontend Developer - [GitHub](https://github.com/smit30patel)
-- **Shubham Tiwari** - Project Manager - [GitHub](https://github.com/shubham17tiwari)
+- **Shubham Tiwari** - Project Manager/Developer - [GitHub](https://github.com/shubham17tiwari)
 
 ## Contact
 
