@@ -33,6 +33,11 @@ A full-stack web application with:
 - **Authentication:** Supabase Auth
 - **Hosting:** Vercel
 
+## Web Wireframe
+
+
+
+
 ## 🚀 Quick Start
 
 ### Development Setup
