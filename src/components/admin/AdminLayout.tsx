@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import LogoutButton from "@/components/LogoutButton";
@@ -40,6 +40,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [notifications, setNotifications] = useState(0);
+  const [pendingOrdersCount, setPendingOrdersCount] = useState(0);
+  const [pendingFormsCount, setPendingFormsCount] = useState(0);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -47,22 +49,18 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { name: "Content", href: "/admin/content", icon: FileText },
     { name: "Merchandise", href: "/admin/merchandise", icon: ShoppingBag },
-    { name: "Orders", href: "/admin/orders", icon: ShoppingCart, badge: 5 },
+    { name: "Orders", href: "/admin/orders", icon: ShoppingCart, badge: pendingOrdersCount },
     { name: "Donors", href: "/admin/donors", icon: Heart },
     { name: "Volunteers", href: "/admin/volunteers", icon: Users },
     { name: "Employees", href: "/admin/employees", icon: UserCircle },
     { name: "Interns", href: "/admin/interns", icon: GraduationCap },
-    { name: "Forms", href: "/admin/forms", icon: FileSpreadsheet },
+    { name: "Forms", href: "/admin/forms", icon: FileSpreadsheet, badge: pendingFormsCount },
     { name: "Media Library", href: "/admin/media", icon: Upload },
     { name: "Reports", href: "/admin/reports", icon: BarChart3 },
     { name: "Settings", href: "/admin/settings", icon: Settings },
   ];
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     // Check for mock session from hardcoded login
     const mockSession = localStorage.getItem("mockAdminSession");
 
@@ -92,7 +90,36 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       localStorage.removeItem("mockAdminSession");
       router.push("/login");
     }
-  };
+  }, [router]);
+
+  const loadPendingCounts = useCallback(async () => {
+    const supabase = createClient();
+
+    try {
+      // Get pending orders count
+      const { count: ordersCount } = await supabase
+        .from("orders")
+        .select("*", { count: "exact", head: true })
+        .eq("status", "pending");
+
+      setPendingOrdersCount(ordersCount || 0);
+
+      // Get pending forms count
+      const { count: formsCount } = await supabase
+        .from("form_submissions")
+        .select("*", { count: "exact", head: true })
+        .eq("status", "pending");
+
+      setPendingFormsCount(formsCount || 0);
+    } catch (error) {
+      console.error("Error loading pending counts:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkAuth();
+    loadPendingCounts();
+  }, [checkAuth, loadPendingCounts]);
 
   if (loading) {
     return (
@@ -147,7 +174,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   <Icon className="w-5 h-5" />
                   <span className="font-medium">{item.name}</span>
                 </div>
-                {item.badge && (
+                {item.badge !== undefined && item.badge > 0 && (
                   <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">
                     {item.badge}
                   </span>

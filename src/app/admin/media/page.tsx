@@ -4,7 +4,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import { useState } from "react";
 import {
   Upload,
-  Image,
+  Image as ImageIcon,
   Video,
   FileText,
   Folder,
@@ -56,7 +56,7 @@ export default function MediaPage() {
   const getMediaIcon = (type: string) => {
     switch (type) {
       case "image":
-        return <Image className="w-8 h-8 text-blue-500" />;
+        return <ImageIcon className="w-8 h-8 text-blue-500" />;
       case "video":
         return <Video className="w-8 h-8 text-purple-500" />;
       case "document":
@@ -104,7 +104,7 @@ export default function MediaPage() {
                   {mediaItems.filter((m) => m.type === "image").length}
                 </p>
               </div>
-              <Image className="w-12 h-12 text-blue-500" />
+              <ImageIcon className="w-12 h-12 text-blue-500" />
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-md p-6">

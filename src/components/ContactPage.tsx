@@ -24,6 +24,8 @@ const ContactPage = () => {
     formType: "general",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     // Get form type from URL parameters
@@ -51,21 +53,121 @@ const ContactPage = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-      formType: formType || "general",
-    });
+    try {
+      // Determine the appropriate API endpoint and submission data
+      let apiUrl = '/api/forms';
+      let submissionData: any;
+
+      if (formType === 'employment') {
+        // Use employee applications API
+        apiUrl = '/api/employees/applications';
+        submissionData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          position_applied_for: formData.subject || "General Position",
+          cover_letter: formData.message,
+          metadata: {
+            submittedFrom: 'contact_page',
+            submissionDate: new Date().toISOString(),
+          },
+          status: 'pending',
+        };
+      } else if (formType === 'volunteer') {
+        // Use volunteer applications API
+        apiUrl = '/api/volunteers/applications';
+        submissionData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          reason_for_volunteering: formData.message,
+          metadata: {
+            subject: formData.subject,
+            submittedFrom: 'contact_page',
+            submissionDate: new Date().toISOString(),
+          },
+          status: 'pending',
+        };
+      } else if (formType === 'internship') {
+        // Use intern applications API
+        apiUrl = '/api/interns/applications';
+        submissionData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          school_name: "Not specified",
+          major: "Not specified",
+          desired_position: formData.subject || "General Internship",
+          cover_letter: formData.message,
+          metadata: {
+            submittedFrom: 'contact_page',
+            submissionDate: new Date().toISOString(),
+          },
+          status: 'pending',
+        };
+      } else {
+        // Use general forms API for contact forms
+        submissionData = {
+          form_type: 'contact',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          message: formData.message,
+          metadata: {
+            subject: formData.subject,
+            formType: formData.formType,
+            submittedFrom: 'contact_page',
+            submissionDate: new Date().toISOString(),
+          },
+        };
+      }
+
+      // Submit to API
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit form');
+      }
+
+      // Success!
+      setIsSubmitted(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+          formType: formType || "general",
+        });
+      }, 3000);
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitError(
+        error instanceof Error 
+          ? error.message 
+          : 'Failed to submit form. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -105,6 +207,7 @@ const ContactPage = () => {
     "Insurance/Billing",
     "Volunteer Opportunities",
     "Professional Development",
+    "Employment Opportunities",
     "Media/Press",
     "Other",
   ];
@@ -343,10 +446,15 @@ const ContactPage = () => {
 
                 <button
                   type="submit"
-                  className="btn-primary w-full text-white font-semibold px-8 py-4 rounded-full inline-flex items-center justify-center text-lg"
-                  disabled={isSubmitted}
+                  className="btn-primary w-full text-white font-semibold px-8 py-4 rounded-full inline-flex items-center justify-center text-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  disabled={isSubmitted || isSubmitting}
                 >
-                  {isSubmitted ? (
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                      Sending...
+                    </>
+                  ) : isSubmitted ? (
                     <>
                       <Check className="w-5 h-5 mr-2" />
                       Message Sent!
@@ -361,11 +469,31 @@ const ContactPage = () => {
               </form>
 
               {isSubmitted && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-xl">
-                  <p className="text-green-800 text-sm">
-                    Thank you for your message! We&apos;ll get back to you
-                    within 24 hours.
-                  </p>
+                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-xl animate-fade-in">
+                  <div className="flex items-start">
+                    <Check className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
+                    <p className="text-green-800 text-sm">
+                      Thank you for your message! We&apos;ve received your inquiry and will get back to you within 24 hours.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {submitError && (
+                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl animate-fade-in">
+                  <div className="flex items-start">
+                    <svg className="w-5 h-5 text-red-600 mt-0.5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <div className="flex-1">
+                      <p className="text-red-800 text-sm font-semibold mb-1">
+                        Submission Failed
+                      </p>
+                      <p className="text-red-700 text-sm">
+                        {submitError}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   Music,
@@ -33,9 +34,18 @@ import {
 } from "lucide-react";
 
 const MusicLessonsPage = () => {
+  const searchParams = useSearchParams();
   const [selectedForm, setSelectedForm] = useState<string | null>(null);
   const [formData, setFormData] = useState<Record<string, any>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Check for form parameter in URL on component mount
+  useEffect(() => {
+    const formParam = searchParams.get("form");
+    if (formParam && formParam === "music-lessons") {
+      setSelectedForm(formParam);
+    }
+  }, [searchParams]);
 
   const handleInputChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -1051,4 +1061,11 @@ const MusicLessonsForm = ({
   );
 };
 
-export default MusicLessonsPage;
+// Wrapper component with Suspense boundary
+export default function MusicLessonsPageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <MusicLessonsPage />
+    </Suspense>
+  );
+}

@@ -138,6 +138,42 @@ export type Database = {
         }
         Relationships: []
       }
+      form_templates: {
+        Row: {
+          id: string
+          name: string
+          slug: string
+          description: string | null
+          fields: Json
+          active: boolean
+          frontend_route: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          slug: string
+          description?: string | null
+          fields: Json
+          active?: boolean
+          frontend_route?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          slug?: string
+          description?: string | null
+          fields?: Json
+          active?: boolean
+          frontend_route?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       intern_hours: {
         Row: {
           id: string
@@ -675,6 +711,309 @@ export type Database = {
           }
         ]
       }
+      volunteer_applications: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          phone: string | null
+          address: Json | null
+          emergency_contact: Json | null
+          date_of_birth: string | null
+          skills: string[] | null
+          interests: string[] | null
+          availability: Json | null
+          reason_for_volunteering: string | null
+          previous_volunteer_experience: string | null
+          reference_contacts: Json | null
+          status: string
+          application_date: string
+          reviewed_by: string | null
+          reviewed_at: string | null
+          review_notes: string | null
+          rejection_reason: string | null
+          volunteer_id: string | null
+          metadata: Json | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          phone?: string | null
+          address?: Json | null
+          emergency_contact?: Json | null
+          date_of_birth?: string | null
+          skills?: string[] | null
+          interests?: string[] | null
+          availability?: Json | null
+          reason_for_volunteering?: string | null
+          previous_volunteer_experience?: string | null
+          reference_contacts?: Json | null
+          status?: string
+          application_date?: string
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_notes?: string | null
+          rejection_reason?: string | null
+          volunteer_id?: string | null
+          metadata?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          address?: Json | null
+          emergency_contact?: Json | null
+          date_of_birth?: string | null
+          skills?: string[] | null
+          interests?: string[] | null
+          availability?: Json | null
+          reason_for_volunteering?: string | null
+          previous_volunteer_experience?: string | null
+          reference_contacts?: Json | null
+          status?: string
+          application_date?: string
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_notes?: string | null
+          rejection_reason?: string | null
+          volunteer_id?: string | null
+          metadata?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      intern_applications: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          phone: string | null
+          address: Json | null
+          emergency_contact: Json | null
+          date_of_birth: string | null
+          school_name: string
+          major: string
+          graduation_date: string | null
+          gpa: number | null
+          degree_level: string | null
+          desired_position: string
+          desired_department: string | null
+          preferred_start_date: string | null
+          preferred_end_date: string | null
+          hours_per_week: number | null
+          seeking_academic_credit: boolean
+          seeking_stipend: boolean
+          relevant_coursework: string | null
+          skills: string[] | null
+          previous_internships: string | null
+          work_experience: string | null
+          reference_contacts: Json | null
+          resume_url: string | null
+          cover_letter: string | null
+          transcript_url: string | null
+          status: string
+          application_date: string
+          reviewed_by: string | null
+          reviewed_at: string | null
+          review_notes: string | null
+          rejection_reason: string | null
+          intern_id: string | null
+          metadata: Json | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          phone?: string | null
+          address?: Json | null
+          emergency_contact?: Json | null
+          date_of_birth?: string | null
+          school_name: string
+          major: string
+          graduation_date?: string | null
+          gpa?: number | null
+          degree_level?: string | null
+          desired_position: string
+          desired_department?: string | null
+          preferred_start_date?: string | null
+          preferred_end_date?: string | null
+          hours_per_week?: number | null
+          seeking_academic_credit?: boolean
+          seeking_stipend?: boolean
+          relevant_coursework?: string | null
+          skills?: string[] | null
+          previous_internships?: string | null
+          work_experience?: string | null
+          reference_contacts?: Json | null
+          resume_url?: string | null
+          cover_letter?: string | null
+          transcript_url?: string | null
+          status?: string
+          application_date?: string
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_notes?: string | null
+          rejection_reason?: string | null
+          intern_id?: string | null
+          metadata?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          address?: Json | null
+          emergency_contact?: Json | null
+          date_of_birth?: string | null
+          school_name?: string
+          major?: string
+          graduation_date?: string | null
+          gpa?: number | null
+          degree_level?: string | null
+          desired_position?: string
+          desired_department?: string | null
+          preferred_start_date?: string | null
+          preferred_end_date?: string | null
+          hours_per_week?: number | null
+          seeking_academic_credit?: boolean
+          seeking_stipend?: boolean
+          relevant_coursework?: string | null
+          skills?: string[] | null
+          previous_internships?: string | null
+          work_experience?: string | null
+          reference_contacts?: Json | null
+          resume_url?: string | null
+          cover_letter?: string | null
+          transcript_url?: string | null
+          status?: string
+          application_date?: string
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_notes?: string | null
+          rejection_reason?: string | null
+          intern_id?: string | null
+          metadata?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      employee_applications: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          phone: string | null
+          address: Json | null
+          date_of_birth: string | null
+          position_applied_for: string
+          department: string | null
+          desired_salary: number | null
+          available_start_date: string | null
+          employment_type: string | null
+          education: Json | null
+          certifications: string[] | null
+          skills: string[] | null
+          work_experience: Json | null
+          reference_contacts: Json | null
+          resume_url: string | null
+          cover_letter: string | null
+          portfolio_url: string | null
+          status: string
+          application_date: string
+          reviewed_by: string | null
+          reviewed_at: string | null
+          review_notes: string | null
+          rejection_reason: string | null
+          interview_scheduled: boolean
+          interview_date: string | null
+          interview_notes: string | null
+          employee_id: string | null
+          metadata: Json | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          phone?: string | null
+          address?: Json | null
+          date_of_birth?: string | null
+          position_applied_for: string
+          department?: string | null
+          desired_salary?: number | null
+          available_start_date?: string | null
+          employment_type?: string | null
+          education?: Json | null
+          certifications?: string[] | null
+          skills?: string[] | null
+          work_experience?: Json | null
+          reference_contacts?: Json | null
+          resume_url?: string | null
+          cover_letter?: string | null
+          portfolio_url?: string | null
+          status?: string
+          application_date?: string
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_notes?: string | null
+          rejection_reason?: string | null
+          interview_scheduled?: boolean
+          interview_date?: string | null
+          interview_notes?: string | null
+          employee_id?: string | null
+          metadata?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          address?: Json | null
+          date_of_birth?: string | null
+          position_applied_for?: string
+          department?: string | null
+          desired_salary?: number | null
+          available_start_date?: string | null
+          employment_type?: string | null
+          education?: Json | null
+          certifications?: string[] | null
+          skills?: string[] | null
+          work_experience?: Json | null
+          reference_contacts?: Json | null
+          resume_url?: string | null
+          cover_letter?: string | null
+          portfolio_url?: string | null
+          status?: string
+          application_date?: string
+          reviewed_by?: string | null
+          reviewed_at?: string | null
+          review_notes?: string | null
+          rejection_reason?: string | null
+          interview_scheduled?: boolean
+          interview_date?: string | null
+          interview_notes?: string | null
+          employee_id?: string | null
+          metadata?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -685,6 +1024,45 @@ export type Database = {
           user_id: string
         }
         Returns: boolean
+      }
+      approve_volunteer_application: {
+        Args: {
+          application_id: string
+          admin_id: string
+          assigned_supervisor?: string | null
+        }
+        Returns: string
+      }
+      approve_intern_application: {
+        Args: {
+          application_id: string
+          admin_id: string
+          assigned_mentor_name?: string | null
+          assigned_mentor_email?: string | null
+          assigned_department?: string | null
+          assigned_position?: string | null
+        }
+        Returns: string
+      }
+      approve_employee_application: {
+        Args: {
+          application_id: string
+          admin_id: string
+          assigned_role: string
+          assigned_department?: string | null
+          assigned_salary?: number | null
+          assigned_start_date?: string | null
+        }
+        Returns: string
+      }
+      reject_application: {
+        Args: {
+          table_name: string
+          application_id: string
+          admin_id: string
+          reason?: string | null
+        }
+        Returns: void
       }
     }
     Enums: {

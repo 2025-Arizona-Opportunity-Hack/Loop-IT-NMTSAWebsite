@@ -13,9 +13,20 @@ import {
   Calendar,
   Clock,
 } from "lucide-react";
+import { useContent, getContentValue, getMetadataArray } from "@/lib/hooks/useContent";
+import MusicalLoader from "./MusicalLoader";
 
 const AboutPage = () => {
-  const values = [
+  // Fetch all about page content
+  const { contentMap, loading } = useContent({ page: 'about' });
+
+  // Show loader while content is loading
+  if (loading) {
+    return <MusicalLoader />;
+  }
+
+  // Default fallback data
+  const defaultValues = [
     {
       icon: Users,
       title: "Capability of All People",
@@ -42,7 +53,7 @@ const AboutPage = () => {
     },
   ];
 
-  const teamMembers = [
+  const defaultTeamMembers = [
     {
       name: "Suzanne Oliver",
       role: "Founder and Executive Director",
@@ -121,6 +132,27 @@ const AboutPage = () => {
       credentials: "HCPC Certified MT, NMT",
     },
   ];
+
+  // Get content from CMS or use defaults
+  const heroTitle = getContentValue(contentMap['about_hero_title'], 'Transforming Lives Through Music');
+  const heroDescription = getContentValue(contentMap['about_hero_description'], 'For over 40 years, Neurologic Music Therapy Services of Arizona has been at the forefront of evidence-based music therapy, helping individuals with neurologic conditions achieve their goals through the power of music.');
+  const missionStatement = getContentValue(contentMap['about_mission'], 'To provide evidence-based neurologic music therapy services that enhance the quality of life for individuals with neurologic conditions and their families.');
+  const visionStatement = getContentValue(contentMap['about_vision'], 'To be the leading provider of neurologic music therapy services in Arizona, recognized for clinical excellence, innovation, and compassionate care.');
+  const historyText = getContentValue(contentMap['about_history'], 'Founded in 1984, NMTSA has grown from a small practice to Arizona\'s leading provider of neurologic music therapy. Our team of board-certified music therapists brings decades of combined experience and continues to advance the field through clinical practice, research, and education.');
+  
+  const values = getMetadataArray(contentMap['about_values'], 'values', defaultValues);
+  const teamMembers = defaultTeamMembers; // Team members will be managed separately in the employees section
+
+  const getIconComponent = (iconName: string) => {
+    const icons: Record<string, any> = {
+      Music,
+      Users,
+      Heart,
+      Target,
+      Eye
+    };
+    return icons[iconName] || Music;
+  };
 
   return (
     <div className="min-h-screen pt-20">

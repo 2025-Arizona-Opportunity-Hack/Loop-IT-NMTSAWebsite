@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   Users,
@@ -34,8 +35,17 @@ import {
 } from "@/components/programs";
 
 const CommunityEducationPage = () => {
+  const searchParams = useSearchParams();
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState<Record<string, any>>({});
+
+  // Check for form parameter in URL on component mount
+  useEffect(() => {
+    const formParam = searchParams.get("form");
+    if (formParam === "community-education") {
+      setShowForm(true);
+    }
+  }, [searchParams]);
 
   const handleInputChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -658,4 +668,11 @@ const CommunityEducationForm = ({
   );
 };
 
-export default CommunityEducationPage;
+// Wrapper component with Suspense boundary
+export default function CommunityEducationPageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <CommunityEducationPage />
+    </Suspense>
+  );
+}

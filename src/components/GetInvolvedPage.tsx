@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   Heart,
@@ -33,9 +34,20 @@ import {
 } from "@/components/programs";
 
 const GetInvolvedPage = () => {
+  const searchParams = useSearchParams();
   const [selectedInfo, setSelectedInfo] = useState<string | null>(null);
   const [showVolunteerForm, setShowVolunteerForm] = useState(false);
   const [showInternshipForm, setShowInternshipForm] = useState(false);
+
+  // Check for form parameter in URL on component mount
+  useEffect(() => {
+    const formParam = searchParams.get("form");
+    if (formParam === "volunteer") {
+      setShowVolunteerForm(true);
+    } else if (formParam === "internship") {
+      setShowInternshipForm(true);
+    }
+  }, [searchParams]);
 
   const getInvolvedOptions = [
     {
@@ -481,13 +493,12 @@ const VolunteerApplicationForm = ({ onClose }: { onClose: () => void }) => {
     setSubmitError(null);
 
     try {
-      const response = await fetch("/api/forms", {
+      const response = await fetch("/api/volunteers/applications", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          form_type: "volunteer",
           name: formData.fullName,
           email: formData.email,
           phone: formData.phone,
@@ -495,6 +506,7 @@ const VolunteerApplicationForm = ({ onClose }: { onClose: () => void }) => {
             organization: formData.organization,
             jobTitle: formData.jobTitle,
           },
+          status: "pending",
         }),
       });
 
@@ -665,40 +677,40 @@ const InternshipApplicationForm = ({ onClose }: { onClose: () => void }) => {
     setSubmitError(null);
 
     try {
-      const response = await fetch("/api/forms", {
+      const response = await fetch("/api/interns/applications", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          form_type: "volunteer", // Using volunteer type as internship isn't in the valid types yet
           name: formData.fullName,
           email: formData.email,
           phone: formData.phone,
+          address: formData.address ? { full: formData.address } : null,
+          school_name: formData.universityName,
+          major: formData.major,
+          desired_position: formData.internshipTypes.join(", "),
+          preferred_start_date: formData.startDate || null,
+          preferred_end_date: formData.endDate || null,
+          hours_per_week: formData.hoursRequired ? parseInt(formData.hoursRequired) : null,
+          seeking_academic_credit: formData.academicCredit === "yes",
+          cover_letter: formData.whyInterested,
+          relevant_coursework: formData.learningGoals,
+          previous_internships: formData.relevantExperience,
+          work_experience: formData.priorExperience,
           metadata: {
-            formSubType: "internship",
-            address: formData.address,
-            universityName: formData.universityName,
-            major: formData.major,
             academicYear: formData.academicYear,
             academicYearOther: formData.academicYearOther,
             internshipTypes: formData.internshipTypes,
             internshipTypeOther: formData.internshipTypeOther,
             internshipTerm: formData.internshipTerm,
-            startDate: formData.startDate,
-            endDate: formData.endDate,
-            hoursRequired: formData.hoursRequired,
-            whyInterested: formData.whyInterested,
-            learningGoals: formData.learningGoals,
-            relevantExperience: formData.relevantExperience,
-            priorExperience: formData.priorExperience,
             weeklyAvailability: formData.weeklyAvailability,
-            academicCredit: formData.academicCredit,
             siteAgreement: formData.siteAgreement,
             consentToContact: formData.consentToContact,
             electronicSignature: formData.electronicSignature,
             signatureDate: formData.signatureDate,
           },
+          status: "pending",
         }),
       });
 
@@ -1089,4 +1101,11 @@ const InternshipApplicationForm = ({ onClose }: { onClose: () => void }) => {
   );
 };
 
-export default GetInvolvedPage;
+// Wrapper component with Suspense boundary
+export default function GetInvolvedPageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <GetInvolvedPage />
+    </Suspense>
+  );
+}

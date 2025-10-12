@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   User,
@@ -21,9 +22,18 @@ import {
 } from "lucide-react";
 
 const TherapyProgramPage = () => {
+  const searchParams = useSearchParams();
   const [selectedForm, setSelectedForm] = useState<string | null>(null);
   const [formData, setFormData] = useState<Record<string, any>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Check for form parameter in URL on component mount
+  useEffect(() => {
+    const formParam = searchParams.get("form");
+    if (formParam && (formParam === "request" || formParam === "observation")) {
+      setSelectedForm(formParam);
+    }
+  }, [searchParams]);
 
   const handleInputChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -924,4 +934,11 @@ const ClinicalObservationForm = ({
   </form>
 );
 
-export default TherapyProgramPage;
+// Wrapper component with Suspense boundary
+export default function TherapyProgramPageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <TherapyProgramPage />
+    </Suspense>
+  );
+}
