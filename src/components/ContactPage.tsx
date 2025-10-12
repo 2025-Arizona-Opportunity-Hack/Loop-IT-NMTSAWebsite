@@ -401,18 +401,18 @@ const ContactPage = () => {
           </div>
 
           <div className="glass-card p-4 rounded-2xl overflow-hidden">
-            <div className="aspect-video bg-gray-200 rounded-xl flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">
-                  Interactive Map
-                </h3>
-                <p className="text-gray-500">
-                  3221 N 16th Street, Suite 201
-                  <br />
-                  Phoenix, AZ 85016
-                </p>
-              </div>
+            <div className="aspect-video bg-gray-200 rounded-xl overflow-hidden">
+              <iframe
+                title="Google Maps - NMTSA Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.8755448887434!2d-112.04890842346476!3d33.47937097334283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b0d7c8d8c8c8d%3A0x1234567890abcdef!2s3221%20N%2016th%20St%20Suite%20201%2C%20Phoenix%2C%20AZ%2085016!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-xl"
+              ></iframe>
             </div>
           </div>
         </div>
