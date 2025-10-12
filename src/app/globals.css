@@ -194,33 +194,106 @@
     border-color: #ea580c;
   }
 
-  /* Navbar Glass Effect with Windows compatibility */
+  /* Ultra Curved Floating Glass Navbar - Pill Shape with Full Rounded Edges */
   .glass-navbar {
-    /* Stronger background for Windows */
-    background: rgba(255, 255, 255, 0.98);
-    /* Fallback gradient for browsers without backdrop-filter */
+    /* Ultra-transparent glass background with pill-shaped edges */
+    background: transparent;
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.98) 0%,
-      rgba(255, 255, 255, 0.95) 100%
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.08) 100%
     );
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(245, 158, 11, 0.15);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(40px) saturate(250%) brightness(1.1);
+    -webkit-backdrop-filter: blur(40px) saturate(250%) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 120px rgba(255, 255, 255, 0.1),
+      0 4px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  .glass-navbar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%
+    );
+    border-radius: 9999px 9999px 0 0;
+    pointer-events: none;
+  }
+
+  .glass-navbar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.02) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: -1;
   }
 
   .glass-navbar-scrolled {
-    background: rgba(255, 255, 255, 0.99);
+    background: transparent;
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.99) 0%,
-      rgba(255, 255, 255, 0.97) 100%
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(255, 255, 255, 0.12) 100%
     );
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(245, 158, 11, 0.25);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(45px) saturate(300%) brightness(1.15);
+    -webkit-backdrop-filter: blur(45px) saturate(300%) brightness(1.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 0 150px rgba(255, 255, 255, 0.15), 0 6px 25px rgba(0, 0, 0, 0.08);
+    position: relative;
+  }
+
+  .glass-navbar-scrolled::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 100%
+    );
+    border-radius: 9999px 9999px 0 0;
+    pointer-events: none;
+  }
+
+  .glass-navbar-scrolled::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: -1;
   }
 }
 
@@ -356,7 +429,7 @@
   animation: gentle-float 3s ease-in-out infinite;
 }
 
-/* Get Involved Card Enhancements with Windows compatibility */
+/* Get Involved Card Enhancements with Windows compatibility and Slick Hover */
 .get-involved-card {
   /* Stronger background for better Windows visibility */
   background: linear-gradient(
@@ -368,17 +441,20 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(0);
 }
 
 .get-involved-card:hover {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(255, 255, 255, 0.25) 100%
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.3) 100%
   );
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
+    0 12px 30px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-8px) scale(1.02);
 }
 
 .form-btn-white {
@@ -488,5 +564,60 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 0.99);
+  }
+}
+
+/* Slick Pop Hover Effect */
+.nav-hover-pop {
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.nav-hover-pop:hover {
+  transform: translateY(-3px) scale(1.02);
+  animation: popBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popBounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.03);
+  }
+  100% {
+    transform: translateY(-3px) scale(1.02);
+  }
+}
+
+/* Card and div hover effects for all pages */
+.card-hover,
+.hover-lift,
+div[class*="bg-white"]:not(nav):not(.glass-navbar):hover {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-hover:hover,
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+    0 8px 20px rgba(245, 158, 11, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  animation: cardPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes cardPop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-12px) scale(1.03);
+  }
+  60% {
+    transform: translateY(-6px) scale(1.015);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.02);
   }
 }

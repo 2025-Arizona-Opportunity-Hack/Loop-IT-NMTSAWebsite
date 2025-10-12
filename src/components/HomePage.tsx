@@ -324,9 +324,9 @@ const HomePage = () => {
             {getInvolvedOptions.map((option, index) => (
               <article
                 key={option.title}
-                className="get-involved-card p-6 sm:p-8 rounded-2xl text-center transition-all duration-300 group"
+                className="get-involved-card p-6 sm:p-8 rounded-3xl text-center transition-all duration-500 ease-out group hover-lift"
               >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/30 to-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:scale-[1.05] group-hover:from-white/40 group-hover:to-white/20 shadow-lg">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/30 to-white/10 rounded-3xl flex items-center justify-center mx-auto mb-6 transition-all duration-500 ease-out group-hover:scale-[1.15] group-hover:from-white/40 group-hover:to-white/20 shadow-lg">
                   <option.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-sm" />
                 </div>
                 <h3 className="font-bold mb-4 font-poppins text-xl sm:text-2xl text-white drop-shadow-sm">
