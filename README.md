@@ -33,40 +33,9 @@ A full-stack web application with:
 - **Authentication:** Supabase Auth
 - **Hosting:** Vercel
 
-## Tech Stack
-HOME
-│
-├── ABOUT
-│    ├── Mission & Vision
-│    ├── Our History
-│    ├── Our Team
-│    ├── Research & Partnerships
-│    └── Contact Us Form
-│
-├── PROGRAMS
-│    ├── Therapy Program
-│    │    ├── Request Service Form
-│    │    └── Clinical Observation Form
-│    ├── Adapted Music Lesson
-│    │    └── Interest Form
-│    ├── Professional Development Opportunity
-│    │    ├── Consultation Form
-│    │    └── NMT Presentation Form
-│    └── Community Education
-│
-├── GET INVOLVED
-│    ├── Internship Opportunities (Interest Form)
-│    ├── Volunteer Opportunities (Application Form)
-│    └── Employment Opportunities
-│
-├── DONATE
-│    ├── Arizona Tax Credit
-│    ├── Corporate Sponsorship
-│    └── Friends of NMTSA (Monthly Giving)
-│
-├── SHOP
-│
-└── CONTACT US
+## Web Wireframe
+
+
 
 
 ## 🚀 Quick Start
