@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   Heart,
@@ -33,9 +34,20 @@ import {
 } from "@/components/programs";
 
 const GetInvolvedPage = () => {
+  const searchParams = useSearchParams();
   const [selectedInfo, setSelectedInfo] = useState<string | null>(null);
   const [showVolunteerForm, setShowVolunteerForm] = useState(false);
   const [showInternshipForm, setShowInternshipForm] = useState(false);
+
+  // Check for form parameter in URL on component mount
+  useEffect(() => {
+    const formParam = searchParams.get("form");
+    if (formParam === "volunteer") {
+      setShowVolunteerForm(true);
+    } else if (formParam === "internship") {
+      setShowInternshipForm(true);
+    }
+  }, [searchParams]);
 
   const getInvolvedOptions = [
     {
@@ -1077,4 +1089,11 @@ const InternshipApplicationForm = ({ onClose }: { onClose: () => void }) => {
   );
 };
 
-export default GetInvolvedPage;
+// Wrapper component with Suspense boundary
+export default function GetInvolvedPageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <GetInvolvedPage />
+    </Suspense>
+  );
+}
