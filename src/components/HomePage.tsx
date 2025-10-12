@@ -341,15 +341,17 @@ const HomePage = () => {
                     onClick={() => {
                       // Create form URL based on the option type
                       const formUrl =
-                        option.title === "Volunteer"
-                          ? "/contact?form=volunteer"
-                          : option.title === "Internship"
-                          ? "/contact?form=internship"
-                          : "/contact?form=employment";
+                        option.title === "Volunteer Opportunities"
+                          ? "/get-involved"
+                          : option.title === "Internships"
+                          ? "/get-involved"
+                          : option.title === "Employment Opportunities"
+                          ? "/get-involved"
+                          : "";
                       window.location.href = formUrl;
                     }}
                   >
-                    Apply for {option.title}
+                    Explore {option.title}
                   </button>
                 </div>
               </article>

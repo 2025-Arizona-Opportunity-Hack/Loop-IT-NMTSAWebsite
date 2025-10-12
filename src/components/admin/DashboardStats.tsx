@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 import {
   Heart,
   Users,
@@ -51,26 +52,93 @@ function StatCard({ title, value, change, icon: Icon, color }: StatCardProps) {
 }
 
 export default function DashboardStats() {
+  const [stats, setStats] = useState({
+    totalDonors: 0,
+    totalDonations: 0,
+    activeVolunteers: 0,
+    volunteerHours: 0,
+    totalOrders: 0,
+    totalRevenue: 0,
+    lowStockItems: 0,
+    activeInterns: 0,
+    formSubmissions: 0,
+  });
   const [loading, setLoading] = useState(true);
 
-  // Mock data for demo/mockup purposes
-  const stats = {
-    totalDonors: 127,
-    totalDonations: 45250,
-    activeVolunteers: 34,
-    volunteerHours: 482,
-    totalOrders: 89,
-    totalRevenue: 12840,
-    lowStockItems: 8,
-    activeInterns: 12,
-  };
-
   useEffect(() => {
-    // Simulate loading delay for realistic UX
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    loadStats();
   }, []);
+
+  const loadStats = async () => {
+    const supabase = createClient();
+
+    try {
+      // Fetch donors
+      const { count: donorCount } = await supabase
+        .from("donors")
+        .select("*", { count: "exact", head: true });
+
+      // Fetch total donations
+      const { data: donations } = await supabase
+        .from("donors")
+        .select("donation_amount");
+
+      const totalDonations =
+        donations?.reduce((sum, d) => sum + (d.donation_amount || 0), 0) || 0;
+
+      // Fetch volunteers
+      const { count: volunteerCount } = await supabase
+        .from("volunteers")
+        .select("*", { count: "exact", head: true })
+        .eq("status", "active");
+
+      // Fetch volunteer hours
+      const { data: hours } = await supabase
+        .from("volunteer_hours")
+        .select("hours");
+
+      const totalHours =
+        hours?.reduce((sum, h) => sum + (h.hours || 0), 0) || 0;
+
+      // Fetch orders
+      const { count: orderCount } = await supabase
+        .from("orders")
+        .select("*", { count: "exact", head: true });
+
+      const { data: orders } = await supabase.from("orders").select("total");
+
+      const totalRevenue =
+        orders?.reduce((sum, o) => sum + (o.total || 0), 0) || 0;
+
+      // Fetch low stock items
+      const { count: lowStockCount } = await supabase
+        .from("merchandise")
+        .select("*", { count: "exact", head: true })
+        .lt("stock_quantity", 10);
+
+      // Fetch active interns
+      const { count: internCount } = await supabase
+        .from("interns")
+        .select("*", { count: "exact", head: true })
+        .eq("status", "active");
+
+      setStats({
+        totalDonors: donorCount || 0,
+        totalDonations,
+        activeVolunteers: volunteerCount || 0,
+        volunteerHours: totalHours,
+        totalOrders: orderCount || 0,
+        totalRevenue,
+        lowStockItems: lowStockCount || 0,
+        activeInterns: internCount || 0,
+        formSubmissions: 0, // Implement based on forms table
+      });
+    } catch (error) {
+      console.error("Error loading stats:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (loading) {
     return (

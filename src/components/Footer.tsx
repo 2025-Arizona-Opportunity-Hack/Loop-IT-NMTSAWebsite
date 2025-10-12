@@ -305,7 +305,7 @@ const Footer = () => {
               className="text-gray-400 order-2 sm:order-1"
               style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.875rem)" }}
             >
-              © 2024 Neurologic Music Therapy Services of Arizona. All rights
+              © 2025 Neurologic Music Therapy Services of Arizona. All rights
               reserved.
             </p>
             <nav
