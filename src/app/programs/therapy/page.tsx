@@ -40,7 +40,7 @@ const TherapyProgramPage = () => {
       if (selectedForm === "request") {
         // For therapy service requests
         submissionData = {
-          form_type: "client_inquiry",
+          form_type: "service_request",
           name: `${formData.firstName || ""} ${formData.lastName || ""}`.trim(),
           email: formData.email,
           phone: formData.phone,
@@ -74,7 +74,7 @@ const TherapyProgramPage = () => {
       } else if (selectedForm === "observation") {
         // For clinical observation requests
         submissionData = {
-          form_type: "client_inquiry",
+          form_type: "consultation",
           name: formData.name,
           email: formData.email,
           phone: formData.phone || "",

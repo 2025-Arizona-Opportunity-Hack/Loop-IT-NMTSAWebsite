@@ -47,7 +47,7 @@ const MusicLessonsPage = () => {
 
     try {
       const submissionData = {
-        form_type: "client_inquiry",
+        form_type: "music_lessons",
         name: `${formData.firstName || ""} ${formData.lastName || ""}`.trim(),
         email: formData.email,
         phone: formData.phone,

@@ -49,7 +49,7 @@ const ProfessionalDevelopmentPage = () => {
 
       if (selectedForm === "consultation") {
         submissionData = {
-          form_type: "client_inquiry",
+          form_type: "consultation",
           name: formData.fullName,
           email: formData.email,
           phone: formData.phone,
@@ -81,7 +81,7 @@ const ProfessionalDevelopmentPage = () => {
         };
       } else if (selectedForm === "presentation") {
         submissionData = {
-          form_type: "client_inquiry",
+          form_type: "consultation",
           name: formData.contactPersonName,
           email: formData.email,
           phone: formData.phone,
