@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const ParticlesBackground = () => {
   // Create floating elements for visual effect
   const particles = Array.from({ length: 50 }, (_, i) => ({
@@ -16,7 +14,7 @@ const ParticlesBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
       {particles.map((particle) => (
-        <motion.div
+        <div
           key={particle.id}
           className="absolute rounded-full bg-nmtsa-300/20"
           style={{
@@ -24,18 +22,6 @@ const ParticlesBackground = () => {
             height: particle.size,
             left: `${particle.x}%`,
             top: `${particle.y}%`,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            x: [0, 10, -10, 0],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: particle.duration,
-            delay: particle.delay,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut",
           }}
         />
       ))}

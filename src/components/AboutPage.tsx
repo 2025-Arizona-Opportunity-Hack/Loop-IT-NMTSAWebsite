@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Heart, Users, ArrowRight, Music, Target, Eye } from "lucide-react";
@@ -27,16 +26,55 @@ const AboutPage = () => {
     },
   ];
 
-  const milestones = [
-    { year: "1982", event: "NMTSA founded in Phoenix, Arizona" },
+  const teamMembers = [
     {
-      year: "1990",
-      event: "Expanded services to include family support programs",
+      name: "Dr. Sarah Johnson",
+      role: "Director & Board-Certified Music Therapist",
+      bio: "With over 20 years of experience, Dr. Johnson leads our team with expertise in neurologic music therapy and clinical research.",
+      image:
+        "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      credentials: "MM, MT-BC, NMT",
     },
-    { year: "2000", event: "Introduced group therapy sessions" },
-    { year: "2010", event: "Launched professional development initiatives" },
-    { year: "2020", event: "Adapted services for virtual and hybrid delivery" },
-    { year: "2024", event: "Celebrating 40+ years of transforming lives" },
+    {
+      name: "Michael Rodriguez",
+      role: "Senior Music Therapist",
+      bio: "Specializing in pediatric neurologic music therapy with a focus on autism spectrum disorders and developmental delays.",
+      image:
+        "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      credentials: "BM, MT-BC, NMT",
+    },
+    {
+      name: "Dr. Emily Chen",
+      role: "Clinical Music Therapist & Researcher",
+      bio: "Dr. Chen brings extensive research experience and specializes in stroke recovery and traumatic brain injury rehabilitation.",
+      image:
+        "https://images.unsplash.com/photo-1594824475315-fc2c40af8ebe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      credentials: "PhD, MT-BC, NMT",
+    },
+    {
+      name: "James Wilson",
+      role: "Music Therapist & Program Coordinator",
+      bio: "James coordinates our community outreach programs and specializes in group therapy sessions for various neurologic conditions.",
+      image:
+        "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      credentials: "MA, MT-BC, NMT",
+    },
+    {
+      name: "Dr. Lisa Thompson",
+      role: "Pediatric Music Therapist",
+      bio: "With a passion for working with children, Dr. Thompson specializes in early intervention and family-centered care approaches.",
+      image:
+        "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      credentials: "DMT, MT-BC, NMT",
+    },
+    {
+      name: "Robert Martinez",
+      role: "Administrative Director",
+      bio: "Robert ensures smooth operations and coordinates with families, insurance providers, and healthcare professionals.",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      credentials: "MBA, CBIS",
+    },
   ];
 
   return (
@@ -53,11 +91,7 @@ const AboutPage = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
                 About NMTSA
               </span>
@@ -78,14 +112,9 @@ const AboutPage = () => {
                 <ArrowRight className="w-5 h-5 mr-2" />
                 Explore Our Programs
               </Link>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
+            <div className="relative">
               <div className="glass-card overflow-hidden rounded-3xl">
                 <Image
                   src="https://static.wixstatic.com/media/072f2d_a15cb6cb61a74ff8956322ba1d5028f1.jpg/v1/fill/w_600,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_MG_1270_JPG.jpg"
@@ -95,7 +124,7 @@ const AboutPage = () => {
                   className="w-full h-96 object-cover"
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -104,13 +133,7 @@ const AboutPage = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
-            <motion.div
-              className="bg-gradient-to-br from-nmtsa-500 to-nmtsa-600 rounded-3xl p-8 text-white"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <div className="bg-gradient-to-br from-nmtsa-500 to-nmtsa-600 rounded-3xl p-8 text-white">
               <Target className="w-12 h-12 mb-6" />
               <h2 className="font-poppins font-bold text-3xl mb-4">
                 Our Mission
@@ -122,15 +145,9 @@ const AboutPage = () => {
                 We are committed to evidence-based practice, family-centered
                 care, and professional excellence.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-8 text-white"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-8 text-white">
               <Eye className="w-12 h-12 mb-6" />
               <h2 className="font-poppins font-bold text-3xl mb-4">
                 Our Vision
@@ -141,7 +158,7 @@ const AboutPage = () => {
                 world where every person has access to innovative, compassionate
                 care that empowers them to achieve their fullest potential.
               </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -150,36 +167,19 @@ const AboutPage = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <motion.h2
-              className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
               Our Core <span className="gradient-text">Values</span>
-            </motion.h2>
-            <motion.p
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               The principles that guide everything we do at NMTSA
-            </motion.p>
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <motion.div
+              <div
                 key={value.title}
-                className="glass-card p-8 text-center rounded-2xl"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
+                className="glass-card p-8 text-center rounded-2xl hover:scale-105 transition-transform duration-300"
               >
                 <div className="w-16 h-16 bg-gradient-to-r from-nmtsa-500 to-nmtsa-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <value.icon className="w-8 h-8 text-white" />
@@ -190,64 +190,61 @@ const AboutPage = () => {
                 <p className="text-gray-600 leading-relaxed">
                   {value.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Our Team */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
-              Our <span className="gradient-text">Journey</span>
+              Meet Our <span className="gradient-text">Team</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Four decades of growth, innovation, and impact in the Phoenix
-              community
+              Our dedicated professionals bring expertise, compassion, and
+              innovation to every therapy session
             </p>
-          </motion.div>
+          </div>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-nmtsa-300"></div>
-
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={milestone.year}
-                  className={`flex items-center ${
-                    index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                  }`}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div
-                    className={`w-1/2 ${
-                      index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"
-                    }`}
-                  >
-                    <div className="glass-card p-6 rounded-2xl">
-                      <div className="text-2xl font-bold text-nmtsa-600 font-poppins mb-2">
-                        {milestone.year}
-                      </div>
-                      <p className="text-gray-700">{milestone.event}</p>
-                    </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
+              <div
+                key={member.name}
+                className="glass-card p-6 rounded-2xl text-center group hover:shadow-xl transition-all duration-300"
+              >
+                <div className="relative mb-6">
+                  <div className="w-32 h-32 mx-auto rounded-full overflow-hidden bg-gradient-to-br from-nmtsa-100 to-nmtsa-200">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={128}
+                      height={128}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
-                  <div className="w-4 h-4 bg-nmtsa-500 rounded-full border-4 border-white shadow-lg relative z-10"></div>
-                  <div className="w-1/2"></div>
-                </motion.div>
-              ))}
-            </div>
+                  <div className="absolute inset-0 w-32 h-32 mx-auto rounded-full border-4 border-nmtsa-200 group-hover:border-nmtsa-400 transition-colors duration-300"></div>
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 mb-2 font-poppins">
+                  {member.name}
+                </h3>
+
+                <div className="text-nmtsa-600 font-semibold mb-2">
+                  {member.role}
+                </div>
+
+                <div className="text-sm text-nmtsa-500 font-medium mb-4">
+                  {member.credentials}
+                </div>
+
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {member.bio}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -255,12 +252,7 @@ const AboutPage = () => {
       {/* Call to Action */}
       <section className="py-20 bg-gradient-to-r from-nmtsa-500 to-nmtsa-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins mb-6">
               Ready to Begin Your Journey?
             </h2>
@@ -282,7 +274,7 @@ const AboutPage = () => {
                 Get In Touch
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,6 +19,11 @@ export const metadata: Metadata = {
   title: "NMTSA - Neurologic Music Therapy Services of Arizona",
   description:
     "Unleashing the unique potential of individuals with disabilities through neurologic music therapy in Phoenix, Arizona since 1982.",
+  icons: {
+    icon: "/images/NMTSA Title Logo.png",
+    shortcut: "/images/NMTSA Title Logo.png",
+    apple: "/images/NMTSA Title Logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="antialiased font-inter bg-nmtsa-50">{children}</body>
+      <body className="antialiased font-inter bg-nmtsa-50">
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

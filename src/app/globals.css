@@ -83,4 +83,77 @@
     border: 1px solid rgba(245, 158, 11, 0.2);
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
   }
+
+  .glass-ultra {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(40px) saturate(200%) brightness(120%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(120%);
+  }
+
+  /* Enhanced glass effects for better cross-browser compatibility */
+  .glass-navbar {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    -moz-backdrop-filter: blur(40px) saturate(200%);
+    -ms-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    /* Fallback for browsers that don't support backdrop-filter */
+    @supports not (backdrop-filter: blur(40px)) {
+      background: rgba(255, 255, 255, 0.95);
+    }
+  }
+
+  .glass-navbar-scrolled {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    -moz-backdrop-filter: blur(40px) saturate(200%);
+    -ms-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+    /* Fallback for browsers that don't support backdrop-filter */
+    @supports not (backdrop-filter: blur(40px)) {
+      background: rgba(255, 255, 255, 0.98);
+    }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .glass-navbar {
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+    }
+
+    .glass-navbar-scrolled {
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+    }
+  }
+
+  /* Extra small screens */
+  @media (max-width: 480px) {
+    .glass-navbar {
+      backdrop-filter: blur(25px) saturate(150%);
+      -webkit-backdrop-filter: blur(25px) saturate(150%);
+    }
+
+    .glass-navbar-scrolled {
+      backdrop-filter: blur(25px) saturate(150%);
+      -webkit-backdrop-filter: blur(25px) saturate(150%);
+    }
+  }
 }

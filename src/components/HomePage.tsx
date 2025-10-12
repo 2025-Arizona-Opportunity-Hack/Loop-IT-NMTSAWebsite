@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -128,46 +127,26 @@ const HomePage = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6"
-          >
+          <div className="mb-6">
             <span className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-nmtsa-600 shadow-lg">
               ✨ Transforming Lives Since 1982
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            className="font-poppins font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-gray-900 mb-6 leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+          <h1 className="font-poppins font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-gray-900 mb-6 leading-tight">
             Unleashing <span className="gradient-text">Unique Potential</span>
             <br />
             Through Music Therapy
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
+          <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
             NMTSA provides comprehensive music therapy services to individuals
             with neurologic impairments and their families in the greater
             Phoenix area, creating positive change through the power of music.
-          </motion.p>
+          </p>
 
           {/* Call-to-Action Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
               href="/programs"
               className="btn-primary text-white font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg shadow-lg"
@@ -182,50 +161,36 @@ const HomePage = () => {
               <Heart className="w-5 h-5 mr-2" />
               Learn Our Story
             </Link>
-          </motion.div>
+          </div>
 
           {/* Statistics */}
-          <motion.div
-            className="grid grid-cols-3 gap-8 max-w-md mx-auto lg:max-w-lg"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-          >
+          <div className="grid grid-cols-3 gap-8 max-w-md mx-auto lg:max-w-lg">
             {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="text-center"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+              <div key={stat.label} className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-nmtsa-600 font-poppins">
                   {stat.number}
                 </div>
                 <div className="text-sm text-gray-600">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
+        <div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
           onClick={scrollToSection}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          whileHover={{ scale: 1.1 }}
         >
           <div className="flex flex-col items-center text-gray-600">
             <span className="text-sm mb-2">Learn More</span>
             <ChevronDown className="w-6 h-6 animate-bounce-slow" />
           </div>
-        </motion.div>
+        </div>
 
         {/* Floating Statistics for Desktop */}
         <div className="hidden lg:block">
           {stats.map((stat, index) => (
-            <motion.div
+            <div
               key={stat.label}
               className="absolute glass-card p-4 rounded-2xl"
               style={{
@@ -233,10 +198,6 @@ const HomePage = () => {
                 right: index % 2 === 0 ? "10%" : "auto",
                 left: index % 2 === 1 ? "10%" : "auto",
               }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2 + index * 0.2 }}
-              whileHover={{ scale: 1.05 }}
             >
               <div className="text-center">
                 <div className="text-2xl font-bold text-nmtsa-600 font-poppins">
@@ -244,7 +205,7 @@ const HomePage = () => {
                 </div>
                 <div className="text-sm text-gray-600">{stat.label}</div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -253,12 +214,7 @@ const HomePage = () => {
       <section className="py-20 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <div>
               <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
                 About NMTSA
               </span>
@@ -279,15 +235,9 @@ const HomePage = () => {
                 <ArrowRight className="w-5 h-5 mr-2" />
                 Learn More About Us
               </Link>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <div className="relative">
               <div className="glass-card overflow-hidden rounded-3xl">
                 <Image
                   src="https://static.wixstatic.com/media/072f2d_a15cb6cb61a74ff8956322ba1d5028f1.jpg/v1/fill/w_600,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_MG_1270_JPG.jpg"
@@ -297,7 +247,7 @@ const HomePage = () => {
                   className="w-full h-96 object-cover"
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -305,13 +255,7 @@ const HomePage = () => {
       {/* Programs Overview Section */}
       <section className="py-20 bg-gradient-to-br from-nmtsa-50 to-nmtsa-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-nmtsa-600 text-white rounded-full text-sm font-semibold mb-6">
               Our Programs
             </span>
@@ -322,18 +266,13 @@ const HomePage = () => {
               We offer a range of evidence-based programs designed to meet
               diverse needs
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {programs.map((program, index) => (
-              <motion.div
+              <div
                 key={program.title}
-                className="glass-card p-8 rounded-2xl text-center"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
+                className="glass-card p-8 rounded-2xl text-center hover:scale-105 transition-transform duration-300"
               >
                 <div
                   className={`w-16 h-16 ${program.color} rounded-2xl flex items-center justify-center mx-auto mb-6`}
@@ -350,7 +289,7 @@ const HomePage = () => {
                 >
                   Learn More <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -359,12 +298,7 @@ const HomePage = () => {
       {/* Request Service Section */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
               Ready to Get <span className="gradient-text">Started</span>?
             </h2>
@@ -389,20 +323,14 @@ const HomePage = () => {
                 View Programs
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Get Involved Highlights */}
       <section className="py-20 bg-gradient-to-br from-nmtsa-600 to-nmtsa-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins mb-6">
               Get <span className="text-nmtsa-200">Involved</span>
             </h2>
@@ -410,18 +338,13 @@ const HomePage = () => {
               Join our mission and make a meaningful impact in the lives of
               others
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {getInvolvedOptions.map((option, index) => (
-              <motion.div
+              <div
                 key={option.title}
                 className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-center"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
               >
                 <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <option.icon className="w-8 h-8 text-white" />
@@ -436,7 +359,7 @@ const HomePage = () => {
                 >
                   Learn More <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -445,81 +368,120 @@ const HomePage = () => {
       {/* Support / Donate Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+          <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center">
+            <div>
               <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
                 Support Our Mission
               </span>
-              <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
                 Help Us Transform{" "}
                 <span className="gradient-text">More Lives</span>
               </h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 mb-6 leading-relaxed">
                 Your generous support enables us to provide life-changing music
                 therapy services to individuals and families in need. Every
                 donation makes a direct impact.
               </p>
+
+              {/* Tax Credit Highlight */}
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-4 sm:p-6 mb-8">
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-bold text-sm">$</span>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-green-800 mb-2">
+                      Arizona Tax Credit Available!
+                    </h3>
+                    <p className="text-green-700 text-sm sm:text-base">
+                      Arizona residents can claim up to{" "}
+                      <strong>$841 in tax credits</strong> for donations to
+                      NMTSA. Your donation not only helps transform lives but
+                      also reduces your state tax liability dollar-for-dollar.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/donate"
-                  className="btn-primary text-white font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg"
+                  className="btn-primary text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full inline-flex items-center justify-center text-base sm:text-lg"
                 >
-                  <Heart className="w-5 h-5 mr-2" />
-                  Donate Now
+                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  Donate & Claim Credit
                 </Link>
                 <Link
                   href="/contact"
-                  className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg"
+                  className="btn-secondary text-nmtsa-600 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full inline-flex items-center justify-center text-base sm:text-lg"
                 >
-                  <ShoppingBag className="w-5 h-5 mr-2" />
+                  <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Shop Merchandise
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="grid grid-cols-2 gap-6"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="glass-card p-6 rounded-2xl text-center">
-                <div className="text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              {/* Impact Cards */}
+              <div className="glass-card p-4 sm:p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
+                <div className="text-2xl sm:text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
                   $50
                 </div>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 text-xs sm:text-sm">
                   Funds one therapy session
                 </p>
+                <div className="text-green-600 text-xs mt-2 font-medium">
+                  Tax Credit: $50
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-2xl text-center">
-                <div className="text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
+
+              <div className="glass-card p-4 sm:p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
+                <div className="text-2xl sm:text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
                   $200
                 </div>
-                <p className="text-gray-600 text-sm">
-                  Supports a monthly program
+                <p className="text-gray-600 text-xs sm:text-sm">
+                  Supports monthly programs
                 </p>
+                <div className="text-green-600 text-xs mt-2 font-medium">
+                  Tax Credit: $200
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-2xl text-center">
-                <div className="text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
+
+              <div className="glass-card p-4 sm:p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
+                <div className="text-2xl sm:text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
                   $500
                 </div>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 text-xs sm:text-sm">
                   Sponsors a family&apos;s care
                 </p>
-              </div>
-              <div className="glass-card p-6 rounded-2xl text-center">
-                <div className="text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
-                  $1000
+                <div className="text-green-600 text-xs mt-2 font-medium">
+                  Tax Credit: $500
                 </div>
-                <p className="text-gray-600 text-sm">Funds training programs</p>
               </div>
-            </motion.div>
+
+              <div className="glass-card p-4 sm:p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
+                <div className="text-2xl sm:text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
+                  $841
+                </div>
+                <p className="text-gray-600 text-xs sm:text-sm">
+                  Maximum tax credit
+                </p>
+                <div className="text-green-600 text-xs mt-2 font-medium">
+                  Full Credit: $841
+                </div>
+              </div>
+
+              {/* Additional info card spanning full width on mobile */}
+              <div className="sm:col-span-2 bg-gradient-to-r from-nmtsa-500 to-nmtsa-600 p-4 sm:p-6 rounded-2xl text-white text-center">
+                <h3 className="font-bold text-base sm:text-lg mb-2">
+                  Why Choose NMTSA?
+                </h3>
+                <p className="text-nmtsa-100 text-xs sm:text-sm">
+                  40+ years of proven results • Evidence-based therapy •
+                  Board-certified therapists • Direct community impact
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -527,32 +489,18 @@ const HomePage = () => {
       {/* Testimonials Carousel */}
       <section className="py-20 bg-gradient-to-br from-nmtsa-50 to-nmtsa-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-nmtsa-600 text-white rounded-full text-sm font-semibold mb-6">
               Testimonials
             </span>
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
               Stories of <span className="gradient-text">Transformation</span>
             </h2>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                className="glass-card p-8 rounded-2xl"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-              >
+              <div key={index} className="glass-card p-8 rounded-2xl">
                 <Quote className="w-8 h-8 text-nmtsa-400 mb-4" />
                 <p className="text-gray-600 mb-6 italic">
                   &ldquo;{testimonial.quote}&rdquo;
@@ -572,7 +520,7 @@ const HomePage = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -581,13 +529,7 @@ const HomePage = () => {
       {/* Latest Blog Posts */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
               Latest News
             </span>
@@ -598,19 +540,11 @@ const HomePage = () => {
               Stay updated with the latest insights, research, and stories from
               NMTSA
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => (
-              <motion.article
-                key={index}
-                className="glass-card p-6 rounded-2xl"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-              >
+              <article key={index} className="glass-card p-6 rounded-2xl">
                 <div className="flex items-center text-sm text-gray-500 mb-4">
                   <Calendar className="w-4 h-4 mr-2" />
                   {post.date}
@@ -627,17 +561,11 @@ const HomePage = () => {
                 >
                   Read More <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
-              </motion.article>
+              </article>
             ))}
           </div>
 
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mt-12">
             <Link
               href="/blog"
               className="btn-secondary text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg"
@@ -645,19 +573,14 @@ const HomePage = () => {
               <BookOpen className="w-5 h-5 mr-2" />
               View All Posts
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Call to Action Section */}
       <section className="py-20 bg-gradient-to-r from-nmtsa-600 to-nmtsa-700 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins mb-6">
               Ready to Begin Your{" "}
               <span className="text-nmtsa-200">Journey</span>?
@@ -683,7 +606,7 @@ const HomePage = () => {
                 Explore Programs
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
