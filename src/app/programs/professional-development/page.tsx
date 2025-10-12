@@ -776,7 +776,7 @@ const ConsultationForm = ({
       {/* Section 3: Additional Information */}
       <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl">
         <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <Info className="w-5 h-5 mr-2 text-purple-600" />
+          <Info className="w-5 h-5 mr-2 text-emerald-600" />
           Additional Information
         </h4>
         
@@ -791,7 +791,7 @@ const ConsultationForm = ({
                 <input
                   type="radio"
                   name="previouslyAttended"
-                  className="w-5 h-5 text-purple-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
+                  className="w-5 h-5 text-emerald-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
                   onChange={() => onChange("previouslyAttended", "Yes")}
                 />
                 <span className="text-gray-700">Yes</span>
@@ -800,7 +800,7 @@ const ConsultationForm = ({
                 <input
                   type="radio"
                   name="previouslyAttended"
-                  className="w-5 h-5 text-purple-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
+                  className="w-5 h-5 text-emerald-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
                   onChange={() => onChange("previouslyAttended", "No")}
                 />
                 <span className="text-gray-700">No</span>
@@ -824,7 +824,7 @@ const ConsultationForm = ({
                   <input
                     type="radio"
                     name="howDidYouHear"
-                    className="w-5 h-5 text-purple-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
+                    className="w-5 h-5 text-emerald-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
                     onChange={() => onChange("howDidYouHear", source)}
                   />
                   <span className="text-gray-700">{source}</span>
@@ -834,7 +834,7 @@ const ConsultationForm = ({
                 <input
                   type="radio"
                   name="howDidYouHear"
-                  className="w-5 h-5 text-purple-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
+                  className="w-5 h-5 text-emerald-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
                   onChange={() => onChange("howDidYouHear", "Other")}
                 />
                 <input
@@ -1263,7 +1263,7 @@ const PresentationForm = ({
       {/* Section 4: Additional Information */}
       <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl">
         <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <Info className="w-5 h-5 mr-2 text-purple-600" />
+          <Info className="w-5 h-5 mr-2 text-emerald-600" />
           Additional Information
         </h4>
         
@@ -1292,7 +1292,7 @@ const PresentationForm = ({
                   <input
                     type="radio"
                     name="howDidYouHearPresentation"
-                    className="w-5 h-5 text-purple-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
+                    className="w-5 h-5 text-emerald-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
                     onChange={() => onChange("howDidYouHearPresentation", source)}
                   />
                   <span className="text-gray-700">{source}</span>
@@ -1302,7 +1302,7 @@ const PresentationForm = ({
                 <input
                   type="radio"
                   name="howDidYouHearPresentation"
-                  className="w-5 h-5 text-purple-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
+                  className="w-5 h-5 text-emerald-600 border-gray-300 focus:ring-2 focus:ring-purple-500"
                   onChange={() => onChange("howDidYouHearPresentation", "Other")}
                 />
                 <input

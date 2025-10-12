@@ -156,7 +156,7 @@ const MusicLessonsPage = () => {
       icon: Mic,
       name: "Voice/Singing",
       description: "Vocal training adapted for communication goals",
-      color: "from-purple-500 to-pink-600",
+      color: "from-pink-500 to-rose-600",
       features: [
         "Breathing techniques",
         "Speech integration",
@@ -228,14 +228,14 @@ const MusicLessonsPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/programs"
-            className="inline-flex items-center text-purple-600 hover:text-purple-800 mb-6 font-medium transition-colors"
+            className="inline-flex items-center text-pink-600 hover:text-purple-800 mb-6 font-medium transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Programs
           </Link>
 
           <div className="text-center">
-            <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
+            <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-rose-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
               <Music className="w-10 h-10 text-white" />
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold font-poppins text-gray-900 mb-6">
@@ -313,7 +313,7 @@ const MusicLessonsPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={benefit.title} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <benefit.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3 font-poppins">
@@ -342,7 +342,7 @@ const MusicLessonsPage = () => {
             {successStories.map((story, index) => (
               <div key={story.name} className="glass-card p-6 rounded-2xl">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full flex items-center justify-center mr-4">
                     <Star className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -353,7 +353,7 @@ const MusicLessonsPage = () => {
                 <p className="text-gray-600 mb-4 italic">
                   &ldquo;{story.story}&rdquo;
                 </p>
-                <div className="text-sm text-purple-600 font-medium">
+                <div className="text-sm text-pink-600 font-medium">
                   {story.progress}
                 </div>
               </div>
@@ -427,7 +427,7 @@ const MusicLessonsPage = () => {
               </p>
               <button
                 onClick={() => setSelectedForm("music-lessons")}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+                className="w-full bg-gradient-to-r from-pink-500 to-rose-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
               >
                 <Music className="w-5 h-5 mr-2" />
                 Access Form
@@ -438,7 +438,7 @@ const MusicLessonsPage = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-20 bg-gradient-to-r from-purple-500 to-pink-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-pink-500 to-rose-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
@@ -548,7 +548,7 @@ const MusicLessonsForm = ({
       {/* Section 1: Student Information */}
       <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl">
         <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <User className="w-5 h-5 mr-2 text-purple-600" />
+          <User className="w-5 h-5 mr-2 text-pink-600" />
           Student Information
         </h4>
         <div className="space-y-4">
@@ -1031,7 +1031,7 @@ const MusicLessonsForm = ({
       <button
         type="submit"
         disabled={isSubmitting}
-        className={`w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center ${
+        className={`w-full bg-gradient-to-r from-pink-500 to-rose-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center ${
           isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
         }`}
       >

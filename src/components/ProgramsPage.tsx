@@ -73,7 +73,7 @@ const ProgramsPage = () => {
         "Progress tracking and assessment",
         "Family consultation included",
       ],
-      color: "from-blue-500 to-purple-600",
+      color: "from-blue-600 to-purple-600",
       ageRange: "18 months - 90+ years",
       duration: "30-90 minutes",
       frequency: "Weekly or bi-weekly",
@@ -92,7 +92,7 @@ const ProgramsPage = () => {
             "Flexible scheduling options",
             "Comprehensive intake process",
           ],
-          color: "from-green-500 to-emerald-600",
+          color: "from-blue-500 to-indigo-600",
           ageRange: "All ages welcome",
           duration: "Variable",
           frequency: "As needed",
@@ -111,7 +111,7 @@ const ProgramsPage = () => {
             "Professional development credit",
             "Certificate of completion provided",
           ],
-          color: "from-orange-500 to-red-600",
+          color: "from-amber-500 to-orange-600",
           ageRange: "Students & professionals",
           duration: "2-8 hours",
           frequency: "Scheduled sessions",
@@ -132,7 +132,7 @@ const ProgramsPage = () => {
         "Recreational music making",
         "Individual & group options",
       ],
-      color: "from-purple-500 to-pink-600",
+      color: "from-pink-500 to-rose-600",
       ageRange: "5 years and up",
       duration: "30-45 minutes",
       frequency: "Weekly lessons",
@@ -152,7 +152,7 @@ const ProgramsPage = () => {
         "Research collaboration",
         "Best practice workshops",
       ],
-      color: "from-teal-500 to-cyan-600",
+      color: "from-emerald-600 to-teal-600",
       ageRange: "Healthcare professionals",
       duration: "Variable",
       frequency: "On-demand",
@@ -171,7 +171,7 @@ const ProgramsPage = () => {
             "Professional mentorship",
             "Organizational training",
           ],
-          color: "from-indigo-500 to-blue-600",
+          color: "from-indigo-600 to-blue-700",
           ageRange: "All stakeholders",
           duration: "60-120 minutes",
           frequency: "As requested",
@@ -190,7 +190,7 @@ const ProgramsPage = () => {
             "Community outreach programs",
             "Customized content delivery",
           ],
-          color: "from-rose-500 to-pink-600",
+          color: "from-violet-600 to-purple-700",
           ageRange: "General public",
           duration: "60-180 minutes",
           frequency: "Scheduled events",
@@ -211,7 +211,7 @@ const ProgramsPage = () => {
         "Family education programs",
         "Professional networking events",
       ],
-      color: "from-emerald-500 to-teal-600",
+      color: "from-green-600 to-lime-600",
       ageRange: "Community members",
       duration: "2-6 hours",
       frequency: "Monthly programs",
@@ -221,14 +221,14 @@ const ProgramsPage = () => {
   ];
 
   const conditions = [
-    "Stroke/Brain Injury",
-    "Parkinson's Disease",
-    "Multiple Sclerosis",
-    "Autism Spectrum Disorder",
+    "ADHD",
+    "Autism",
     "Cerebral Palsy",
-    "Alzheimer's/Dementia",
-    "Developmental Delays",
-    "Spinal Cord Injury",
+    "Down's Syndrome",
+    "Epilepsy",
+    "Neurodevelopmental Disorder",
+    "Parkinson's Disease",
+    "Stroke",
     "Traumatic Brain Injury",
   ];
 
@@ -246,9 +246,6 @@ const ProgramsPage = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div>
-            <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
-              Our Programs
-            </span>
             <h1 className="text-4xl lg:text-6xl font-bold font-poppins text-gray-900 mb-6">
               Comprehensive{" "}
               <span className="gradient-text">Therapy Services</span>
@@ -523,7 +520,7 @@ const ProgramsPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="btn-primary bg-white text-nmtsa-600 font-semibold px-8 py-4 rounded-full inline-flex items-center justify-center text-lg hover:bg-nmtsa-50 transition-colors"
+                className="btn-primary bg-white text-black-600 font-semibold px-8 py-4 rounded-full inline-flex items-center justify-center text-lg hover:bg-nmtsa-50 transition-colors"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Schedule Consultation
@@ -621,7 +618,7 @@ const TherapyForm = ({
   onChange: (field: string, value: any) => void;
 }) => (
   <form onSubmit={onSubmit} className="space-y-6">
-    <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl">
+    <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-xl">
       <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
         <User className="w-5 h-5 mr-2 text-blue-600" />
         Personal Information
@@ -657,14 +654,14 @@ const TherapyForm = ({
       </div>
     </div>
 
-    <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl">
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl">
       <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <HeartHandshake className="w-5 h-5 mr-2 text-green-600" />
+        <HeartHandshake className="w-5 h-5 mr-2 text-purple-600" />
         Therapy Needs
       </h4>
       <div className="space-y-4">
         <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("therapyType", e.target.value)}
         >
           <option value="">Select Therapy Type *</option>
@@ -673,20 +670,27 @@ const TherapyForm = ({
           <option value="family">Family Therapy</option>
         </select>
         <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("condition", e.target.value)}
         >
           <option value="">Primary Condition/Diagnosis</option>
-          <option value="stroke">Stroke/Brain Injury</option>
-          <option value="parkinsons">Parkinson&apos;s Disease</option>
-          <option value="autism">Autism Spectrum Disorder</option>
+          <option value="adhd">ADHD</option>
+          <option value="autism">Autism</option>
           <option value="cerebral-palsy">Cerebral Palsy</option>
+          <option value="downs-syndrome">Down&apos;s Syndrome</option>
+          <option value="epilepsy">Epilepsy</option>
+          <option value="neurodevelopmental">
+            Neurodevelopmental Disorder
+          </option>
+          <option value="parkinsons">Parkinson&apos;s Disease</option>
+          <option value="stroke">Stroke</option>
+          <option value="tbi">Traumatic Brain Injury</option>
           <option value="other">Other</option>
         </select>
         <textarea
           placeholder="Describe your therapy goals and any specific needs..."
           rows={4}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("goals", e.target.value)}
         />
       </div>
@@ -694,7 +698,7 @@ const TherapyForm = ({
 
     <button
       type="submit"
-      className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
     >
       <Send className="w-5 h-5 mr-2" />
       Submit Therapy Request
@@ -710,35 +714,35 @@ const RequestServiceForm = ({
   onChange: (field: string, value: any) => void;
 }) => (
   <form onSubmit={onSubmit} className="space-y-6">
-    <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl">
+    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl">
       <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <Phone className="w-5 h-5 mr-2 text-green-600" />
+        <Phone className="w-5 h-5 mr-2 text-blue-600" />
         Service Request Information
       </h4>
       <div className="grid md:grid-cols-2 gap-4">
         <input
           type="text"
           placeholder="Full Name *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("name", e.target.value)}
           required
         />
         <input
           type="email"
           placeholder="Email Address *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("email", e.target.value)}
           required
         />
         <input
           type="tel"
           placeholder="Phone Number *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("phone", e.target.value)}
           required
         />
         <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("urgency", e.target.value)}
         >
           <option value="">Request Urgency</option>
@@ -768,7 +772,7 @@ const RequestServiceForm = ({
           >
             <input
               type="checkbox"
-              className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+              className="w-4 h-4 text-nmtsa-600 border-gray-300 rounded focus:ring-blue-500"
               onChange={(e) =>
                 onChange(
                   `service_${service.toLowerCase().replace(" ", "_")}`,
@@ -785,13 +789,13 @@ const RequestServiceForm = ({
     <textarea
       placeholder="Additional details about your service request..."
       rows={4}
-      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
       onChange={(e) => onChange("details", e.target.value)}
     />
 
     <button
       type="submit"
-      className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+      className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
     >
       <Send className="w-5 h-5 mr-2" />
       Submit Service Request
@@ -807,34 +811,34 @@ const ClinicalObservationForm = ({
   onChange: (field: string, value: any) => void;
 }) => (
   <form onSubmit={onSubmit} className="space-y-6">
-    <div className="bg-gradient-to-r from-orange-50 to-red-50 p-6 rounded-xl">
+    <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-xl">
       <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <Eye className="w-5 h-5 mr-2 text-orange-600" />
+        <Eye className="w-5 h-5 mr-2 text-amber-600" />
         Observer Information
       </h4>
       <div className="grid md:grid-cols-2 gap-4">
         <input
           type="text"
           placeholder="Full Name *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("name", e.target.value)}
           required
         />
         <input
           type="email"
           placeholder="Email Address *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("email", e.target.value)}
           required
         />
         <input
           type="text"
           placeholder="Institution/Organization"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("institution", e.target.value)}
         />
         <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("role", e.target.value)}
         >
           <option value="">Your Role *</option>
@@ -855,11 +859,11 @@ const ClinicalObservationForm = ({
         <input
           type="date"
           placeholder="Preferred Date"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("preferredDate", e.target.value)}
         />
         <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("duration", e.target.value)}
         >
           <option value="">Observation Duration</option>
@@ -887,7 +891,7 @@ const ClinicalObservationForm = ({
             >
               <input
                 type="checkbox"
-                className="w-4 h-4 text-orange-600 border-gray-300 rounded focus:ring-orange-500"
+                className="w-4 h-4 text-amber-600 border-gray-300 rounded focus:ring-blue-500"
                 onChange={(e) =>
                   onChange(
                     `interest_${area.toLowerCase().replace(" ", "_")}`,
@@ -905,13 +909,13 @@ const ClinicalObservationForm = ({
     <textarea
       placeholder="Purpose of observation and any specific learning objectives..."
       rows={4}
-      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
       onChange={(e) => onChange("purpose", e.target.value)}
     />
 
     <button
       type="submit"
-      className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+      className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
     >
       <Eye className="w-5 h-5 mr-2" />
       Request Clinical Observation
@@ -927,16 +931,16 @@ const MusicLessonsForm = ({
   onChange: (field: string, value: any) => void;
 }) => (
   <form onSubmit={onSubmit} className="space-y-6">
-    <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl">
+    <div className="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-xl">
       <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <Music className="w-5 h-5 mr-2 text-purple-600" />
+        <Music className="w-5 h-5 mr-2 text-pink-600" />
         Student Information
       </h4>
       <div className="grid md:grid-cols-2 gap-4">
         <input
           type="text"
           placeholder="Student Name *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("studentName", e.target.value)}
           required
         />
@@ -945,20 +949,20 @@ const MusicLessonsForm = ({
           placeholder="Age"
           min="5"
           max="100"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("age", e.target.value)}
         />
         <input
           type="text"
           placeholder="Parent/Guardian Name *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("parentName", e.target.value)}
           required
         />
         <input
           type="email"
           placeholder="Contact Email *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("email", e.target.value)}
           required
         />
@@ -971,7 +975,7 @@ const MusicLessonsForm = ({
       </h4>
       <div className="grid md:grid-cols-2 gap-4">
         <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("instrument", e.target.value)}
         >
           <option value="">Preferred Instrument *</option>
@@ -983,7 +987,7 @@ const MusicLessonsForm = ({
           <option value="other">Other</option>
         </select>
         <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("experience", e.target.value)}
         >
           <option value="">Experience Level</option>
@@ -1000,7 +1004,7 @@ const MusicLessonsForm = ({
         <textarea
           placeholder="Please describe any accommodations needed..."
           rows={3}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("accommodations", e.target.value)}
         />
       </div>
@@ -1026,7 +1030,7 @@ const MusicLessonsForm = ({
           >
             <input
               type="checkbox"
-              className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+              className="w-4 h-4 text-pink-600 border-gray-300 rounded focus:ring-blue-500"
               onChange={(e) =>
                 onChange(`day_${day.toLowerCase()}`, e.target.checked)
               }
@@ -1039,7 +1043,7 @@ const MusicLessonsForm = ({
 
     <button
       type="submit"
-      className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+      className="w-full bg-gradient-to-r from-pink-500 to-rose-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
     >
       <Music className="w-5 h-5 mr-2" />
       Request Music Lessons
@@ -1055,36 +1059,36 @@ const ProfessionalDevForm = ({
   onChange: (field: string, value: any) => void;
 }) => (
   <form onSubmit={onSubmit} className="space-y-6">
-    <div className="bg-gradient-to-r from-teal-50 to-cyan-50 p-6 rounded-xl">
+    <div className="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-xl">
       <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <Briefcase className="w-5 h-5 mr-2 text-teal-600" />
+        <Briefcase className="w-5 h-5 mr-2 text-emerald-600" />
         Professional Information
       </h4>
       <div className="grid md:grid-cols-2 gap-4">
         <input
           type="text"
           placeholder="Full Name *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("name", e.target.value)}
           required
         />
         <input
           type="text"
           placeholder="Professional Title *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("title", e.target.value)}
           required
         />
         <input
           type="text"
           placeholder="Organization/Institution"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("organization", e.target.value)}
         />
         <input
           type="email"
           placeholder="Professional Email *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("email", e.target.value)}
           required
         />
@@ -1108,7 +1112,7 @@ const ProfessionalDevForm = ({
           >
             <input
               type="checkbox"
-              className="w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
+              className="w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-blue-500"
               onChange={(e) =>
                 onChange(
                   `interest_${area.toLowerCase().replace(" ", "_")}`,
@@ -1124,7 +1128,7 @@ const ProfessionalDevForm = ({
 
     <div className="space-y-4">
       <select
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         onChange={(e) => onChange("experience", e.target.value)}
       >
         <option value="">Years of Experience</option>
@@ -1136,14 +1140,14 @@ const ProfessionalDevForm = ({
       <textarea
         placeholder="Describe your professional development goals and interests..."
         rows={4}
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         onChange={(e) => onChange("goals", e.target.value)}
       />
     </div>
 
     <button
       type="submit"
-      className="w-full bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+      className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
     >
       <GraduationCap className="w-5 h-5 mr-2" />
       Request Professional Development
@@ -1168,27 +1172,27 @@ const ConsultationForm = ({
         <input
           type="text"
           placeholder="Full Name *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("name", e.target.value)}
           required
         />
         <input
           type="text"
           placeholder="Organization (if applicable)"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("organization", e.target.value)}
         />
         <input
           type="email"
           placeholder="Email Address *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("email", e.target.value)}
           required
         />
         <input
           type="tel"
           placeholder="Phone Number"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("phone", e.target.value)}
         />
       </div>
@@ -1211,7 +1215,7 @@ const ConsultationForm = ({
             <input
               type="radio"
               name="consultationType"
-              className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
+              className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-blue-500"
               onChange={() => onChange("consultationType", type)}
             />
             <span className="text-gray-700">{type}</span>
@@ -1222,7 +1226,7 @@ const ConsultationForm = ({
 
     <div className="space-y-4">
       <select
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         onChange={(e) => onChange("urgency", e.target.value)}
       >
         <option value="">Timeline Needed</option>
@@ -1233,7 +1237,7 @@ const ConsultationForm = ({
       <textarea
         placeholder="Please provide details about your consultation needs, specific challenges, and desired outcomes..."
         rows={5}
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         onChange={(e) => onChange("details", e.target.value)}
         required
       />
@@ -1241,7 +1245,7 @@ const ConsultationForm = ({
 
     <button
       type="submit"
-      className="w-full bg-gradient-to-r from-indigo-500 to-blue-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+      className="w-full bg-gradient-to-r from-indigo-600 to-blue-700 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
     >
       <MessageSquare className="w-5 h-5 mr-2" />
       Request Consultation
@@ -1257,37 +1261,37 @@ const PresentationForm = ({
   onChange: (field: string, value: any) => void;
 }) => (
   <form onSubmit={onSubmit} className="space-y-6">
-    <div className="bg-gradient-to-r from-rose-50 to-pink-50 p-6 rounded-xl">
+    <div className="bg-gradient-to-r from-violet-50 to-purple-50 p-6 rounded-xl">
       <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <Presentation className="w-5 h-5 mr-2 text-rose-600" />
+        <Presentation className="w-5 h-5 mr-2 text-violet-600" />
         Presentation Request
       </h4>
       <div className="grid md:grid-cols-2 gap-4">
         <input
           type="text"
           placeholder="Contact Name *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("name", e.target.value)}
           required
         />
         <input
           type="text"
           placeholder="Organization/Event *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("organization", e.target.value)}
           required
         />
         <input
           type="email"
           placeholder="Email Address *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("email", e.target.value)}
           required
         />
         <input
           type="tel"
           placeholder="Phone Number"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("phone", e.target.value)}
         />
       </div>
@@ -1299,17 +1303,17 @@ const PresentationForm = ({
         <input
           type="date"
           placeholder="Event Date"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("eventDate", e.target.value)}
         />
         <input
           type="time"
           placeholder="Start Time"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("startTime", e.target.value)}
         />
         <select
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("duration", e.target.value)}
         >
           <option value="">Duration</option>
@@ -1322,14 +1326,14 @@ const PresentationForm = ({
       <input
         type="text"
         placeholder="Event Location/Venue"
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         onChange={(e) => onChange("location", e.target.value)}
       />
       <input
         type="number"
         placeholder="Expected Audience Size"
         min="1"
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         onChange={(e) => onChange("audienceSize", e.target.value)}
       />
     </div>
@@ -1353,7 +1357,7 @@ const PresentationForm = ({
           >
             <input
               type="checkbox"
-              className="w-4 h-4 text-rose-600 border-gray-300 rounded focus:ring-rose-500"
+              className="w-4 h-4 text-violet-600 border-gray-300 rounded focus:ring-blue-500"
               onChange={(e) =>
                 onChange(
                   `topic_${topic.toLowerCase().replace(" ", "_")}`,
@@ -1370,13 +1374,13 @@ const PresentationForm = ({
     <textarea
       placeholder="Additional details about your presentation needs, audience demographics, and specific requests..."
       rows={4}
-      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
       onChange={(e) => onChange("details", e.target.value)}
     />
 
     <button
       type="submit"
-      className="w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+      className="w-full bg-gradient-to-r from-violet-600 to-purple-700 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
     >
       <Presentation className="w-5 h-5 mr-2" />
       Request Presentation
@@ -1392,37 +1396,37 @@ const CommunityEducationForm = ({
   onChange: (field: string, value: any) => void;
 }) => (
   <form onSubmit={onSubmit} className="space-y-6">
-    <div className="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-xl">
+    <div className="bg-gradient-to-r from-green-50 to-lime-50 p-6 rounded-xl">
       <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <School className="w-5 h-5 mr-2 text-emerald-600" />
+        <School className="w-5 h-5 mr-2 text-green-600" />
         Community Education Program
       </h4>
       <div className="grid md:grid-cols-2 gap-4">
         <input
           type="text"
           placeholder="Contact Name *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("name", e.target.value)}
           required
         />
         <input
           type="text"
           placeholder="Organization/Group *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("organization", e.target.value)}
           required
         />
         <input
           type="email"
           placeholder="Email Address *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("email", e.target.value)}
           required
         />
         <input
           type="tel"
           placeholder="Phone Number"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           onChange={(e) => onChange("phone", e.target.value)}
         />
       </div>
@@ -1445,7 +1449,7 @@ const CommunityEducationForm = ({
             <input
               type="radio"
               name="programType"
-              className="w-4 h-4 text-emerald-600 border-gray-300 focus:ring-emerald-500"
+              className="w-4 h-4 text-green-600 border-gray-300 focus:ring-blue-500"
               onChange={() => onChange("programType", type)}
             />
             <span className="text-gray-700">{type}</span>
@@ -1471,7 +1475,7 @@ const CommunityEducationForm = ({
           >
             <input
               type="checkbox"
-              className="w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+              className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-blue-500"
               onChange={(e) =>
                 onChange(
                   `audience_${audience.toLowerCase().replace(" ", "_")}`,
@@ -1490,11 +1494,11 @@ const CommunityEducationForm = ({
         type="number"
         placeholder="Expected Participants"
         min="1"
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         onChange={(e) => onChange("participants", e.target.value)}
       />
       <select
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         onChange={(e) => onChange("timeline", e.target.value)}
       >
         <option value="">Preferred Timeline</option>
@@ -1507,14 +1511,14 @@ const CommunityEducationForm = ({
     <textarea
       placeholder="Describe your community education goals, specific topics of interest, and any special requirements..."
       rows={5}
-      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
       onChange={(e) => onChange("details", e.target.value)}
       required
     />
 
     <button
       type="submit"
-      className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+      className="w-full bg-gradient-to-r from-green-600 to-lime-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
     >
       <School className="w-5 h-5 mr-2" />
       Request Community Education Program

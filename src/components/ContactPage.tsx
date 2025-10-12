@@ -123,20 +123,6 @@ const ContactPage = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div>
-            <span className="inline-flex items-center px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
-              {formType === "volunteer" && <Heart className="w-4 h-4 mr-2" />}
-              {formType === "internship" && (
-                <Briefcase className="w-4 h-4 mr-2" />
-              )}
-              {formType === "employment" && (
-                <UserPlus className="w-4 h-4 mr-2" />
-              )}
-              {formType
-                ? `${
-                    formType.charAt(0).toUpperCase() + formType.slice(1)
-                  } Application`
-                : "Contact Us"}
-            </span>
             <h1 className="text-4xl lg:text-6xl font-bold font-poppins text-gray-900 mb-6">
               {formType ? (
                 <>

@@ -38,7 +38,7 @@ const AboutPage = () => {
     {
       name: "Michael Rodriguez",
       role: "Senior Music Therapist",
-      bio: "Specializing in pediatric neurologic music therapy with a focus on autism spectrum disorders and developmental delays.",
+      bio: "Specializing in pediatric neurologic music therapy with a focus on autism and neurodevelopmental disorders.",
       image:
         "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
       credentials: "BM, MT-BC, NMT",
