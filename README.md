@@ -1,104 +1,158 @@
-# 2025_fall Hackathon Project
+# NMTSA Website - Loop IT
 
-## Quick Links
-
-- Nonprofit: [NMTSA - Website](https://ohack.dev/nonprofit/coDhSpsyG5uqgpmm0SdS)
-- [Hackathon Details](https://www.ohack.dev/hack/2025_fall)
-- [Team Slack Channel](https://opportunity-hack.slack.com/app_redirect?channel=loopit)
-
-## Creator
-
-@kirtan thummar (on Slack)
+> Transforming lives through music and neuroscience
 
 ## Team "Loop IT"
 
-- [Smit Patel](https://github.com/smit30patel)
-- [Shubham Tiwari](https://github.com/shubham17tiwari)
-- [Kirtan Thummar](https://github.com/VanGoghCode)
+- **Smit Patel** - [GitHub](https://github.com/smit30patel)
+- **Shubham Tiwari** - [GitHub](https://github.com/shubham17tiwari)
+- **Kirtan Thummar** - [GitHub](https://github.com/VanGoghCode)
 
-## Project Overview
+**Slack Channel:** [#loopit](https://opportunity-hack.slack.com/app_redirect?channel=loopit)
 
-This project rebuilds the Neurologic Music Therapy Services of Arizona (NMTSA) website into a modern, intelligent, and accessible platform that better represents their mission of transforming lives through music and neuroscience.
+## Problem Statement
 
-The new site combines high-performance design, AI-driven accessibility, and integrated e-commerce tools to help NMTSA engage donors, clients, and professionals more effectively.
+Neurologic Music Therapy Services of Arizona (NMTSA) needed a modern, accessible website platform to better represent their mission and streamline operations for managing donors, volunteers, interns, and merchandise sales.
 
-Our vision: a website that feels as responsive, adaptive, and human as the therapy it represents.
+## Solution
+
+A full-stack web application with:
+- Modern, responsive design built with Next.js 14 and Tailwind CSS
+- Secure admin dashboard with role-based access control
+- Comprehensive management systems for volunteers, interns, donors, and merchandise
+- RESTful API for all data operations
+- Row-level security for data protection
 
 ## Tech Stack
 
-- **Frontend:** Next.js 14, Tailwind CSS, TypeScript
-- **Backend:** Next.js API Routes (Node.js), AWS services
-- **AI / Chatbot:** AWS Bedrock with RAG (Retrieval-Augmented Generation) using Vector DB
-- **Database:** Vector Database (e.g., Pinecone or AWS OpenSearch Vector)
-- **Marketplace:** Shopify Storefront API
-- **Payments:** PayPal Integration
-- **Hosting / Deployment:** Vercel or AWS Amplify
-- **Accessibility:** AI-guided accessibility assistant chatbot
+- **Frontend:** Next.js 14, React 18, TypeScript, Tailwind CSS
+- **Backend:** Next.js API Routes
+- **Database:** Supabase (PostgreSQL)
+- **Authentication:** Supabase Auth
+- **Hosting:** Vercel
 
-## Getting Started
+## Key Features
 
-Instructions on how to set up and run your project locally.
+### 🔐 Admin Dashboard
+- Role-based access control (admin/employee/intern/volunteer)
+- Content management system
+- User management
 
+### 🛍️ Marketplace
+- Product catalog with categories
+- Inventory management
+- Order tracking and management
+
+### 💰 Donor Management
+- Donation tracking
+- Recurring donation support
+- Tax receipt tracking
+
+### 🤝 Volunteer & Intern Management
+- Profile management
+- Hours tracking and verification
+- Background check tracking
+- Mentor assignment
+
+### 📝 Content Management
+- Dynamic page content
+- Service offerings
+- Employee profiles
+
+## API Endpoints
+
+All endpoints support CRUD operations where applicable:
+
+- `/api/content` - Page content management
+- `/api/services` - Service offerings
+- `/api/employees` - Staff management
+- `/api/merchandise` - Product catalog
+- `/api/orders` - Order management
+- `/api/donors` - Donor tracking
+- `/api/volunteers` - Volunteer management
+- `/api/volunteer-hours` - Hours tracking
+- `/api/interns` - Intern management
+- `/api/intern-hours` - Intern hours tracking
+- `/api/forms` - Form submissions
+- `/api/settings` - Site configuration
+- `/api/upload` - File uploads
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js 20.x or higher
+- Supabase account
+
+### Setup
+
+1. **Clone the repository**
 ```bash
-# Example commands
 git clone https://github.com/2025-Arizona-Opportunity-Hack/Loop-IT-NMTSAWebsite.git
 cd Loop-IT-NMTSAWebsite
-npm install
-npm start
 ```
 
-## Checklist for the final submission
+2. **Install dependencies**
+```bash
+npm install
+```
 
-### 0/Judging Criteria
+3. **Configure environment variables**
 
-- [ ] Review the [judging criteria](https://www.ohack.dev/about/judges#judging-criteria) to understand how your project will be evaluated
+Create `.env.local`:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-### 1/DevPost
+4. **Setup database**
 
-- [ ] Submit a [DevPost project to this DevPost page for our hackathon](https://opportunity-hack-2025-arizona.devpost.com/) - see our [YouTube Walkthrough](https://youtu.be/rsAAd7LXMDE) or a more general one from DevPost [here](https://www.youtube.com/watch?v=vCa7QFFthfU)
-- [ ] Your DevPost final submission demo video should be 4 minutes or less
-- [ ] Link your team to your DevPost project on ohack.dev in [your team dashboard](https://www.ohack.dev/hack/2025_fall/manageteam)
-- [ ] Link your GitHub repo to your DevPost project on the DevPost submission form under "Try it out" links
+Run migrations in order from `supabase/migrations/`:
+- `001_initial_schema.sql`
+- `002_fix_rls_recursion.sql`
+- `003_add_marketplace_donors_tracking.sql`
 
-### 2/GitHub
+Then run `supabase/create_first_admin.sql` to create your admin user.
 
-- [ ] Add everyone on your team to your GitHub repo [YouTube Walkthrough](https://youtu.be/kHs0jOewVKI)
-- [ ] Make sure your repo is public
-- [ ] Make sure your repo has a MIT License
-- [ ] Make sure your repo has a detailed README.md (see below for details)
+5. **Start development server**
+```bash
+npm run dev
+```
 
-# What should your final README look like?
+Visit [http://localhost:3000](http://localhost:3000)
 
-Your readme should be a one-stop-shop for the judges to understand your project. It should include:
+### Available Commands
 
-- Team name
-- Team members
-- Slack channel
-- Problem statement
-- Tech stack
-- Link to your working project on the web so judges can try it out
-- Link to your DevPost project
-- Link to your final demo video
-- Instructions on how to run your project
-- Any other relevant links (e.g. Figma, GitHub repos for any open source libraries you used, etc.)
+```bash
+npm run dev    # Start development server
+npm run build  # Build for production
+npm run start  # Start production server
+npm run lint   # Run linter
+```
 
-You'll use this repo as your resume in the future, so make it shine! 🌟
+## Project Structure
 
-# Examples
+```
+├── src/
+│   ├── app/
+│   │   ├── admin/          # Admin dashboard
+│   │   ├── api/            # API routes
+│   │   ├── login/          # Auth pages
+│   │   └── page.tsx        # Homepage
+│   ├── components/         # React components
+│   ├── lib/
+│   │   └── supabase/       # Database utilities
+│   └── middleware.ts       # Auth middleware
+├── supabase/               # Database migrations
+└── public/                 # Static assets
+```
 
-Examples of stellar readmes:
+## Links
 
-- ✨ [2019 Team 3](https://github.com/2019-Arizona-Opportunity-Hack/Team-3)
-- ✨ [2019 Team 6](https://github.com/2019-Arizona-Opportunity-Hack/Team-6)
-- ✨ [2020 Team 2](https://github.com/2020-opportunity-hack/Team-02)
-- ✨ [2020 Team 4](https://github.com/2020-opportunity-hack/Team-04)
-- ✨ [2020 Team 8](https://github.com/2020-opportunity-hack/Team-08)
-- ✨ [2020 Team 12](https://github.com/2020-opportunity-hack/Team-12)
+- **Nonprofit:** [NMTSA](https://ohack.dev/nonprofit/coDhSpsyG5uqgpmm0SdS)
+- **Hackathon:** [2025 Fall Opportunity Hack](https://www.ohack.dev/hack/2025_fall)
+- **DevPost:** [Submit here](https://opportunity-hack-2025-arizona.devpost.com/)
 
-Examples of winning DevPost submissions:
+## License
 
-- [1st place 2024](https://devpost.com/software/nature-s-edge-wildlife-and-reptile-rescue)
-- [2nd place 2024](https://devpost.com/software/team13-kidcoda-steam)
-- [1st place 2023](https://devpost.com/software/preservation-partners-search-engine)
-- [1st place 2019](https://devpost.com/software/zuri-s-dashboard)
-- [1st place 2018](https://devpost.com/software/matthews-crossing-data-manager-oj4ica)
+MIT License
