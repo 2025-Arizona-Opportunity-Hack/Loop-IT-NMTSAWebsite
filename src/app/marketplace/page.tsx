@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ShoppingBag,
   Shirt,
@@ -23,7 +24,8 @@ export default function Marketplace() {
       id: 1,
       name: "NMTSA Classic T-Shirt",
       price: 24.99,
-      image: "/api/placeholder/300/300",
+      image:
+        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=300&fit=crop&crop=center",
       category: "Apparel",
       description: "Comfortable cotton t-shirt featuring the NMTSA logo",
       sizes: ["S", "M", "L", "XL", "XXL"],
@@ -33,7 +35,8 @@ export default function Marketplace() {
       id: 2,
       name: "Music Therapy Mug",
       price: 16.99,
-      image: "/api/placeholder/300/300",
+      image:
+        "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=300&h=300&fit=crop&crop=center",
       category: "Drinkware",
       description: "Ceramic mug with inspiring music therapy message",
       sizes: ["11oz", "15oz"],
@@ -43,7 +46,8 @@ export default function Marketplace() {
       id: 3,
       name: "NMTSA Hoodie",
       price: 39.99,
-      image: "/api/placeholder/300/300",
+      image:
+        "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300&h=300&fit=crop&crop=center",
       category: "Apparel",
       description: "Cozy hoodie perfect for showing your support",
       sizes: ["S", "M", "L", "XL", "XXL"],
@@ -53,7 +57,8 @@ export default function Marketplace() {
       id: 4,
       name: "Harmony Tote Bag",
       price: 18.99,
-      image: "/api/placeholder/300/300",
+      image:
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=300&fit=crop&crop=center",
       category: "Accessories",
       description: "Eco-friendly tote bag with musical note design",
       sizes: ["One Size"],
@@ -63,7 +68,8 @@ export default function Marketplace() {
       id: 5,
       name: "Water Bottle",
       price: 22.99,
-      image: "/api/placeholder/300/300",
+      image:
+        "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=300&h=300&fit=crop&crop=center",
       category: "Drinkware",
       description: "Stainless steel water bottle with NMTSA branding",
       sizes: ["20oz", "32oz"],
@@ -73,7 +79,8 @@ export default function Marketplace() {
       id: 6,
       name: "Inspirational Journal",
       price: 14.99,
-      image: "/api/placeholder/300/300",
+      image:
+        "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=300&fit=crop&crop=center",
       category: "Gifts",
       description: "Hardcover journal with music therapy quotes",
       sizes: ["5x7", "8x10"],
@@ -198,22 +205,14 @@ export default function Marketplace() {
                 >
                   {/* Product Image */}
                   <div className="aspect-square bg-gradient-to-br from-indigo-100 to-purple-100 relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-20 h-20 bg-indigo-200 rounded-full flex items-center justify-center">
-                        {product.category === "Apparel" && (
-                          <Shirt className="w-10 h-10 text-indigo-600" />
-                        )}
-                        {product.category === "Drinkware" && (
-                          <Coffee className="w-10 h-10 text-indigo-600" />
-                        )}
-                        {product.category === "Accessories" && (
-                          <ShoppingBag className="w-10 h-10 text-indigo-600" />
-                        )}
-                        {product.category === "Gifts" && (
-                          <Gift className="w-10 h-10 text-indigo-600" />
-                        )}
-                      </div>
-                    </div>
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                     <div className="absolute top-3 left-3">
                       <span className="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">
                         {product.category}

@@ -8,7 +8,6 @@ const nextConfig = {
     swcMinify: true,
     // Use more stable caching
     workerThreads: false,
-    cpus: 1,
   },
 
   // Configure webpack for better cache management
@@ -16,11 +15,33 @@ const nextConfig = {
     if (dev) {
       // Disable webpack cache in development to prevent corruption
       config.cache = false;
+
+      // Fix chunk loading timeout issues
+      config.output = {
+        ...config.output,
+        publicPath: "/_next/",
+        chunkLoadTimeout: 30000, // 30 seconds timeout
+      };
     }
 
     // Optimize cache location
     config.infrastructureLogging = {
       level: "error",
+    };
+
+    // Fix chunk loading issues
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: {
+        chunks: "all",
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all",
+          },
+        },
+      },
     };
 
     return config;
@@ -38,6 +59,24 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.pixabay.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
         port: "",
         pathname: "/**",
       },
