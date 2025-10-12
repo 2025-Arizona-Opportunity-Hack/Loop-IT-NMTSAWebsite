@@ -1,17 +1,44 @@
 "use client";
 
-import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Heart, Send, Check } from "lucide-react";
+import { useState, useEffect } from "react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Heart,
+  Send,
+  Check,
+  UserPlus,
+  Briefcase,
+} from "lucide-react";
 
 const ContactPage = () => {
+  const [formType, setFormType] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     subject: "",
     message: "",
+    formType: "general",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    // Get form type from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get("form");
+    if (type && ["volunteer", "internship", "employment"].includes(type)) {
+      setFormType(type);
+      setFormData((prev) => ({
+        ...prev,
+        formType: type,
+        subject: `${type.charAt(0).toUpperCase() + type.slice(1)} Application`,
+        message: `I am interested in the ${type} opportunities at NMTSA. Please provide me with more information about the application process.`,
+      }));
+    }
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -37,6 +64,7 @@ const ContactPage = () => {
       phone: "",
       subject: "",
       message: "",
+      formType: formType || "general",
     });
   };
 
@@ -95,16 +123,40 @@ const ContactPage = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div>
-            <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
-              Contact Us
+            <span className="inline-flex items-center px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
+              {formType === "volunteer" && <Heart className="w-4 h-4 mr-2" />}
+              {formType === "internship" && (
+                <Briefcase className="w-4 h-4 mr-2" />
+              )}
+              {formType === "employment" && (
+                <UserPlus className="w-4 h-4 mr-2" />
+              )}
+              {formType
+                ? `${
+                    formType.charAt(0).toUpperCase() + formType.slice(1)
+                  } Application`
+                : "Contact Us"}
             </span>
             <h1 className="text-4xl lg:text-6xl font-bold font-poppins text-gray-900 mb-6">
-              Get in <span className="gradient-text">Touch</span>
+              {formType ? (
+                <>
+                  Join Our <span className="gradient-text">Team</span>
+                </>
+              ) : (
+                <>
+                  Get in <span className="gradient-text">Touch</span>
+                </>
+              )}
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Ready to learn more about our services or how you can get
-              involved? We&apos;d love to hear from you and answer any questions
-              you may have.
+              {formType === "volunteer" &&
+                "Thank you for your interest in volunteering with NMTSA! Help us make a difference in the lives of individuals with neurologic impairments."}
+              {formType === "internship" &&
+                "Gain valuable hands-on experience in music therapy with our internship program. Join our team and learn from experienced professionals."}
+              {formType === "employment" &&
+                "Join our professional team at NMTSA! We're always looking for passionate music therapists to help us serve our community."}
+              {!formType &&
+                "Ready to learn more about our services or how you can get involved? We'd love to hear from you and answer any questions you may have."}
             </p>
           </div>
         </div>
