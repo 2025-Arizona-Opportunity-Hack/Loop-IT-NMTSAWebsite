@@ -2,78 +2,123 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, Users, ArrowRight, Music, Target, Eye } from "lucide-react";
+import {
+  Heart,
+  Users,
+  ArrowRight,
+  Music,
+  Target,
+  Eye,
+  User,
+  Calendar,
+  Clock,
+} from "lucide-react";
 
 const AboutPage = () => {
   const values = [
     {
-      icon: Music,
-      title: "Evidence-Based",
-      description:
-        "Using scientifically proven neurologic music therapy techniques to achieve measurable results.",
-    },
-    {
       icon: Users,
-      title: "Family-Centered",
+      title: "Capability of All People",
       description:
-        "Supporting individuals and their families throughout their therapeutic journey.",
+        "We believe in the capability of all people to reach their goals and attain their full potential.",
     },
     {
       icon: Heart,
-      title: "Compassionate",
+      title: "Competence of All",
       description:
-        "Delivering care with empathy, respect, and unwavering dedication to each client.",
+        "We believe in the competence of all people and assume competence in everyone we serve.",
+    },
+    {
+      icon: Music,
+      title: "Unique Contribution",
+      description:
+        "We value the contribution every person has to offer through their unique person and abilities.",
+    },
+    {
+      icon: Target,
+      title: "Science and Relationship",
+      description:
+        "We believe in the connection of science and relationship, and the impact both have on every person.",
     },
   ];
 
   const teamMembers = [
     {
-      name: "Dr. Sarah Johnson",
-      role: "Director & Board-Certified Music Therapist",
-      bio: "With over 20 years of experience, Dr. Johnson leads our team with expertise in neurologic music therapy and clinical research.",
-      image:
-        "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-      credentials: "MM, MT-BC, NMT",
+      name: "Suzanne Oliver",
+      role: "Founder and Executive Director",
+      image: "/images/Suzanne-profile.avif",
+      credentials: "MT-BC, NMT Fellow",
+      email: "soliver@nmtsa.org",
     },
     {
-      name: "Michael Rodriguez",
-      role: "Senior Music Therapist",
-      bio: "Specializing in pediatric neurologic music therapy with a focus on autism and neurodevelopmental disorders.",
-      image:
-        "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-      credentials: "BM, MT-BC, NMT",
+      name: "Leanna Moore",
+      role: "Clinical Training Director",
+      image: "/images/leeana-profile.avif",
+      credentials: "MM, MT-BC, NMT Fellow",
+      email: "lmoore@nmtsa.org",
     },
     {
-      name: "Dr. Emily Chen",
-      role: "Clinical Music Therapist & Researcher",
-      bio: "Dr. Chen brings extensive research experience and specializes in stroke recovery and traumatic brain injury rehabilitation.",
-      image:
-        "https://images.unsplash.com/photo-1594824475315-fc2c40af8ebe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-      credentials: "PhD, MT-BC, NMT",
+      name: "Maggie Reynolds",
+      role: "Neurologic Music Therapist",
+      image: "/images/maggie_profile.avif",
+      credentials: "MT-BC, NMT",
+      email: "mreynolds@nmtsa.org",
     },
     {
-      name: "James Wilson",
-      role: "Music Therapist & Program Coordinator",
-      bio: "James coordinates our community outreach programs and specializes in group therapy sessions for various neurologic conditions.",
-      image:
-        "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-      credentials: "MA, MT-BC, NMT",
+      name: "Matt Valois",
+      role: "Neurologic Music Therapist",
+      image: "/images/Matt-profile.avif",
+      credentials: "MT-BC, NMT",
+      email: "mvalois@nmtsa.org",
     },
     {
-      name: "Dr. Lisa Thompson",
-      role: "Pediatric Music Therapist",
-      bio: "With a passion for working with children, Dr. Thompson specializes in early intervention and family-centered care approaches.",
-      image:
-        "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-      credentials: "DMT, MT-BC, NMT",
+      name: "Jessi Teich",
+      role: "Neurologic Music Therapist, Fellow",
+      image: "/images/Jessi-profile.avif",
+      credentials: "PhD, MT-BC, NMT Fellow",
+      email: "jteich@nmtsa.org",
     },
     {
-      name: "Robert Martinez",
-      role: "Administrative Director",
-      bio: "Robert ensures smooth operations and coordinates with families, insurance providers, and healthcare professionals.",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-      credentials: "MBA, CBIS",
+      name: "Cheryl Butterworth",
+      role: "Operations Manager",
+      image: "/images/Cheryl-profile.avif",
+      credentials: "Operations Manager",
+      email: "cbutterworth@nmtsa.org",
+    },
+  ];
+
+  const visitingClinicians = [
+    {
+      name: "Ka I Ho",
+      role: "Neurologic Music Therapist",
+      location: "Macau",
+      period: "March 2025 - March 2026",
+      image: "/images/ka-profile.avif",
+      credentials: "MT-BC, NMT",
+    },
+    {
+      name: "Joseph (Joe) Thompson",
+      role: "Neurologic Music Therapist",
+      location: "Australia",
+      period: "May - August 2022",
+      image: "/images/joe-profile.avif",
+      credentials: "MT-BC, NMT",
+    },
+    {
+      name: "Mary-Clare Fearn",
+      role: "Neurologic Music Therapist",
+      location: "UK",
+      period: "November 2022",
+      image: "/images/mary-profile.avif",
+      credentials: "HCPC Certified MT, NMT",
+    },
+    {
+      name: "Emma Bailey",
+      role: "Neurologic Music Therapist",
+      location: "UK",
+      period: "May 2023",
+      image: "/images/emma-profile.avif",
+      credentials: "HCPC Certified MT, NMT",
     },
   ];
 
@@ -92,18 +137,17 @@ const AboutPage = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full text-sm font-semibold mb-6">
-                About NMTSA
-              </span>
               <h1 className="text-4xl lg:text-6xl font-bold font-poppins text-gray-900 mb-6">
-                Transforming Lives Through{" "}
-                <span className="gradient-text">Music</span>
+                Unleashing the Unique Potential of{" "}
+                <span className="gradient-text">
+                  Individuals with Disabilities
+                </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Since 1982, Neurologic Music Therapy Services of Arizona has
-                been dedicated to unleashing the unique potential of individuals
-                with disabilities through evidence-based music therapy
-                interventions.
+                Since 1982, NMTSA has provided services to persons with
+                neurologic impairments (ages 18 months to 75+ years) and their
+                families in the greater Phoenix area, using evidence-based
+                neurologic music therapy.
               </p>
               <Link
                 href="/programs"
@@ -133,30 +177,31 @@ const AboutPage = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
-            <div className="bg-gradient-to-br from-nmtsa-500 to-nmtsa-600 rounded-3xl p-8 text-white">
-              <Target className="w-12 h-12 mb-6" />
-              <h2 className="font-poppins font-bold text-3xl mb-4">
-                Our Mission
-              </h2>
-              <p className="text-nmtsa-50 leading-relaxed">
-                To provide exceptional neurologic music therapy services that
-                enhance the quality of life for individuals with neurologic
-                impairments and support their families in achieving their goals.
-                We are committed to evidence-based practice, family-centered
-                care, and professional excellence.
+            <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-10 lg:p-12 text-white shadow-xl">
+              <div className="flex items-center gap-4 mb-6">
+                <Eye className="w-14 h-14" />
+                <h2 className="font-poppins font-bold text-4xl">Our Vision</h2>
+              </div>
+              <p className="text-blue-50 text-2xl leading-relaxed font-medium">
+                Unleashing the unique potential of individuals with
+                disabilities.
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-8 text-white">
-              <Eye className="w-12 h-12 mb-6" />
-              <h2 className="font-poppins font-bold text-3xl mb-4">
-                Our Vision
-              </h2>
-              <p className="text-blue-50 leading-relaxed">
-                To unleash the unique potential of individuals with disabilities
-                through the transformative power of music therapy. We envision a
-                world where every person has access to innovative, compassionate
-                care that empowers them to achieve their fullest potential.
+            <div className="bg-gradient-to-br from-nmtsa-500 to-nmtsa-600 rounded-3xl p-10 lg:p-12 text-white shadow-xl">
+              <div className="flex items-center gap-4 mb-6">
+                <Target className="w-14 h-14" />
+                <h2 className="font-poppins font-bold text-4xl">Our Mission</h2>
+              </div>
+              <p className="text-nmtsa-50 text-lg leading-relaxed">
+                NMTSA partners with those impacted by disability to{" "}
+                <span className="font-semibold text-white">
+                  change lives through using the brain&apos;s response to music
+                </span>
+                , and optimizing body and brain connections.{" "}
+                <span className="font-semibold text-white">
+                  NMTSA assumes the competence of all.
+                </span>
               </p>
             </div>
           </div>
@@ -175,23 +220,136 @@ const AboutPage = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div
                 key={value.title}
-                className="glass-card p-8 text-center rounded-2xl hover:scale-105 transition-transform duration-300"
+                className="glass-card p-8 text-center rounded-2xl hover:scale-105 transition-transform duration-300 flex flex-col"
               >
                 <div className="w-16 h-16 bg-gradient-to-r from-nmtsa-500 to-nmtsa-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <value.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 font-poppins">
+                <h3 className="text-xl font-bold text-gray-900 mb-4 font-poppins min-h-[56px] flex items-center justify-center">
                   {value.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm flex-grow">
                   {value.description}
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
+                Our <span className="gradient-text">Story</span>
+              </h2>
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <p>
+                  Neurologic Music Therapy Services of Arizona&apos;s (NMTSA)
+                  vision is to unleash the unique potential of individuals with
+                  disabilities. NMTSA has provided services to persons with
+                  neurologic impairments (ages 18 months to 75+ years of age)
+                  and their families in the greater Phoenix area since 1982.
+                </p>
+                <p>
+                  NMTSA is nationally recognized for its evidence-based approach
+                  to treatment with persons with neurological impairments, and
+                  children with autism specifically. The company and its staff
+                  maintain a close relationship with research staff from
+                  universities across the country (with emphasis in NMT®,
+                  competency-based communication, inclusion, and psychomotor
+                  regulation/movement disorders) in order to remain current with
+                  best practice approaches for the individuals served.
+                </p>
+              </div>
+            </div>
+            <div className="glass-card overflow-hidden rounded-3xl">
+              <Image
+                src="/images/clinic-staff.avif"
+                alt="NMTSA Clinic Staff"
+                width={600}
+                height={400}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What is NMT */}
+      <section className="py-20 bg-gradient-to-br from-nmtsa-50 to-nmtsa-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
+              What is Neurologic Music Therapy{" "}
+              <span className="gradient-text">(NMT)®</span>?
+            </h2>
+          </div>
+
+          <div className="glass-card p-8 lg:p-12 rounded-3xl">
+            <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
+              <p>
+                Neurologic Music Therapy is an evidence-based treatment system
+                that uses standardized, research-based techniques to treat the
+                brain using specific elements of music such as rhythm, melody,
+                dynamics, tempo, etc.
+              </p>
+              <p>
+                The Neurologic Music Therapist is a stimulus specialist who is
+                trained in the neuroscience of music perception, music
+                production/creation, and music cognition. The Neurologic Music
+                Therapist uses standardized techniques to address non-musical
+                goals such as speech, physical movement, cognition and other
+                functional abilities.
+              </p>
+              <p>
+                The therapist focuses on the music as therapy, emphasizing
+                specific elements of music in the construction of therapeutic
+                exercises as research so indicates, in order to optimize
+                function and/or reroute neuropathways to achieve functionality.
+              </p>
+              <p className="font-semibold text-nmtsa-700">
+                Research has shown that rhythm and music are able to prime
+                motor, cognition, and speech and does so at a subconscious
+                level. Music can be used to help build new connections in the
+                brain (called neuropathways) thus improving brain function and
+                allowing one to lead a more productive and functional life.
+              </p>
+            </div>
+
+            {/* Video Embed - Optional */}
+            <div className="mt-12 grid md:grid-cols-2 gap-8">
+              <div className="aspect-video rounded-xl overflow-hidden">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/i0VXmqjn7po"
+                  title="How the Brain Process Music"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+              <div className="aspect-video rounded-xl overflow-hidden">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/5JR5RKCR_2s"
+                  title="We are NMTSA"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -222,7 +380,11 @@ const AboutPage = () => {
                       alt={member.name}
                       width={128}
                       height={128}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className={`w-full h-full group-hover:scale-110 transition-transform duration-300 ${
+                        member.name === "Matt Valois"
+                          ? "object-cover object-top"
+                          : "object-cover object-center"
+                      }`}
                     />
                   </div>
                   <div className="absolute inset-0 w-32 h-32 mx-auto rounded-full border-4 border-nmtsa-200 group-hover:border-nmtsa-400 transition-colors duration-300"></div>
@@ -236,14 +398,213 @@ const AboutPage = () => {
                   {member.role}
                 </div>
 
-                <div className="text-sm text-nmtsa-500 font-medium mb-4">
+                <div className="text-sm text-nmtsa-500 font-medium">
                   {member.credentials}
                 </div>
+              </div>
+            ))}
+          </div>
 
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {member.bio}
+          {/* Visiting International Clinicians */}
+          {visitingClinicians.length > 0 && (
+            <div className="mt-20">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl lg:text-4xl font-bold font-poppins text-gray-900 mb-4">
+                  Visiting International{" "}
+                  <span className="gradient-text">Clinicians</span>
+                </h3>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  We are honored to host talented clinicians from around the
+                  world
                 </p>
               </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {visitingClinicians.map((clinician, index) => (
+                  <div
+                    key={clinician.name}
+                    className="glass-card p-6 rounded-2xl text-center group hover:shadow-xl transition-all duration-300 border-2 border-nmtsa-200"
+                  >
+                    <div className="relative mb-6">
+                      <div className="w-32 h-32 mx-auto rounded-full overflow-hidden bg-gradient-to-br from-blue-100 to-purple-200">
+                        <Image
+                          src={clinician.image}
+                          alt={clinician.name}
+                          width={128}
+                          height={128}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="absolute inset-0 w-32 h-32 mx-auto rounded-full border-4 border-blue-200 group-hover:border-purple-400 transition-colors duration-300"></div>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 font-poppins">
+                      {clinician.name}
+                    </h3>
+
+                    <div className="text-nmtsa-600 font-semibold mb-2">
+                      {clinician.role}
+                    </div>
+
+                    <div className="text-sm text-nmtsa-500 font-medium mb-2">
+                      {clinician.credentials}
+                    </div>
+
+                    <div className="text-sm text-gray-600 mb-2">
+                      <span className="font-semibold">From:</span>{" "}
+                      {clinician.location}
+                    </div>
+
+                    <div className="text-sm text-gray-600">
+                      <span className="font-semibold">Period:</span>{" "}
+                      {clinician.period}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
+              Insights & <span className="gradient-text">Updates</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Stay informed with the latest research, stories, and insights from
+              the world of neurologic music therapy
+            </p>
+          </div>
+
+          {/* Featured Post */}
+          <div className="glass-card p-8 rounded-2xl mb-12">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="bg-nmtsa-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    Featured
+                  </span>
+                  <span className="bg-nmtsa-100 text-nmtsa-700 px-3 py-1 rounded-full text-sm font-semibold">
+                    Research
+                  </span>
+                </div>
+                <h3 className="text-3xl lg:text-4xl font-bold font-poppins text-gray-900 mb-4">
+                  The Science Behind Music Therapy
+                </h3>
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                  Exploring how music activates neural pathways to promote
+                  healing and recovery in individuals with neurologic
+                  conditions...
+                </p>
+                <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
+                  <div className="flex items-center gap-2">
+                    <User className="w-4 h-4" />
+                    Dr. Sarah Johnson
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4" />
+                    October 5, 2024
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4" />5 min read
+                  </div>
+                </div>
+              </div>
+              <div className="rounded-2xl h-80 overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                  alt="The Science Behind Music Therapy"
+                  width={800}
+                  height={600}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Recent Posts Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Supporting Families Through Music",
+                excerpt:
+                  "How our community programs create lasting impact and provide support for families navigating neurologic challenges...",
+                date: "September 28, 2024",
+                readTime: "3 min read",
+                author: "Maria Rodriguez",
+                category: "Community",
+                image:
+                  "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                title: "New Research in Neurologic Music Therapy",
+                excerpt:
+                  "Latest findings in evidence-based interventions and their applications in clinical practice...",
+                date: "September 20, 2024",
+                readTime: "4 min read",
+                author: "Dr. Michael Chen",
+                category: "Research",
+                image:
+                  "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                title: "Music Therapy Success Stories",
+                excerpt:
+                  "Real stories from our clients and families about transformation through music therapy services...",
+                date: "September 15, 2024",
+                readTime: "6 min read",
+                author: "Lisa Thompson",
+                category: "Stories",
+                image:
+                  "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+              },
+            ].map((post, index) => (
+              <article
+                key={index}
+                className="glass-card p-6 rounded-2xl hover:shadow-lg transition-shadow"
+              >
+                <div className="rounded-xl h-48 overflow-hidden mb-6">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    width={800}
+                    height={600}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="bg-nmtsa-100 text-nmtsa-700 px-3 py-1 rounded-full text-sm font-semibold">
+                    {post.category}
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 mb-3 font-poppins">
+                  {post.title}
+                </h3>
+
+                <p className="text-gray-600 mb-4">{post.excerpt}</p>
+
+                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    {post.date}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    {post.readTime}
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <User className="w-4 h-4" />
+                  {post.author}
+                </div>
+              </article>
             ))}
           </div>
         </div>
