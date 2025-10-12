@@ -31,7 +31,7 @@ export function ContactForm() {
             description="Please provide your contact details"
             icon={<User className="w-5 h-5 text-nmtsa-500" />}
           >
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               <Input
                 label="Your Name"
                 {...form.register('name')}
@@ -49,7 +49,7 @@ export function ContactForm() {
               />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               <Input
                 label="Phone Number"
                 type="tel"

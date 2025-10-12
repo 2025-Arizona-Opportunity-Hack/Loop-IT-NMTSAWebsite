@@ -87,7 +87,7 @@ export function InternshipForm({ onSuccess }: InternshipFormProps = {}) {
               placeholder="John Doe"
             />
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               <Input
                 label="Email Address"
                 type="email"
@@ -114,7 +114,7 @@ export function InternshipForm({ onSuccess }: InternshipFormProps = {}) {
               placeholder="Street address, City, State, ZIP (Optional)"
             />
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               <Input
                 label="University or School Name"
                 {...form.register('schoolName')}
@@ -211,7 +211,7 @@ export function InternshipForm({ onSuccess }: InternshipFormProps = {}) {
               required
             />
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               <Input
                 label="Start Date (estimated)"
                 type="date"
@@ -320,7 +320,7 @@ export function InternshipForm({ onSuccess }: InternshipFormProps = {}) {
               required
             />
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               <Input
                 label="Electronic Signature (type full name)"
                 {...form.register('electronicSignature')}

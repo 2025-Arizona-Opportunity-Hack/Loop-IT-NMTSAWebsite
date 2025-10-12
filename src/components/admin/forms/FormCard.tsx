@@ -20,19 +20,19 @@ export function FormCard({
 }: FormCardProps) {
   return (
     <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-4">
+      <div className="p-4 sm:p-6">
+        <div className="flex items-start justify-between mb-3 sm:mb-4">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
-              <FileText className="w-5 h-5 text-blue-600" />
-              <h3 className="text-lg font-semibold text-gray-900">
+              <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
                 {template.name}
               </h3>
             </div>
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-xs sm:text-sm text-gray-600 mb-2">
               {template.description || "No description"}
             </p>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs text-gray-500">
                 {template.fields.length} fields
               </span>
@@ -51,53 +51,60 @@ export function FormCard({
           </div>
         </div>
 
-        <div className="space-y-2 mb-4">
-          <div className="text-xs text-gray-500">
+        <div className="space-y-2 mb-3 sm:mb-4">
+          <div className="text-xs text-gray-500 break-all">
             <strong>Slug:</strong> {template.slug}
           </div>
           {template.frontend_route && (
-            <div className="text-xs text-gray-500">
+            <div className="text-xs text-gray-500 break-all">
               <strong>Route:</strong> {template.frontend_route}
             </div>
           )}
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <button
             onClick={() => onCopyLink(template.slug, template.frontend_route)}
             className="flex-1 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2 text-sm"
           >
             <Link className="w-4 h-4" />
-            Copy Link
+            <span className="hidden sm:inline">Copy Link</span>
+            <span className="sm:hidden">Link</span>
           </button>
-          <button
-            onClick={() => onEdit(template)}
-            className="p-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"
-          >
-            <Edit className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => onDuplicate(template)}
-            className="p-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"
-          >
-            <Copy className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => onToggleStatus(template.id, template.active)}
-            className="p-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"
-          >
-            {template.active ? (
-              <ToggleRight className="w-4 h-4" />
-            ) : (
-              <ToggleLeft className="w-4 h-4" />
-            )}
-          </button>
-          <button
-            onClick={() => onDelete(template.id)}
-            className="p-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => onEdit(template)}
+              className="flex-1 sm:flex-none p-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"
+              title="Edit"
+            >
+              <Edit className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => onDuplicate(template)}
+              className="flex-1 sm:flex-none p-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"
+              title="Duplicate"
+            >
+              <Copy className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => onToggleStatus(template.id, template.active)}
+              className="flex-1 sm:flex-none p-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"
+              title="Toggle Status"
+            >
+              {template.active ? (
+                <ToggleRight className="w-4 h-4" />
+              ) : (
+                <ToggleLeft className="w-4 h-4" />
+              )}
+            </button>
+            <button
+              onClick={() => onDelete(template.id)}
+              className="flex-1 sm:flex-none p-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200"
+              title="Delete"
+            >
+              <Trash2 className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

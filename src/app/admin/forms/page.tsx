@@ -409,7 +409,7 @@ export default function FormsPage() {
             </div>
 
             {/* Forms Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {loading ? (
                 <div className="col-span-full p-8 text-center text-gray-600">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
@@ -423,23 +423,23 @@ export default function FormsPage() {
                 </div>
               ) : (
                 filteredTemplates.map((template) => (
-                  <div key={template.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+                  <div key={template.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 sm:p-6">
                     <div className="flex items-center gap-2 mb-2">
-                      <FileText className="w-5 h-5 text-blue-600" />
-                      <h3 className="text-lg font-semibold text-gray-900">{template.name}</h3>
+                      <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-900">{template.name}</h3>
                     </div>
-                    <p className="text-sm text-gray-600 mb-2">{template.description || "No description"}</p>
-                    <div className="flex items-center gap-2 mb-4">
+                    <p className="text-xs sm:text-sm text-gray-600 mb-2">{template.description || "No description"}</p>
+                    <div className="flex items-center gap-2 mb-3 sm:mb-4">
                       <span className="text-xs text-gray-500">{template.fields.length} fields</span>
                       <span className={`text-xs px-2 py-1 rounded-full ${template.active ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-600"}`}>
                         {template.active ? "Active" : "Inactive"}
                       </span>
                     </div>
-                    <div className="space-y-2 mb-4 text-xs text-gray-500">
+                    <div className="space-y-2 mb-3 sm:mb-4 text-xs text-gray-500 break-all">
                       <div><strong>Slug:</strong> {template.slug}</div>
                       {template.frontend_route && <div><strong>Route:</strong> {template.frontend_route}</div>}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex flex-col sm:flex-row gap-2">
                       <button
                         onClick={() => copyFormLink(template.slug, template.frontend_route)}
                         className="flex-1 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2 text-sm"
@@ -513,24 +513,24 @@ export default function FormsPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <p className="text-sm text-gray-600 mb-1">Name</p>
-                    <p className="font-medium">{selectedSubmission.name}</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+                    <p className="text-xs sm:text-sm text-gray-600 mb-1">Name</p>
+                    <p className="text-sm sm:text-base font-medium">{selectedSubmission.name}</p>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <p className="text-sm text-gray-600 mb-1">Email</p>
-                    <p className="font-medium break-all">{selectedSubmission.email}</p>
+                  <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+                    <p className="text-xs sm:text-sm text-gray-600 mb-1">Email</p>
+                    <p className="text-sm sm:text-base font-medium break-all">{selectedSubmission.email}</p>
                   </div>
                   {selectedSubmission.phone && (
-                    <div className="bg-gray-50 rounded-lg p-4">
-                      <p className="text-sm text-gray-600 mb-1">Phone</p>
-                      <p className="font-medium">{selectedSubmission.phone}</p>
+                    <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+                      <p className="text-xs sm:text-sm text-gray-600 mb-1">Phone</p>
+                      <p className="text-sm sm:text-base font-medium">{selectedSubmission.phone}</p>
                     </div>
                   )}
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <p className="text-sm text-gray-600 mb-1">Submitted</p>
-                    <p className="font-medium">{new Date(selectedSubmission.created_at).toLocaleString()}</p>
+                  <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+                    <p className="text-xs sm:text-sm text-gray-600 mb-1">Submitted</p>
+                    <p className="text-sm sm:text-base font-medium">{new Date(selectedSubmission.created_at).toLocaleString()}</p>
                   </div>
                 </div>
               </div>
@@ -578,14 +578,14 @@ export default function FormsPage() {
             <div className="p-6 space-y-6">
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-900">Basic Information</h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Form Name *</label>
                     <input
                       type="text"
                       value={editingTemplate.name || ""}
                       onChange={(e) => setEditingTemplate({ ...editingTemplate, name: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                       placeholder="e.g., Contact Form"
                     />
                   </div>
@@ -595,7 +595,7 @@ export default function FormsPage() {
                       type="text"
                       value={editingTemplate.slug || ""}
                       onChange={(e) => setEditingTemplate({ ...editingTemplate, slug: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                       placeholder="e.g., contact"
                     />
                   </div>
@@ -648,14 +648,14 @@ export default function FormsPage() {
                             <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
-                        <div className="grid grid-cols-3 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                           <div>
                             <label className="block text-xs font-medium text-gray-700 mb-1">Name</label>
                             <input
                               type="text"
                               value={field.name}
                               onChange={(e) => updateField(index, { ...field, name: e.target.value })}
-                              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              className="w-full px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                           </div>
                           <div>
@@ -664,7 +664,7 @@ export default function FormsPage() {
                               type="text"
                               value={field.label}
                               onChange={(e) => updateField(index, { ...field, label: e.target.value })}
-                              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              className="w-full px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                           </div>
                           <div>
@@ -672,7 +672,7 @@ export default function FormsPage() {
                             <select
                               value={field.type}
                               onChange={(e) => updateField(index, { ...field, type: e.target.value as any })}
-                              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              className="w-full px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
                               <option value="text">Text</option>
                               <option value="email">Email</option>

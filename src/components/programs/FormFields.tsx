@@ -26,12 +26,12 @@ export function FormSection({
   children,
 }: FormSectionProps) {
   return (
-    <div className={`bg-gradient-to-r ${bgGradient} p-6 rounded-xl`}>
-      <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        {Icon && <Icon className={`w-5 h-5 mr-2 ${iconColor}`} />}
+    <div className={`bg-gradient-to-r ${bgGradient} p-4 sm:p-6 rounded-lg sm:rounded-xl`}>
+      <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 flex items-center">
+        {Icon && <Icon className={`w-4 h-4 sm:w-5 sm:h-5 mr-2 ${iconColor}`} />}
         {title}
       </h4>
-      <div className="space-y-4">{children}</div>
+      <div className="space-y-3 sm:space-y-4">{children}</div>
     </div>
   );
 }
@@ -67,7 +67,7 @@ export function TextInput({
   return (
     <div className={className}>
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm md:text-base font-medium text-gray-700 mb-2">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -77,7 +77,7 @@ export function TextInput({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-nmtsa-500 focus:border-transparent transition-all"
+        className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-nmtsa-500 focus:border-transparent transition-all text-sm sm:text-base"
         required={required}
         disabled={disabled}
       />
@@ -116,7 +116,7 @@ export function Textarea({
   return (
     <div className={className}>
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm md:text-base font-medium text-gray-700 mb-2">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -126,7 +126,7 @@ export function Textarea({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         rows={rows}
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-nmtsa-500 focus:border-transparent resize-none transition-all"
+        className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-nmtsa-500 focus:border-transparent resize-none transition-all text-sm sm:text-base"
         required={required}
         disabled={disabled}
       />
@@ -165,7 +165,7 @@ export function Select({
   return (
     <div className={className}>
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm md:text-base font-medium text-gray-700 mb-2">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -173,7 +173,7 @@ export function Select({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-nmtsa-500 focus:border-transparent transition-all"
+        className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-nmtsa-500 focus:border-transparent transition-all text-sm sm:text-base"
         required={required}
         disabled={disabled}
       >
@@ -231,23 +231,23 @@ export function CheckboxGroup({
 
   const gridCols = {
     1: "grid-cols-1",
-    2: "md:grid-cols-2",
-    3: "md:grid-cols-3",
+    2: "grid-cols-1 md:grid-cols-2",
+    3: "grid-cols-1 md:grid-cols-3",
   };
 
   return (
     <div className={className}>
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-3">
+        <label className="block text-sm md:text-base font-medium text-gray-700 mb-3">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
       )}
-      <div className={`grid ${gridCols[columns]} gap-3`}>
+      <div className={`grid ${gridCols[columns]} gap-2 sm:gap-3`}>
         {options.map((option) => (
           <label
             key={option.value}
-            className="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
+            className="flex items-start space-x-2 sm:space-x-3 p-2 sm:p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
           >
             <input
               type="checkbox"
@@ -257,7 +257,7 @@ export function CheckboxGroup({
               className="mt-1 w-4 h-4 text-nmtsa-500 border-gray-300 rounded focus:ring-nmtsa-500"
             />
             <div className="flex-1">
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-xs sm:text-sm font-medium text-gray-700">
                 {option.label}
               </span>
               {option.description && (
@@ -309,23 +309,23 @@ export function RadioGroup({
 }: RadioGroupProps) {
   const gridCols = {
     1: "grid-cols-1",
-    2: "md:grid-cols-2",
-    3: "md:grid-cols-3",
+    2: "grid-cols-1 md:grid-cols-2",
+    3: "grid-cols-1 md:grid-cols-3",
   };
 
   return (
     <div className={className}>
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-3">
+        <label className="block text-sm md:text-base font-medium text-gray-700 mb-3">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
       )}
-      <div className={`grid ${gridCols[columns]} gap-3`}>
+      <div className={`grid ${gridCols[columns]} gap-2 sm:gap-3`}>
         {options.map((option) => (
           <label
             key={option.value}
-            className="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
+            className="flex items-start space-x-2 sm:space-x-3 p-2 sm:p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
           >
             <input
               type="radio"
@@ -336,7 +336,7 @@ export function RadioGroup({
               className="mt-1 w-4 h-4 text-nmtsa-500 border-gray-300 focus:ring-nmtsa-500"
             />
             <div className="flex-1">
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-xs sm:text-sm font-medium text-gray-700">
                 {option.label}
               </span>
               {option.description && (
@@ -376,12 +376,12 @@ export function SubmitButton({
     <button
       type="submit"
       disabled={isSubmitting}
-      className={`w-full bg-gradient-to-r from-nmtsa-500 to-nmtsa-600 text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 ${className}`}
+      className={`w-full bg-gradient-to-r from-nmtsa-500 to-nmtsa-600 text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 text-sm sm:text-base ${className}`}
     >
       {isSubmitting ? (
         <>
           <svg
-            className="animate-spin h-5 w-5"
+            className="animate-spin h-4 w-4 sm:h-5 sm:w-5"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -431,16 +431,16 @@ export function Grid({
 }: GridProps) {
   const gridCols = {
     1: "grid-cols-1",
-    2: "md:grid-cols-2",
-    3: "md:grid-cols-3",
-    4: "md:grid-cols-4",
+    2: "grid-cols-1 md:grid-cols-2",
+    3: "grid-cols-1 sm:grid-cols-2 md:grid-cols-3",
+    4: "grid-cols-1 sm:grid-cols-2 md:grid-cols-4",
   };
 
   const gridGap = {
     2: "gap-2",
     3: "gap-3",
-    4: "gap-4",
-    6: "gap-6",
+    4: "gap-3 sm:gap-4",
+    6: "gap-4 sm:gap-6",
   };
 
   return (

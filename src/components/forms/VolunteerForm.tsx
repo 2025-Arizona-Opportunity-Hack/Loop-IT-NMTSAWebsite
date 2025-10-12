@@ -121,11 +121,11 @@ export const VolunteerApplicationForm = ({ onClose }: { onClose: () => void }) =
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {submitSuccess && (
-        <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
-          <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+        <div className="bg-green-50 border border-green-200 rounded-lg sm:rounded-xl p-3 sm:p-4 flex items-center gap-2 sm:gap-3">
+          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 flex-shrink-0" />
           <div>
-            <h4 className="font-semibold text-green-900">Application Submitted!</h4>
-            <p className="text-sm text-green-700">
+            <h4 className="font-semibold text-green-900 text-sm sm:text-base">Application Submitted!</h4>
+            <p className="text-xs sm:text-sm text-green-700">
               Thank you for your volunteer application! We&apos;ll review your information and contact you within 3-5 business days.
             </p>
           </div>
@@ -133,11 +133,11 @@ export const VolunteerApplicationForm = ({ onClose }: { onClose: () => void }) =
       )}
 
       {submitError && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
-          <X className="w-6 h-6 text-red-600 flex-shrink-0" />
+        <div className="bg-red-50 border border-red-200 rounded-lg sm:rounded-xl p-3 sm:p-4 flex items-center gap-2 sm:gap-3">
+          <X className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 flex-shrink-0" />
           <div>
-            <h4 className="font-semibold text-red-900">Error</h4>
-            <p className="text-sm text-red-700">{submitError}</p>
+            <h4 className="font-semibold text-red-900 text-sm sm:text-base">Error</h4>
+            <p className="text-xs sm:text-sm text-red-700">{submitError}</p>
           </div>
         </div>
       )}
@@ -367,8 +367,8 @@ export const VolunteerApplicationForm = ({ onClose }: { onClose: () => void }) =
         />
       </FormSection>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-        <p className="text-sm text-blue-900">
+      <div className="bg-blue-50 border border-blue-200 rounded-lg sm:rounded-xl p-3 sm:p-4">
+        <p className="text-xs sm:text-sm text-blue-900">
           <strong>Note:</strong> A background check will be required for all volunteers. We&apos;ll provide details about this process once your application is reviewed.
         </p>
       </div>
