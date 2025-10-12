@@ -138,6 +138,42 @@ export type Database = {
         }
         Relationships: []
       }
+      form_templates: {
+        Row: {
+          id: string
+          name: string
+          slug: string
+          description: string | null
+          fields: Json
+          active: boolean
+          frontend_route: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          slug: string
+          description?: string | null
+          fields: Json
+          active?: boolean
+          frontend_route?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          slug?: string
+          description?: string | null
+          fields?: Json
+          active?: boolean
+          frontend_route?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       intern_hours: {
         Row: {
           id: string
