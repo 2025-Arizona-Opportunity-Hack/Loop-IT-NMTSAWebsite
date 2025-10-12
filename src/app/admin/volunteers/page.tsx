@@ -65,7 +65,10 @@ export default function VolunteersPage() {
   const handleApprove = async (applicationId: string) => {
     const response = await fetch(
       `/api/volunteers/applications/${applicationId}/approve`,
-      { method: "POST" }
+      { 
+        method: "POST",
+        credentials: "include"
+      }
     );
 
     if (response.ok) {
@@ -85,6 +88,7 @@ export default function VolunteersPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ reason: rejectReason }),
+        credentials: "include"
       }
     );
 

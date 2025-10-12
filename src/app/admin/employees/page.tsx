@@ -55,6 +55,7 @@ export default function EmployeesPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ role: "Staff" }), // role is required for employees
+        credentials: "include"
       }
     );
 
@@ -75,6 +76,7 @@ export default function EmployeesPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ reason: rejectReason }),
+        credentials: "include"
       }
     );
 
