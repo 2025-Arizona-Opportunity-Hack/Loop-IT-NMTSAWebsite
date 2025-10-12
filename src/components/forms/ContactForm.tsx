@@ -12,6 +12,7 @@ const subjects = [
   { value: 'insurance', label: 'Insurance/Billing' },
   { value: 'volunteer', label: 'Volunteer Opportunities' },
   { value: 'professional', label: 'Professional Development' },
+  { value: 'employment', label: 'Employment Opportunities' },
   { value: 'media', label: 'Media/Press' },
   { value: 'other', label: 'Other' },
 ];

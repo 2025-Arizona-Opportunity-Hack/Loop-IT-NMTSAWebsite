@@ -59,33 +59,76 @@ const ContactPage = () => {
     setSubmitError(null);
 
     try {
-      // Determine the form_type based on the context
-      let apiFormType = 'contact';
-      if (formType === 'volunteer') {
-        apiFormType = 'volunteer';
+      // Determine the appropriate API endpoint and submission data
+      let apiUrl = '/api/forms';
+      let submissionData: any;
+
+      if (formType === 'employment') {
+        // Use employee applications API
+        apiUrl = '/api/employees/applications';
+        submissionData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          position_applied_for: formData.subject || "General Position",
+          cover_letter: formData.message,
+          metadata: {
+            submittedFrom: 'contact_page',
+            submissionDate: new Date().toISOString(),
+          },
+          status: 'pending',
+        };
+      } else if (formType === 'volunteer') {
+        // Use volunteer applications API
+        apiUrl = '/api/volunteers/applications';
+        submissionData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          reason_for_volunteering: formData.message,
+          metadata: {
+            subject: formData.subject,
+            submittedFrom: 'contact_page',
+            submissionDate: new Date().toISOString(),
+          },
+          status: 'pending',
+        };
       } else if (formType === 'internship') {
-        apiFormType = 'internship';
-      } else if (formType === 'employment') {
-        apiFormType = 'employment';
+        // Use intern applications API
+        apiUrl = '/api/interns/applications';
+        submissionData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          school_name: "Not specified",
+          major: "Not specified",
+          desired_position: formData.subject || "General Internship",
+          cover_letter: formData.message,
+          metadata: {
+            submittedFrom: 'contact_page',
+            submissionDate: new Date().toISOString(),
+          },
+          status: 'pending',
+        };
+      } else {
+        // Use general forms API for contact forms
+        submissionData = {
+          form_type: 'contact',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          message: formData.message,
+          metadata: {
+            subject: formData.subject,
+            formType: formData.formType,
+            submittedFrom: 'contact_page',
+            submissionDate: new Date().toISOString(),
+          },
+        };
       }
 
-      // Prepare the submission data
-      const submissionData = {
-        form_type: apiFormType,
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone || null,
-        message: formData.message,
-        metadata: {
-          subject: formData.subject,
-          formType: formData.formType,
-          submittedFrom: 'contact_page',
-          submissionDate: new Date().toISOString(),
-        },
-      };
-
       // Submit to API
-      const response = await fetch('/api/forms', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -164,6 +207,7 @@ const ContactPage = () => {
     "Insurance/Billing",
     "Volunteer Opportunities",
     "Professional Development",
+    "Employment Opportunities",
     "Media/Press",
     "Other",
   ];
