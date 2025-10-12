@@ -27,10 +27,20 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate form_type
-    const validFormTypes = ['volunteer', 'contact', 'client_inquiry']
+    const validFormTypes = [
+      'contact',
+      'volunteer',
+      'consultation',
+      'internship',
+      'employment',
+      'music_lessons',
+      'service_request',
+      'donation',
+      'corporate_sponsorship'
+    ]
     if (!validFormTypes.includes(form_type)) {
       return NextResponse.json(
-        { error: 'Invalid form_type. Must be one of: volunteer, contact, client_inquiry' },
+        { error: `Invalid form_type. Must be one of: ${validFormTypes.join(', ')}` },
         { status: 400 }
       )
     }
@@ -132,9 +142,20 @@ export async function GET(request: NextRequest) {
 
     // Validate and filter by form_type if provided
     if (form_type) {
-      const validFormTypes = ['volunteer', 'contact', 'client_inquiry']
-      if (validFormTypes.includes(form_type)) {
-        query = query.eq('form_type', form_type as 'volunteer' | 'contact' | 'client_inquiry')
+      const validFormTypes = [
+        'contact',
+        'volunteer',
+        'consultation',
+        'internship',
+        'employment',
+        'music_lessons',
+        'service_request',
+        'donation',
+        'corporate_sponsorship'
+      ] as const
+      type ValidFormType = typeof validFormTypes[number]
+      if (validFormTypes.includes(form_type as ValidFormType)) {
+        query = query.eq('form_type', form_type as ValidFormType)
       }
     }
 

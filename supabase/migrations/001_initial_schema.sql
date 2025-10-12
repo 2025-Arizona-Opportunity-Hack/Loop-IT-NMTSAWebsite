@@ -19,7 +19,17 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TYPE user_role AS ENUM ('admin', 'volunteer', 'user');
 
 -- Form submission types
-CREATE TYPE form_type AS ENUM ('volunteer', 'contact', 'client_inquiry');
+CREATE TYPE form_type AS ENUM (
+  'contact',
+  'volunteer',
+  'consultation',
+  'internship',
+  'employment',
+  'music_lessons',
+  'service_request',
+  'donation',
+  'corporate_sponsorship'
+);
 
 -- Service categories
 CREATE TYPE service_category AS ENUM ('training', 'support', 'resources', 'advocacy');

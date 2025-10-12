@@ -13,7 +13,6 @@ import {
   MapPin,
   FileText,
   Send,
-  X,
   Heart,
   Brain,
   Music,
@@ -23,6 +22,16 @@ import {
   Handshake,
   BookOpen,
 } from "lucide-react";
+import {
+  ProgramFormModal,
+  FormSection,
+  TextInput,
+  RadioGroup,
+  CheckboxGroup,
+  Textarea,
+  SubmitButton,
+  Grid,
+} from "@/components/programs";
 
 const CommunityEducationPage = () => {
   const [showForm, setShowForm] = useState(false);
@@ -532,29 +541,17 @@ const CommunityEducationPage = () => {
       </section>
 
       {/* Form Modal */}
-      {showForm && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between rounded-t-2xl">
-              <h3 className="text-2xl font-bold text-gray-900 font-poppins">
-                Community Education Request
-              </h3>
-              <button
-                onClick={closeForm}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-              >
-                <X className="w-6 h-6 text-gray-500" />
-              </button>
-            </div>
-            <div className="p-6">
-              <CommunityEducationForm
-                onSubmit={handleFormSubmit}
-                onChange={handleInputChange}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      <ProgramFormModal
+        isOpen={showForm}
+        onClose={closeForm}
+        title="Community Education Request"
+        maxWidth="2xl"
+      >
+        <CommunityEducationForm
+          onSubmit={handleFormSubmit}
+          onChange={handleInputChange}
+        />
+      </ProgramFormModal>
     </div>
   );
 };
@@ -566,131 +563,99 @@ const CommunityEducationForm = ({
 }: {
   onSubmit: (e: React.FormEvent) => void;
   onChange: (field: string, value: any) => void;
-}) => (
-  <form onSubmit={onSubmit} className="space-y-6">
-    <div className="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-xl">
-      <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <Users className="w-5 h-5 mr-2 text-emerald-600" />
-        Contact Information
-      </h4>
-      <div className="grid md:grid-cols-2 gap-4">
-        <input
-          type="text"
-          placeholder="Contact Name *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-          onChange={(e) => onChange("name", e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Organization/Community Group *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-          onChange={(e) => onChange("organization", e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email Address *"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-          onChange={(e) => onChange("email", e.target.value)}
-          required
-        />
-        <input
-          type="tel"
-          placeholder="Phone Number"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-          onChange={(e) => onChange("phone", e.target.value)}
-        />
-      </div>
-    </div>
+}) => {
+  const [selectedAudiences, setSelectedAudiences] = useState<string[]>([]);
+  const [programType, setProgramType] = useState("");
 
-    <div className="space-y-4">
-      <h4 className="text-lg font-semibold text-gray-900">Program Type</h4>
-      <div className="space-y-3">
-        {[
-          "Community Workshop",
-          "Public Presentation",
-          "Awareness Campaign",
-          "Custom Program",
-        ].map((type) => (
-          <label
-            key={type}
-            className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
-          >
-            <input
-              type="radio"
-              name="programType"
-              className="w-4 h-4 text-emerald-600 border-gray-300 focus:ring-emerald-500"
-              onChange={() => onChange("programType", type)}
-            />
-            <span className="text-gray-700">{type}</span>
-          </label>
-        ))}
-      </div>
-    </div>
+  return (
+    <form onSubmit={onSubmit} className="space-y-6">
+      <FormSection
+        title="Contact Information"
+        icon={Users}
+        iconColor="text-emerald-600"
+        bgGradient="from-emerald-50 to-teal-50"
+      >
+        <Grid columns={2}>
+          <TextInput
+            placeholder="Contact Name *"
+            onChange={(value) => onChange("name", value)}
+            required
+          />
+          <TextInput
+            placeholder="Organization/Community Group *"
+            onChange={(value) => onChange("organization", value)}
+            required
+          />
+          <TextInput
+            type="email"
+            placeholder="Email Address *"
+            onChange={(value) => onChange("email", value)}
+            required
+          />
+          <TextInput
+            type="tel"
+            placeholder="Phone Number"
+            onChange={(value) => onChange("phone", value)}
+          />
+        </Grid>
+      </FormSection>
 
-    <div className="space-y-4">
-      <h4 className="text-lg font-semibold text-gray-900">
-        Target Audience (Select all that apply)
-      </h4>
-      <div className="grid md:grid-cols-2 gap-3">
-        {[
-          "Families & Caregivers",
-          "Senior Community",
-          "Healthcare Professionals",
-          "General Public",
-        ].map((audience) => (
-          <label
-            key={audience}
-            className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
-          >
-            <input
-              type="checkbox"
-              className="w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
-              onChange={(e) =>
-                onChange(
-                  `audience_${audience.toLowerCase().replace(" ", "_")}`,
-                  e.target.checked
-                )
-              }
-            />
-            <span className="text-gray-700">{audience}</span>
-          </label>
-        ))}
-      </div>
-    </div>
-
-    <div className="grid md:grid-cols-2 gap-4">
-      <input
-        type="date"
-        placeholder="Preferred Date"
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-        onChange={(e) => onChange("preferredDate", e.target.value)}
+      <RadioGroup
+        label="Program Type"
+        options={[
+          { value: "workshop", label: "Community Workshop" },
+          { value: "presentation", label: "Public Presentation" },
+          { value: "campaign", label: "Awareness Campaign" },
+          { value: "custom", label: "Custom Program" },
+        ]}
+        selectedValue={programType}
+        onChange={(value) => {
+          setProgramType(value);
+          onChange("programType", value);
+        }}
+        required
       />
-      <input
-        type="number"
-        placeholder="Expected Attendance"
-        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-        onChange={(e) => onChange("expectedAttendance", e.target.value)}
+
+      <CheckboxGroup
+        label="Target Audience (Select all that apply)"
+        options={[
+          { value: "families", label: "Families & Caregivers" },
+          { value: "seniors", label: "Senior Community" },
+          { value: "healthcare", label: "Healthcare Professionals" },
+          { value: "public", label: "General Public" },
+        ]}
+        selectedValues={selectedAudiences}
+        onChange={(values) => {
+          setSelectedAudiences(values);
+          onChange("audiences", values);
+        }}
+        columns={2}
       />
-    </div>
 
-    <textarea
-      placeholder="Please provide details about your community education needs, specific topics of interest, and any special considerations..."
-      rows={5}
-      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-      onChange={(e) => onChange("details", e.target.value)}
-      required
-    />
+      <Grid columns={2}>
+        <TextInput
+          type="date"
+          label="Preferred Date"
+          onChange={(value) => onChange("preferredDate", value)}
+        />
+        <TextInput
+          type="number"
+          label="Expected Attendance"
+          placeholder="Number of attendees"
+          onChange={(value) => onChange("expectedAttendance", value)}
+        />
+      </Grid>
 
-    <button
-      type="submit"
-      className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold py-4 px-6 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
-    >
-      <Send className="w-5 h-5 mr-2" />
-      Request Community Program
-    </button>
-  </form>
-);
+      <Textarea
+        placeholder="Please provide details about your community education needs, specific topics of interest, and any special considerations..."
+        rows={5}
+        onChange={(value) => onChange("details", value)}
+        required
+      />
+
+      <SubmitButton text="Request Community Program" />
+    </form>
+  );
+};
 
 export default CommunityEducationPage;

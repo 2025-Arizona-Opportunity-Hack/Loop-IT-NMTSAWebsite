@@ -102,7 +102,7 @@ export type Database = {
       form_submissions: {
         Row: {
           id: string
-          form_type: 'volunteer' | 'contact' | 'client_inquiry'
+          form_type: 'contact' | 'volunteer' | 'consultation' | 'internship' | 'employment' | 'music_lessons' | 'service_request' | 'donation' | 'corporate_sponsorship'
           name: string
           email: string
           phone: string | null
@@ -114,7 +114,7 @@ export type Database = {
         }
         Insert: {
           id?: string
-          form_type: 'volunteer' | 'contact' | 'client_inquiry'
+          form_type: 'contact' | 'volunteer' | 'consultation' | 'internship' | 'employment' | 'music_lessons' | 'service_request' | 'donation' | 'corporate_sponsorship'
           name: string
           email: string
           phone?: string | null
@@ -126,7 +126,7 @@ export type Database = {
         }
         Update: {
           id?: string
-          form_type?: 'volunteer' | 'contact' | 'client_inquiry'
+          form_type?: 'contact' | 'volunteer' | 'consultation' | 'internship' | 'employment' | 'music_lessons' | 'service_request' | 'donation' | 'corporate_sponsorship'
           name?: string
           email?: string
           phone?: string | null
@@ -689,7 +689,7 @@ export type Database = {
     }
     Enums: {
       user_role: 'admin' | 'volunteer' | 'user'
-      form_type: 'volunteer' | 'contact' | 'client_inquiry'
+      form_type: 'contact' | 'volunteer' | 'consultation' | 'internship' | 'employment' | 'music_lessons' | 'service_request' | 'donation' | 'corporate_sponsorship'
       service_category: 'training' | 'support' | 'resources' | 'advocacy'
       merchandise_category: 'apparel' | 'accessories' | 'digital' | 'other'
       order_status: 'pending' | 'processing' | 'completed' | 'cancelled'
