@@ -621,3 +621,14 @@ div[class*="bg-white"]:not(nav):not(.glass-navbar):hover {
     transform: translateY(-8px) scale(1.02);
   }
 }
+
+/* Hide scrollbar utility */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
