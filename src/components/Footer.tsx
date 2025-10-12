@@ -27,13 +27,6 @@ const Footer = () => {
     { name: "Community Outreach", href: "/programs#outreach" },
   ];
 
-  const additionalLinks = [
-    { name: "Blog", href: "/blog" },
-    { name: "Resources", href: "#" },
-    { name: "Research", href: "#" },
-    { name: "Training", href: "#" },
-  ];
-
   return (
     <footer
       className="bg-gray-900 text-white"
@@ -102,7 +95,7 @@ const Footer = () => {
         </section>
 
         {/* Main Footer Content */}
-        <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 mb-8">
+        <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-8">
           {/* Company Info */}
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="flex items-center mb-4">
@@ -198,33 +191,6 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2" role="list">
               {programLinks.map((link) => (
-                <li key={link.name} role="listitem">
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-white focus:text-white
-                             focus:outline-none focus:underline 
-                             transition-all duration-250 inline-block py-1
-                             touch-target-text"
-                    style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Resources */}
-          <nav className="xs:col-span-1" aria-labelledby="resources-heading">
-            <h3
-              id="resources-heading"
-              className="font-semibold mb-4 font-poppins"
-              style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
-            >
-              Resources
-            </h3>
-            <ul className="space-y-2" role="list">
-              {additionalLinks.map((link) => (
                 <li key={link.name} role="listitem">
                   <Link
                     href={link.href}

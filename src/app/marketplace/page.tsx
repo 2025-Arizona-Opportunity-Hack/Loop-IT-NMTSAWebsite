@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -33,6 +33,7 @@ interface Product {
   description: string;
   sizes: string[];
   colors: string[];
+  shopifyVariantId?: string; // Optional: Map to actual Shopify variant IDs
 }
 
 interface CartItem extends Product {
@@ -117,6 +118,24 @@ export default function Marketplace() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [shopifyStoreUrl, setShopifyStoreUrl] = useState<string>("");
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  // Fetch Shopify store URL from settings
+  useEffect(() => {
+    const fetchShopifyUrl = async () => {
+      try {
+        const response = await fetch("/api/settings?key=shopify_store_url");
+        if (response.ok) {
+          const data = await response.json();
+          setShopifyStoreUrl(data.setting_value || "");
+        }
+      } catch (error) {
+        console.error("Error fetching Shopify URL:", error);
+      }
+    };
+    fetchShopifyUrl();
+  }, []);
 
   const filteredProducts =
     selectedCategory === "All"
@@ -176,6 +195,52 @@ export default function Marketplace() {
 
   // Get cart count
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Handle Shopify checkout
+  const handleCheckout = () => {
+    if (!shopifyStoreUrl) {
+      alert("Shopify store is not configured. Please contact support.");
+      return;
+    }
+
+    if (cart.length === 0) {
+      alert("Your cart is empty. Please add items before checking out.");
+      return;
+    }
+
+    setIsCheckingOut(true);
+
+    try {
+      // Remove trailing slash from store URL if present
+      const baseUrl = shopifyStoreUrl.replace(/\/$/, "");
+
+      // Build Shopify checkout URL with cart items
+      // Shopify cart URL format: https://store.myshopify.com/cart/VARIANT_ID:QUANTITY,VARIANT_ID:QUANTITY
+      // Note: In production, replace product IDs with actual Shopify variant IDs
+      // You can add shopifyVariantId to each product in the database
+
+      const cartItems = cart
+        .map((item) => {
+          // Use shopifyVariantId if available, otherwise fall back to product ID
+          const variantId = item.shopifyVariantId || `${item.id}`;
+          return `${variantId}:${item.quantity}`;
+        })
+        .join(",");
+
+      // Construct the Shopify checkout URL
+      const checkoutUrl = `${baseUrl}/cart/${cartItems}`;
+
+      // Log for debugging (remove in production)
+      console.log("Redirecting to Shopify checkout:", checkoutUrl);
+
+      // Redirect to Shopify checkout
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      alert("There was an error processing your checkout. Please try again.");
+      setIsCheckingOut(false);
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -325,9 +390,23 @@ export default function Marketplace() {
                     </div>
                   </div>
                 </div>
-                <button className="w-full bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold py-3 rounded-full hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl">
-                  Proceed to Checkout
+                <button
+                  onClick={handleCheckout}
+                  disabled={isCheckingOut || !shopifyStoreUrl}
+                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold py-3 rounded-full hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  title={
+                    !shopifyStoreUrl ? "Shopify checkout is not configured" : ""
+                  }
+                >
+                  {isCheckingOut
+                    ? "Redirecting to Checkout..."
+                    : "Proceed to Checkout"}
                 </button>
+                {!shopifyStoreUrl && (
+                  <p className="text-xs text-center text-red-600 mt-2">
+                    Checkout is currently unavailable. Please contact support.
+                  </p>
+                )}
                 <button
                   onClick={() => setIsCartOpen(false)}
                   className="w-full mt-2 bg-white text-gray-700 font-medium py-3 rounded-full border border-gray-300 hover:bg-gray-50 transition-colors"
@@ -342,6 +421,23 @@ export default function Marketplace() {
       {/* Hero Section */}
       <section className="relative py-16 lg:py-20 bg-gradient-to-br from-indigo-600 via-indigo-650 to-purple-700 text-white overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+
+        {/* Shopify Status Indicator (for debugging - remove in production) */}
+        {process.env.NODE_ENV === "development" && (
+          <div className="absolute top-4 right-4 z-10">
+            <div
+              className={`px-3 py-1 rounded-full text-xs font-medium ${
+                shopifyStoreUrl
+                  ? "bg-green-500 text-white"
+                  : "bg-red-500 text-white"
+              }`}
+            >
+              {shopifyStoreUrl
+                ? "✓ Shopify Connected"
+                : "✗ Shopify Not Configured"}
+            </div>
+          </div>
+        )}
 
         <div className="container-responsive relative">
           {/* Back to Donate Link */}

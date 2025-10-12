@@ -57,10 +57,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-18 lg:h-20">
             {/* Logo - with 25px margin from left using Tailwind */}
             <div className="flex items-center flex-shrink-0 ml-6">
-              <Link
-                href="/"
-                className="flex items-center rounded-2xl p-2 transition-all duration-500 ease-out hover:scale-110 hover:bg-white/15 hover:shadow-lg nav-hover-pop"
-              >
+              <Link href="/" className="flex items-center">
                 <Image
                   src="/images/NMTSA Logo-2.png"
                   alt="NMTSA"
