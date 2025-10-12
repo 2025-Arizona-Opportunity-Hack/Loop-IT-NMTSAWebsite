@@ -23,6 +23,10 @@ import {
   CreditCard,
   User,
   UserCheck,
+  ShoppingBag,
+  Shirt,
+  Coffee,
+  Star,
 } from "lucide-react";
 
 export default function Donate() {
@@ -45,6 +49,176 @@ export default function Donate() {
             Neurologic Music Therapy. Explore the ways you can support NMTSA
             below.
           </p>
+        </div>
+      </section>
+
+      {/* Merchandise Marketplace */}
+      <section className="py-16 lg:py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="container-responsive">
+          <div className="text-center mb-12">
+            <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <ShoppingBag className="w-8 h-8 text-white" />
+            </div>
+            <span className="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">
+              🛍️ Merchandise Marketplace
+            </span>
+            <h2 className="font-bold font-poppins text-gray-900 mb-6 text-3xl sm:text-4xl lg:text-5xl">
+              Shop for a <span className="gradient-text">Cause</span>
+            </h2>
+            <p className="text-gray-600 max-w-4xl mx-auto text-lg sm:text-xl leading-relaxed">
+              Support NMTSA by purchasing branded merchandise! Every purchase
+              helps fund our music therapy programs while spreading awareness of
+              our mission in the community.
+            </p>
+          </div>
+
+          {/* Featured Products */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="glass-card p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-105">
+                <Shirt className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="font-bold text-gray-900 mb-3 text-xl">
+                Apparel & Accessories
+              </h3>
+              <p className="text-gray-600 mb-4">
+                T-shirts, hoodies, tote bags, and more featuring the NMTSA logo
+                and inspiring messages.
+              </p>
+              <div className="flex items-center justify-center text-sm text-gray-500 mb-4">
+                <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                <span>Quality materials • Comfortable fit</span>
+              </div>
+            </div>
+
+            <div className="glass-card p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-105">
+                <Coffee className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="font-bold text-gray-900 mb-3 text-xl">
+                Drinkware & Home
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Mugs, water bottles, and home decor items to show your support
+                for music therapy.
+              </p>
+              <div className="flex items-center justify-center text-sm text-gray-500 mb-4">
+                <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                <span>Dishwasher safe • Durable design</span>
+              </div>
+            </div>
+
+            <div className="glass-card p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-105">
+                <Gift className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="font-bold text-gray-900 mb-3 text-xl">
+                Gift Items
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Perfect gifts for music therapy supporters, including branded
+                stationery and collectibles.
+              </p>
+              <div className="flex items-center justify-center text-sm text-gray-500 mb-4">
+                <Star className="w-4 h-4 text-yellow-400 mr-1" />
+                <span>Thoughtful gifts • Support included</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Benefits & Impact */}
+          <div className="grid lg:grid-cols-2 gap-12 mb-12">
+            <div className="glass-card p-8 rounded-2xl">
+              <h3 className="font-bold text-gray-900 mb-6 text-xl">
+                Why Shop Our Merchandise?
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-gray-600">
+                    Every purchase directly supports music therapy programs
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-gray-600">
+                    High-quality products with meaningful designs
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-gray-600">
+                    Spread awareness about neurologic music therapy
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-gray-600">
+                    Perfect gifts for friends, family, and music lovers
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="glass-card p-8 rounded-2xl bg-gradient-to-br from-indigo-50 to-indigo-100 border-2 border-indigo-200">
+              <h3 className="font-bold text-gray-900 mb-4 text-xl">
+                Shopping Made Easy
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Browse our full collection online with secure checkout, fast
+                shipping, and excellent customer service. Your purchase makes a
+                difference!
+              </p>
+
+              <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 mb-6">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="font-medium text-gray-700">
+                    🚚 Free shipping on orders over $50
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-sm mt-2">
+                  <span className="font-medium text-gray-700">
+                    🔄 Easy returns within 30 days
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-sm mt-2">
+                  <span className="font-medium text-gray-700">
+                    💝 Gift wrapping available
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl p-8 sm:p-12 text-white">
+            <div className="max-w-3xl mx-auto">
+              <h3 className="text-2xl sm:text-3xl font-bold font-poppins mb-4">
+                Ready to Shop & Support?
+              </h3>
+              <p className="text-indigo-100 mb-8 text-lg leading-relaxed">
+                Visit our online merchandise store to browse the full
+                collection. Every purchase helps us continue providing
+                life-changing music therapy services.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <Link
+                  href="/marketplace"
+                  className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full inline-flex items-center justify-center hover:bg-indigo-50 transition-colors"
+                >
+                  <ShoppingBag className="w-5 h-5 mr-2" />
+                  Shop Merchandise
+                </Link>
+                <Link
+                  href="/contact?form=custom-order"
+                  className="border-2 border-white text-white font-semibold px-6 py-3 rounded-full inline-flex items-center justify-center hover:bg-white hover:text-indigo-600 transition-colors"
+                >
+                  <Mail className="w-5 h-5 mr-2" />
+                  Custom Orders
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
