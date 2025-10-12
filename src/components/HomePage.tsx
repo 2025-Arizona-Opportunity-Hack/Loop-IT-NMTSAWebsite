@@ -121,12 +121,6 @@ const HomePage = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-nmtsa-50 via-nmtsa-100 to-nmtsa-200">
         {/* Hero Content */}
         <div className="container-responsive text-center py-20">
-          <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full font-medium text-nmtsa-600 shadow-lg text-responsive-sm">
-              ✨ Transforming Lives Since 1982
-            </span>
-          </div>
-
           <h1 className="font-poppins font-bold text-gray-900 mb-6 leading-tight text-responsive-4xl">
             Unleashing <span className="gradient-text">Unique Potential</span>
             <br />
@@ -166,20 +160,6 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <button
-          type="button"
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer rounded-full p-2 transition-all duration-300 hover:bg-white/20"
-          onClick={scrollToSection}
-        >
-          <div className="flex flex-col items-center text-gray-600">
-            <span className="mb-2 font-medium text-responsive-base">
-              Learn More
-            </span>
-            <ChevronDown className="w-6 h-6 animate-gentle-float" />
-          </div>
-        </button>
       </section>
 
       {/* About Preview Section */}
@@ -190,20 +170,12 @@ const HomePage = () => {
               <span className="inline-block px-4 py-2 bg-nmtsa-100 text-nmtsa-700 rounded-full font-semibold mb-6 text-responsive-base">
                 About NMTSA
               </span>
-              <h2 className="font-bold font-poppins text-gray-900 mb-6 text-responsive-3xl">
-                Transforming Lives Through{" "}
-                <span className="gradient-text">Music</span>
-              </h2>
               <p className="text-gray-600 mb-8 leading-relaxed text-responsive-lg">
                 Since 1982, Neurologic Music Therapy Services of Arizona has
                 been dedicated to unleashing the unique potential of individuals
                 with disabilities through evidence-based music therapy
                 interventions.
               </p>
-              <Link href="/about" className="btn-primary group">
-                <ArrowRight className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
-                Learn More About Us
-              </Link>
             </div>
 
             <div className="relative order-1 lg:order-2">
@@ -253,13 +225,6 @@ const HomePage = () => {
                 <p className="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
                   {program.description}
                 </p>
-                <Link
-                  href="/programs"
-                  className="text-nmtsa-600 font-medium hover:text-nmtsa-700 inline-flex items-center transition-all duration-250 text-sm sm:text-base group"
-                >
-                  Learn More
-                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </Link>
               </article>
             ))}
           </div>
@@ -337,14 +302,21 @@ const HomePage = () => {
       </section>
 
       {/* Get Involved Highlights */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-nmtsa-600 to-nmtsa-700 text-white">
-        <div className="container-responsive">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-nmtsa-600 via-nmtsa-650 to-nmtsa-700 text-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+
+        <div className="container-responsive relative">
           <header className="text-center mb-8 lg:mb-12">
+            <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-4 border border-white/20">
+              Opportunities
+            </span>
             <h2 className="font-bold font-poppins mb-4 text-2xl sm:text-3xl lg:text-4xl">
               Get <span className="text-nmtsa-200">Involved</span>
             </h2>
-            <p className="text-nmtsa-100 max-w-2xl mx-auto text-base sm:text-lg">
-              Join our mission and make a meaningful impact
+            <p className="text-nmtsa-100 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+              Join our mission and make a meaningful impact in the lives of
+              individuals with neurologic impairments
             </p>
           </header>
 
@@ -352,24 +324,34 @@ const HomePage = () => {
             {getInvolvedOptions.map((option, index) => (
               <article
                 key={option.title}
-                className="bg-white/10 backdrop-blur-sm p-4 sm:p-6 rounded-xl text-center hover:bg-white/15 transition-all duration-300 group"
+                className="get-involved-card p-6 sm:p-8 rounded-2xl text-center transition-all duration-300 group"
               >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-[1.05]">
-                  <option.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/30 to-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:scale-[1.05] group-hover:from-white/40 group-hover:to-white/20 shadow-lg">
+                  <option.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-sm" />
                 </div>
-                <h3 className="font-bold mb-3 font-poppins text-lg sm:text-xl">
+                <h3 className="font-bold mb-4 font-poppins text-xl sm:text-2xl text-white drop-shadow-sm">
                   {option.title}
                 </h3>
-                <p className="text-nmtsa-100 mb-4 text-sm sm:text-base leading-relaxed">
+                <p className="text-nmtsa-100 mb-6 text-base sm:text-lg leading-relaxed">
                   {option.description}
                 </p>
-                <Link
-                  href={option.link}
-                  className="bg-white text-nmtsa-600 font-medium px-4 py-2 sm:px-6 sm:py-3 rounded-full hover:bg-nmtsa-50 transition-all duration-300 inline-flex items-center text-sm sm:text-base group"
-                >
-                  Learn More
-                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                <div className="flex flex-col gap-3">
+                  <button
+                    className="form-btn-white text-nmtsa-600 font-semibold px-6 py-3 rounded-full text-base sm:text-lg group/btn"
+                    onClick={() => {
+                      // Create form URL based on the option type
+                      const formUrl =
+                        option.title === "Volunteer"
+                          ? "/contact?form=volunteer"
+                          : option.title === "Internship"
+                          ? "/contact?form=internship"
+                          : "/contact?form=employment";
+                      window.location.href = formUrl;
+                    }}
+                  >
+                    Apply for {option.title}
+                  </button>
+                </div>
               </article>
             ))}
           </div>
