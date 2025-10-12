@@ -35,15 +35,17 @@ const Footer = () => {
   ];
 
   return (
-    <footer
-      className="bg-gray-900 text-white"
-      role="contentinfo"
-      aria-label="Site footer"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <div className="bottom-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pb-4 bg-gradient-to-br from-nmtsa-50 via-nmtsa-100 to-nmtsa-200">
+      <footer
+        className="relative transition-all duration-500"
+        role="contentinfo"
+        aria-label="Site footer"
+      >
+        <div className="relative w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
+          <div className="max-w-7xl mx-auto">
         {/* Newsletter Section */}
         <section
-          className="bg-gradient-to-r from-nmtsa-600 to-nmtsa-700 rounded-2xl p-6 sm:p-8 mb-12"
+          className="bg-gradient-to-r from-nmtsa-600 to-nmtsa-700 rounded-2xl p-6 sm:p-8 mb-10 shadow-lg"
           aria-labelledby="newsletter-heading"
         >
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
@@ -102,9 +104,9 @@ const Footer = () => {
         </section>
 
         {/* Main Footer Content */}
-        <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-10">
           {/* Company Info */}
-          <div className="sm:col-span-2 lg:col-span-2">
+          <div>
             <div className="flex items-center mb-4">
               <Link
                 href="/"
@@ -122,7 +124,7 @@ const Footer = () => {
               </Link>
             </div>
             <p
-              className="text-gray-400 mb-6 leading-relaxed"
+              className="text-gray-700 mb-6 leading-relaxed"
               style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
             >
               Unleashing unique potential through neurologic music therapy since
@@ -135,10 +137,10 @@ const Footer = () => {
             >
               <a
                 href="#"
-                className="touch-target bg-nmtsa-500 rounded-full flex items-center justify-center 
-                         hover:bg-nmtsa-600 focus:bg-nmtsa-600 
+                className="touch-target bg-nmtsa-600 rounded-full flex items-center justify-center 
+                         hover:bg-nmtsa-700 focus:bg-nmtsa-700 
                          focus:outline-none focus:ring-4 focus:ring-nmtsa-400 focus:ring-opacity-50
-                         transition-all duration-250"
+                         transition-all duration-250 shadow-md hover:shadow-lg text-white"
                 style={{ width: "44px", height: "44px" }}
                 aria-label="Follow NMTSA on Facebook"
                 role="listitem"
@@ -147,10 +149,10 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="touch-target bg-nmtsa-500 rounded-full flex items-center justify-center 
-                         hover:bg-nmtsa-600 focus:bg-nmtsa-600 
+                className="touch-target bg-nmtsa-600 rounded-full flex items-center justify-center 
+                         hover:bg-nmtsa-700 focus:bg-nmtsa-700 
                          focus:outline-none focus:ring-4 focus:ring-nmtsa-400 focus:ring-opacity-50
-                         transition-all duration-250"
+                         transition-all duration-250 shadow-md hover:shadow-lg text-white"
                 style={{ width: "44px", height: "44px" }}
                 aria-label="Watch NMTSA videos on YouTube"
                 role="listitem"
@@ -160,93 +162,96 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <nav className="xs:col-span-1" aria-labelledby="quick-links-heading">
-            <h3
-              id="quick-links-heading"
-              className="font-semibold mb-4 font-poppins"
-              style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
-            >
-              Quick Links
-            </h3>
-            <ul className="space-y-2" role="list">
-              {quickLinks.map((link) => (
-                <li key={link.name} role="listitem">
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-white focus:text-white
-                             focus:outline-none focus:underline 
-                             transition-all duration-250 inline-block py-1
-                             touch-target-text"
-                    style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Quick Links, Programs, and Resources */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {/* Quick Links */}
+            <nav aria-labelledby="quick-links-heading">
+              <h3
+                id="quick-links-heading"
+                className="font-semibold mb-4 font-poppins"
+                style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
+              >
+                Quick Links
+              </h3>
+              <ul className="space-y-2" role="list">
+                {quickLinks.map((link) => (
+                  <li key={link.name} role="listitem">
+                    <Link
+                      href={link.href}
+                      className="text-gray-700 hover:text-nmtsa-600 focus:text-nmtsa-600
+                               focus:outline-none focus:underline 
+                               transition-all duration-250 inline-block py-1
+                               touch-target-text"
+                      style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-          {/* Programs */}
-          <nav className="xs:col-span-1" aria-labelledby="programs-heading">
-            <h3
-              id="programs-heading"
-              className="font-semibold mb-4 font-poppins"
-              style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
-            >
-              Programs
-            </h3>
-            <ul className="space-y-2" role="list">
-              {programLinks.map((link) => (
-                <li key={link.name} role="listitem">
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-white focus:text-white
-                             focus:outline-none focus:underline 
-                             transition-all duration-250 inline-block py-1
-                             touch-target-text"
-                    style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            {/* Programs */}
+            <nav aria-labelledby="programs-heading">
+              <h3
+                id="programs-heading"
+                className="font-semibold mb-4 font-poppins"
+                style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
+              >
+                Programs
+              </h3>
+              <ul className="space-y-2" role="list">
+                {programLinks.map((link) => (
+                  <li key={link.name} role="listitem">
+                    <Link
+                      href={link.href}
+                      className="text-gray-700 hover:text-nmtsa-600 focus:text-nmtsa-600
+                               focus:outline-none focus:underline 
+                               transition-all duration-250 inline-block py-1
+                               touch-target-text"
+                      style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-          {/* Resources */}
-          <nav className="xs:col-span-1" aria-labelledby="resources-heading">
-            <h3
-              id="resources-heading"
-              className="font-semibold mb-4 font-poppins"
-              style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
-            >
-              Resources
-            </h3>
-            <ul className="space-y-2" role="list">
-              {additionalLinks.map((link) => (
-                <li key={link.name} role="listitem">
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-white focus:text-white
-                             focus:outline-none focus:underline 
-                             transition-all duration-250 inline-block py-1
-                             touch-target-text"
-                    style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            {/* Resources */}
+            <nav className="col-span-2 lg:col-span-1" aria-labelledby="resources-heading">
+              <h3
+                id="resources-heading"
+                className="font-semibold mb-4 font-poppins"
+                style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
+              >
+                Resources
+              </h3>
+              <ul className="space-y-2" role="list">
+                {additionalLinks.map((link) => (
+                  <li key={link.name} role="listitem">
+                    <Link
+                      href={link.href}
+                      className="text-gray-700 hover:text-nmtsa-600 focus:text-nmtsa-600
+                               focus:outline-none focus:underline 
+                               transition-all duration-250 inline-block py-1
+                               touch-target-text"
+                      style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
 
         {/* Contact Info & Legal */}
-        <div className="border-t border-gray-800 pt-6 sm:pt-8">
+        <div className="border-t border-gray-300/50 pt-8">
           {/* Contact Information */}
           <section
-            className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8"
+            className="grid grid-cols-2 lg:flex lg:items-center lg:justify-between gap-4 lg:gap-6 mb-8"
             aria-labelledby="contact-info-heading"
           >
             <h2 id="contact-info-heading" className="sr-only">
@@ -255,11 +260,11 @@ const Footer = () => {
 
             <div className="flex items-center space-x-3 touch-target-text">
               <MapPin
-                className="w-5 h-5 text-nmtsa-400 flex-shrink-0"
+                className="w-5 h-5 text-nmtsa-600 flex-shrink-0"
                 aria-hidden="true"
               />
               <span
-                className="text-gray-400"
+                className="text-gray-700"
                 style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
               >
                 Phoenix, Arizona
@@ -268,12 +273,12 @@ const Footer = () => {
 
             <div className="flex items-center space-x-3 touch-target-text">
               <Phone
-                className="w-5 h-5 text-nmtsa-400 flex-shrink-0"
+                className="w-5 h-5 text-nmtsa-600 flex-shrink-0"
                 aria-hidden="true"
               />
               <a
                 href="tel:+16027176400"
-                className="text-gray-400 hover:text-white focus:text-white
+                className="text-gray-700 hover:text-nmtsa-600 focus:text-nmtsa-600
                          focus:outline-none focus:underline transition-all duration-250"
                 style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
                 aria-label="Call NMTSA at 6 0 2 7 1 7 6 4 0 0"
@@ -282,14 +287,14 @@ const Footer = () => {
               </a>
             </div>
 
-            <div className="flex items-center space-x-3 touch-target-text">
+            <div className="flex items-center space-x-3 touch-target-text col-span-2 lg:col-span-1">
               <Mail
-                className="w-5 h-5 text-nmtsa-400 flex-shrink-0"
+                className="w-5 h-5 text-nmtsa-600 flex-shrink-0"
                 aria-hidden="true"
               />
               <a
                 href="mailto:info@nmtsa.org"
-                className="text-gray-400 hover:text-white focus:text-white
+                className="text-gray-700 hover:text-nmtsa-600 focus:text-nmtsa-600
                          focus:outline-none focus:underline transition-all duration-250"
                 style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)" }}
                 aria-label="Email NMTSA at info@nmtsa.org"
@@ -300,9 +305,9 @@ const Footer = () => {
           </section>
 
           {/* Legal Footer */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-6 border-t border-gray-800 gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-6 border-t border-gray-300/50 gap-4">
             <p
-              className="text-gray-400 order-2 sm:order-1"
+              className="text-gray-600 order-2 sm:order-1"
               style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.875rem)" }}
             >
               © 2025 Neurologic Music Therapy Services of Arizona. All rights
@@ -314,7 +319,7 @@ const Footer = () => {
             >
               <Link
                 href="#"
-                className="text-gray-400 hover:text-white focus:text-white
+                className="text-gray-700 hover:text-nmtsa-600 focus:text-nmtsa-600
                          focus:outline-none focus:underline 
                          transition-all duration-250 touch-target-text"
                 style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.875rem)" }}
@@ -323,7 +328,7 @@ const Footer = () => {
               </Link>
               <Link
                 href="#"
-                className="text-gray-400 hover:text-white focus:text-white
+                className="text-gray-700 hover:text-nmtsa-600 focus:text-nmtsa-600
                          focus:outline-none focus:underline 
                          transition-all duration-250 touch-target-text"
                 style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.875rem)" }}
@@ -333,8 +338,10 @@ const Footer = () => {
             </nav>
           </div>
         </div>
-      </div>
-    </footer>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 };
 
