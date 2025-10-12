@@ -126,9 +126,9 @@ export async function submitVolunteerForm(data: VolunteerFormData) {
 export async function submitDonationForm(data: DonationFormData) {
   const supabase = createClient();
 
-  // Save to form_submissions
+  // Save to form_submissions with correct form_type
   const submission = await saveFormSubmission(
-    'contact', // Using 'contact' as closest match
+    'donation',
     data.name,
     data.email,
     data.phone,
@@ -176,14 +176,13 @@ export async function submitDonationForm(data: DonationFormData) {
 
 export async function submitServiceRequestForm(data: ServiceRequestFormData) {
   await saveFormSubmission(
-    'contact',
+    'service_request',
     data.contactName,
     data.contactEmail,
     data.contactPhone,
     data.goalDetails,
     {
       fullData: data,
-      formType: 'service_request',
     }
   );
 }
@@ -195,16 +194,15 @@ export async function submitServiceRequestForm(data: ServiceRequestFormData) {
 export async function submitInternshipForm(data: InternshipFormData) {
   const supabase = createClient();
 
-  // Save to form_submissions
+  // Save to form_submissions with correct form_type
   const submission = await saveFormSubmission(
-    'contact',
+    'internship',
     data.fullName,
     data.email,
     data.phone,
     data.whyIntern,
     {
       fullData: data,
-      formType: 'internship_application',
       academic: {
         school: data.schoolName,
         major: data.major,
@@ -249,14 +247,13 @@ export async function submitEmploymentForm(data: EmploymentFormData) {
   // Only save to form_submissions for employment applications
   // The employees table is for actual employees, not applicants
   return await saveFormSubmission(
-    'contact',
+    'employment',
     data.fullName,
     data.email,
     data.phone,
     data.additionalInfo,
     {
       fullData: data,
-      formType: 'employment_application',
     }
   );
 }
@@ -267,14 +264,13 @@ export async function submitEmploymentForm(data: EmploymentFormData) {
 
 export async function submitMusicLessonsForm(data: MusicLessonsFormData): Promise<void> {
   await saveFormSubmission(
-    'contact',
+    'music_lessons',
     data.studentName,
     data.email,
     data.phone,
     data.specialNeeds,
     {
       fullData: data,
-      formType: 'music_lessons',
     }
   );
 }
@@ -285,14 +281,13 @@ export async function submitMusicLessonsForm(data: MusicLessonsFormData): Promis
 
 export async function submitConsultationForm(data: ConsultationFormData) {
   await saveFormSubmission(
-    'volunteer',
+    'consultation',
     data.fullName,
     data.email,
     data.phone,
     data.description,
     {
       fullData: data,
-      formType: 'volunteer_consultation',
       organization: data.organization,
       job_title: data.jobTitle,
       consultation_type: data.consultationType,
@@ -314,14 +309,13 @@ export async function submitConsultationForm(data: ConsultationFormData) {
 
 export async function submitCorporateSponsorshipForm(data: CorporateSponsorshipFormData) {
   await saveFormSubmission(
-    'contact',
+    'corporate_sponsorship',
     data.contactName,
     data.contactEmail,
     data.contactPhone,
     data.partnershipGoals,
     {
       fullData: data,
-      formType: 'corporate_sponsorship',
     }
   );
 }

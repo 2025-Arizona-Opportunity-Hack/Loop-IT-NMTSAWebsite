@@ -6,9 +6,12 @@ import { z } from 'zod';
 
 // Base schemas for common fields
 export const emailSchema = z.string().email('Please enter a valid email address');
-export const phoneSchema = z.string().regex(/^[\d\s\-\(\)]+$/, 'Please enter a valid phone number').optional().or(z.literal(''));
+export const phoneSchema = z.string().min(1, 'Phone number is required');
+export const optionalPhoneSchema = z.string().optional().or(z.literal(''));
 export const nameSchema = z.string().min(2, 'Name must be at least 2 characters');
 export const messageSchema = z.string().min(10, 'Message must be at least 10 characters');
+export const optionalStringSchema = z.string().optional().or(z.literal(''));
+export const urlSchema = z.string().url('Please enter a valid URL').optional().or(z.literal(''));
 
 // ============================================
 // CONTACT FORMS
@@ -17,7 +20,7 @@ export const messageSchema = z.string().min(10, 'Message must be at least 10 cha
 export const contactFormSchema = z.object({
   name: nameSchema,
   email: emailSchema,
-  phone: phoneSchema,
+  phone: optionalPhoneSchema,
   subject: z.string().min(1, 'Please select a subject'),
   message: messageSchema,
 });
@@ -32,13 +35,13 @@ export const volunteerFormSchema = z.object({
   // Personal Information
   fullName: nameSchema,
   email: emailSchema,
-  phone: z.string().min(10, 'Phone number is required'),
+  phone: phoneSchema,
   address: z.string().min(5, 'Address is required'),
   dateOfBirth: z.string().min(1, 'Date of birth is required'),
   
   // Emergency Contact
   emergencyContactName: nameSchema,
-  emergencyContactPhone: z.string().min(10, 'Emergency contact phone is required'),
+  emergencyContactPhone: phoneSchema,
   emergencyContactRelationship: z.string().min(1, 'Relationship is required'),
   
   // Availability
@@ -47,9 +50,9 @@ export const volunteerFormSchema = z.object({
   hoursPerWeek: z.number().min(4, 'Minimum 4 hours per week').max(40),
   
   // Experience
-  previousExperience: z.string(),
+  previousExperience: optionalStringSchema,
   skills: z.array(z.string()).min(1, 'Select at least one skill'),
-  musicalInstruments: z.string(),
+  musicalInstruments: optionalStringSchema,
   whyVolunteer: z.string().min(50, 'Please provide at least 50 characters'),
   
   // Agreements
@@ -71,13 +74,13 @@ export const donationFormSchema = z.object({
   donorType: z.enum(['individual', 'organization']),
   name: nameSchema,
   email: emailSchema,
-  phone: phoneSchema,
+  phone: optionalPhoneSchema,
   amount: z.number().min(1, 'Amount must be at least $1'),
   donationType: z.enum(['one-time', 'monthly']),
   isAnonymous: z.boolean().default(false),
-  inHonorOf: z.string().optional(),
-  message: z.string().optional(),
-  mailingAddress: z.string().optional(),
+  inHonorOf: optionalStringSchema,
+  message: optionalStringSchema,
+  mailingAddress: optionalStringSchema,
 });
 
 export type DonationFormData = z.infer<typeof donationFormSchema>;
@@ -90,19 +93,19 @@ export const serviceRequestFormSchema = z.object({
   // Contact Information
   contactName: nameSchema,
   contactEmail: emailSchema,
-  contactPhone: z.string().min(10, 'Phone number is required'),
+  contactPhone: phoneSchema,
   relationshipToClient: z.string().min(1, 'Please specify your relationship'),
   
   // Client Information
   clientName: nameSchema,
   clientAge: z.number().min(0).max(150),
-  clientDOB: z.string().optional(),
+  clientDOB: optionalStringSchema,
   
   // Medical Information
   primaryDiagnosis: z.string().min(1, 'Please select a diagnosis'),
   diagnosisDetails: z.string().min(10, 'Please provide additional details'),
-  diagnosisDate: z.string().optional(),
-  currentMedications: z.string().optional(),
+  diagnosisDate: optionalStringSchema,
+  currentMedications: optionalStringSchema,
   
   // Therapy Goals
   therapyGoals: z.array(z.string()).min(1, 'Select at least one goal'),
@@ -115,14 +118,14 @@ export const serviceRequestFormSchema = z.object({
   
   // Insurance
   hasInsurance: z.boolean(),
-  insuranceProvider: z.string().optional(),
-  policyNumber: z.string().optional(),
-  insurancePhone: z.string().optional(),
+  insuranceProvider: optionalStringSchema,
+  policyNumber: optionalStringSchema,
+  insurancePhone: optionalStringSchema,
   
   // Additional
   howDidYouHear: z.string().min(1, 'Please let us know how you found us'),
-  mobilityNeeds: z.string().optional(),
-  additionalComments: z.string().optional(),
+  mobilityNeeds: optionalStringSchema,
+  additionalComments: optionalStringSchema,
 });
 
 export type ServiceRequestFormData = z.infer<typeof serviceRequestFormSchema>;
@@ -135,27 +138,27 @@ export const internshipFormSchema = z.object({
   // Section 1: Personal Information
   fullName: nameSchema,
   email: emailSchema,
-  phone: z.string().min(10, 'Phone number is required'),
-  address: z.string().optional(),
+  phone: phoneSchema,
+  address: optionalStringSchema,
   
   // Academic Information
   schoolName: z.string().min(1, 'School name is required'),
   major: z.string().min(1, 'Major/program is required'),
   academicYear: z.string().min(1, 'Please select your academic year'),
-  academicYearOther: z.string().optional(),
+  academicYearOther: optionalStringSchema,
   
   // Section 2: Internship Details
   internshipTypes: z.array(z.string()).min(1, 'Select at least one focus area'),
-  internshipTypeOther: z.string().optional(),
+  internshipTypeOther: optionalStringSchema,
   desiredTerm: z.string().min(1, 'Please select desired internship term'),
-  startDate: z.string().optional(),
-  endDate: z.string().optional(),
-  hoursRequired: z.string().optional(),
+  startDate: optionalStringSchema,
+  endDate: optionalStringSchema,
+  hoursRequired: optionalStringSchema,
   
   // Section 3: Experience & Goals
   whyIntern: z.string().min(20, 'Please provide at least 20 characters'),
   learningGoals: z.string().min(20, 'Please provide at least 20 characters'),
-  relevantExperience: z.string().optional(),
+  relevantExperience: optionalStringSchema,
   priorExperience: z.string().min(1, 'Please select an option'),
   
   // Section 4: Availability & Logistics
@@ -181,14 +184,14 @@ export const employmentFormSchema = z.object({
   // Personal
   fullName: nameSchema,
   email: emailSchema,
-  phone: z.string().min(10, 'Phone number is required'),
-  linkedinProfile: z.string().url('Please enter a valid LinkedIn URL').optional().or(z.literal('')),
+  phone: phoneSchema,
+  linkedinProfile: urlSchema,
   
   // Qualifications
   highestDegree: z.enum(['bachelors', 'masters', 'doctorate', 'other']),
   fieldOfStudy: z.string().min(1, 'Field of study is required'),
   isBoardCertified: z.enum(['yes', 'no', 'in_progress']),
-  certificationNumber: z.string().optional(),
+  certificationNumber: optionalStringSchema,
   hasArizonaLicense: z.enum(['yes', 'no', 'will_obtain']),
   yearsExperience: z.number().min(0),
   
@@ -199,7 +202,7 @@ export const employmentFormSchema = z.object({
   // Position
   positionType: z.enum(['full-time', 'part-time', 'contract', 'per-diem']),
   desiredStartDate: z.string().min(1, 'Desired start date is required'),
-  salaryExpectations: z.string().optional(),
+  salaryExpectations: optionalStringSchema,
   
   // Availability
   availableEvenings: z.enum(['yes', 'no', 'sometimes']),
@@ -207,7 +210,7 @@ export const employmentFormSchema = z.object({
   
   // Additional
   howDidYouHear: z.string().min(1, 'Please let us know how you found this position'),
-  additionalInfo: z.string().optional(),
+  additionalInfo: optionalStringSchema,
 });
 
 export type EmploymentFormData = z.infer<typeof employmentFormSchema>;
@@ -220,14 +223,14 @@ export const musicLessonsFormSchema = z.object({
   studentName: nameSchema,
   studentAge: z.number().min(1).max(150),
   email: emailSchema,
-  phone: z.string().min(10, 'Phone number is required'),
-  parentGuardianName: z.string().optional(),
+  phone: phoneSchema,
+  parentGuardianName: optionalStringSchema,
   
-  previousExperience: z.string(),
+  previousExperience: optionalStringSchema,
   preferredInstrument: z.string().min(1, 'Please select an instrument'),
   preferredDays: z.array(z.string()).min(1, 'Select at least one day'),
   preferredTime: z.string().min(1, 'Select a preferred time'),
-  specialNeeds: z.string().optional(),
+  specialNeeds: optionalStringSchema,
 });
 
 export type MusicLessonsFormData = z.infer<typeof musicLessonsFormSchema>;
@@ -240,23 +243,23 @@ export const consultationFormSchema = z.object({
   // Section 1: Contact Information
   fullName: nameSchema,
   organization: z.string().min(1, 'Organization name is required'),
-  jobTitle: z.string().optional(),
+  jobTitle: optionalStringSchema,
   email: emailSchema,
-  phone: z.string().min(10, 'Phone number is required'),
+  phone: phoneSchema,
   
   // Section 2: Consultation Details
   consultationType: z.string().min(1, 'Please select consultation type'),
-  consultationTypeOther: z.string().optional(),
+  consultationTypeOther: optionalStringSchema,
   description: z.string().min(20, 'Please provide at least 20 characters'),
   preferredFormat: z.string().min(1, 'Please select preferred format'),
-  preferredDates: z.string().optional(),
-  estimatedParticipants: z.string().optional(),
+  preferredDates: optionalStringSchema,
+  estimatedParticipants: optionalStringSchema,
   
   // Section 3: Additional Information
   previousAttendance: z.string().min(1, 'Please select an option'),
   howDidYouHear: z.string().min(1, 'Please let us know how you heard about this'),
-  howDidYouHearOther: z.string().optional(),
-  additionalNotes: z.string().optional(),
+  howDidYouHearOther: optionalStringSchema,
+  additionalNotes: optionalStringSchema,
 });
 
 export type ConsultationFormData = z.infer<typeof consultationFormSchema>;
@@ -269,34 +272,34 @@ export const corporateSponsorshipFormSchema = z.object({
   // Company
   companyName: z.string().min(1, 'Company name is required'),
   industry: z.string().min(1, 'Industry is required'),
-  companyWebsite: z.string().url('Please enter a valid URL').optional().or(z.literal('')),
-  companyAddress: z.string(),
+  companyWebsite: urlSchema,
+  companyAddress: optionalStringSchema,
   
   // Contact
   contactName: nameSchema,
   contactTitle: z.string().min(1, 'Title/position is required'),
   contactEmail: emailSchema,
-  contactPhone: z.string().min(10, 'Phone number is required'),
+  contactPhone: phoneSchema,
   
   // Sponsorship
   sponsorshipLevel: z.string().min(1, 'Please select a sponsorship level'),
   areasOfInterest: z.array(z.string()).min(1, 'Select at least one area'),
   partnershipGoals: z.string().min(50, 'Please describe your goals'),
-  specificCauses: z.string().optional(),
-  csrPriorities: z.string().optional(),
+  specificCauses: optionalStringSchema,
+  csrPriorities: optionalStringSchema,
   
   // Recognition
   recognitionPreferences: z.array(z.string()).min(1, 'Select at least one preference'),
   employeeEngagement: z.array(z.string()),
   
   // Timeline
-  preferredStartDate: z.string().optional(),
+  preferredStartDate: optionalStringSchema,
   budgetCycle: z.string().min(1, 'Budget cycle is required'),
   decisionTimeline: z.string().min(1, 'Decision timeline is required'),
   
   // Additional
   howDidYouHear: z.string().min(1, 'Please let us know how you found us'),
-  additionalQuestions: z.string().optional(),
+  additionalQuestions: optionalStringSchema,
 });
 
 export type CorporateSponsorshipFormData = z.infer<typeof corporateSponsorshipFormSchema>;
