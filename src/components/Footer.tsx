@@ -127,7 +127,7 @@ const Footer = () => {
               aria-label="Social media links"
             >
               <a
-                href="#"
+                href="https://www.facebook.com/nmtsa"
                 className="touch-target bg-nmtsa-500 rounded-full flex items-center justify-center 
                          hover:bg-nmtsa-600 focus:bg-nmtsa-600 
                          focus:outline-none focus:ring-4 focus:ring-nmtsa-400 focus:ring-opacity-50
@@ -139,7 +139,7 @@ const Footer = () => {
                 <Facebook className="w-5 h-5" aria-hidden="true" />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/user/nmtsaz/videos"
                 className="touch-target bg-nmtsa-500 rounded-full flex items-center justify-center 
                          hover:bg-nmtsa-600 focus:bg-nmtsa-600 
                          focus:outline-none focus:ring-4 focus:ring-nmtsa-400 focus:ring-opacity-50
