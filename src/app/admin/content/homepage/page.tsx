@@ -1,7 +1,7 @@
 "use client";
 
 import AdminLayout from "@/components/admin/AdminLayout";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { 
   Save, 
@@ -458,11 +458,7 @@ export default function HomePageContentManagement() {
     }
   ];
 
-  useEffect(() => {
-    loadContent();
-  }, []);
-
-  const loadContent = async () => {
+  const loadContent = useCallback(async () => {
     setLoading(true);
     try {
       const supabase = createClient();
@@ -486,7 +482,11 @@ export default function HomePageContentManagement() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadContent();
+  }, [loadContent]);
 
   const handleSave = async (pageKey: string, value: string, isMetadata: boolean = false) => {
     setSaving(pageKey);

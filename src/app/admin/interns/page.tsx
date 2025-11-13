@@ -1,7 +1,7 @@
 "use client";
 
 import AdminLayout from "@/components/admin/AdminLayout";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
 import {
   Plus,
@@ -30,11 +30,7 @@ export default function InternsPage() {
   const [showModal, setShowModal] = useState(false);
   const [rejectReason, setRejectReason] = useState("");
 
-  useEffect(() => {
-    loadData();
-  }, [activeTab]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     const supabase = createClient();
 
@@ -58,7 +54,11 @@ export default function InternsPage() {
       }
     }
     setLoading(false);
-  };
+  }, [activeTab]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const handleApprove = async (applicationId: string) => {
     const response = await fetch(

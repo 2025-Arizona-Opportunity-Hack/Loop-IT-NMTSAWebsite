@@ -1,8 +1,9 @@
 "use client";
 
 import AdminLayout from "@/components/admin/AdminLayout";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
+import Image from "next/image";
 import {
   Plus,
   Search,
@@ -32,11 +33,7 @@ export default function VolunteersPage() {
   const [showModal, setShowModal] = useState(false);
   const [rejectReason, setRejectReason] = useState("");
 
-  useEffect(() => {
-    loadData();
-  }, [activeTab]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     const supabase = createClient();
 
@@ -60,7 +57,11 @@ export default function VolunteersPage() {
       }
     }
     setLoading(false);
-  };
+  }, [activeTab]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const handleApprove = async (applicationId: string) => {
     const response = await fetch(
@@ -327,10 +328,12 @@ export default function VolunteersPage() {
                         <td className="py-4 px-6">
                           <div className="flex items-center space-x-3">
                             {volunteer.image_url ? (
-                              <img
+                              <Image
                                 src={volunteer.image_url}
                                 alt={volunteer.name}
-                                className="w-10 h-10 rounded-full object-cover"
+                                width={40}
+                                height={40}
+                                className="rounded-full object-cover"
                               />
                             ) : (
                               <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
