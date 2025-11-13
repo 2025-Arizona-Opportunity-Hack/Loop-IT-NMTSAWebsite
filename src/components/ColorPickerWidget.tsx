@@ -126,6 +126,7 @@ export default function ColorPickerWidget() {
         selectedElement.tagName
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedElement]);
 
   // Load colors from localStorage on mount
@@ -373,6 +374,7 @@ export default function ColorPickerWidget() {
       document.removeEventListener("click", handleElementClick, true);
       document.removeEventListener("mousemove", handleElementHover);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSelectionMode]);
 
   // Reset all colors
@@ -456,8 +458,8 @@ export default function ColorPickerWidget() {
               Background Color Picker
             </h3>
             <p className="text-sm text-gray-600">
-              Click "Select Element" to choose any section and change its{" "}
-              <strong>background color</strong>
+              Click &quot;Select Element&quot; to choose any section and change
+              its <strong>background color</strong>
             </p>
           </div>
 
@@ -544,7 +546,7 @@ export default function ColorPickerWidget() {
             <div className="text-center py-8">
               <Palette className="w-16 h-16 mx-auto mb-4 text-gray-300" />
               <p className="text-gray-500 text-sm">
-                Click "Select Element" above to start picking colors
+                Click &quot;Select Element&quot; above to start picking colors
               </p>
             </div>
           )}
