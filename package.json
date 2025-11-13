@@ -17,6 +17,7 @@
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.908.0",
     "@hookform/resolvers": "^5.2.2",
+    "@jaames/iro": "^5.5.2",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.75.0",
     "framer-motion": "^12.23.24",

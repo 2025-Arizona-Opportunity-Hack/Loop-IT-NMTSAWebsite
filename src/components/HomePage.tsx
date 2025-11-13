@@ -25,12 +25,17 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
-import { useContent, getContentValue, getMetadataArray, getMetadataValue } from "@/lib/hooks/useContent";
+import {
+  useContent,
+  getContentValue,
+  getMetadataArray,
+  getMetadataValue,
+} from "@/lib/hooks/useContent";
 import MusicalLoader from "./MusicalLoader";
 
 const HomePage = () => {
   // Fetch all homepage content
-  const { contentMap, loading } = useContent({ page: 'home' });
+  const { contentMap, loading } = useContent({ page: "home" });
 
   // Show loader while content is loading
   if (loading) {
@@ -111,47 +116,123 @@ const HomePage = () => {
   ];
 
   // Get content from CMS or use defaults
-  const heroTitle = getContentValue(contentMap['home_hero_title'], 'Unleashing Unique Potential Through Music Therapy');
-  const heroSubtitle = getContentValue(contentMap['home_hero_subtitle'], 'NMTSA provides comprehensive music therapy services to individuals with neurologic impairments and their families in the greater Phoenix area, creating positive change through the power of music.');
-  
-  const stats = getMetadataArray(contentMap['home_stats'], 'stats', defaultStats);
-  const programs = getMetadataArray(contentMap['home_programs'], 'programs', defaultPrograms);
-  const testimonials = getMetadataArray(contentMap['home_testimonials'], 'testimonials', defaultTestimonials);
+  const heroTitle = getContentValue(
+    contentMap["home_hero_title"],
+    "Unleashing Unique Potential Through Music Therapy"
+  );
+  const heroSubtitle = getContentValue(
+    contentMap["home_hero_subtitle"],
+    "NMTSA provides comprehensive music therapy services to individuals with neurologic impairments and their families in the greater Phoenix area, creating positive change through the power of music."
+  );
+
+  const stats = getMetadataArray(
+    contentMap["home_stats"],
+    "stats",
+    defaultStats
+  );
+  const programs = getMetadataArray(
+    contentMap["home_programs"],
+    "programs",
+    defaultPrograms
+  );
+  const testimonials = getMetadataArray(
+    contentMap["home_testimonials"],
+    "testimonials",
+    defaultTestimonials
+  );
 
   // About Preview Section
-  const aboutPreviewBadge = getContentValue(contentMap['home_about_preview_badge'], 'About NMTSA');
-  const aboutPreviewHeading = getContentValue(contentMap['home_about_preview_heading'], 'Unleashing the Unique Potential of Individuals with Disabilities');
-  const aboutPreviewDescription = getContentValue(contentMap['home_about_preview_text'], 'Since 1982, NMTSA has provided services to persons with neurologic impairments (ages 18 months to 75+ years) and their families in the greater Phoenix area, using evidence-based neurologic music therapy.');
-  const aboutPreviewButtonText = getContentValue(contentMap['home_about_preview_button_text'], 'Learn More About Us');
-  const aboutPreviewText = getContentValue(contentMap['home_about_preview_text'], 'Since 1982, Neurologic Music Therapy Services of Arizona has been dedicated to unleashing the unique potential of individuals with disabilities through evidence-based music therapy interventions.');
-  const aboutPreviewImage = getContentValue(contentMap['home_about_preview_image'], 'https://static.wixstatic.com/media/072f2d_a15cb6cb61a74ff8956322ba1d5028f1.jpg/v1/fill/w_600,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_MG_1270_JPG.jpg');
+  const aboutPreviewBadge = getContentValue(
+    contentMap["home_about_preview_badge"],
+    "About NMTSA"
+  );
+  const aboutPreviewHeading = getContentValue(
+    contentMap["home_about_preview_heading"],
+    "Unleashing the Unique Potential of Individuals with Disabilities"
+  );
+  const aboutPreviewDescription = getContentValue(
+    contentMap["home_about_preview_text"],
+    "Since 1982, NMTSA has provided services to persons with neurologic impairments (ages 18 months to 75+ years) and their families in the greater Phoenix area, using evidence-based neurologic music therapy."
+  );
+  const aboutPreviewButtonText = getContentValue(
+    contentMap["home_about_preview_button_text"],
+    "Learn More About Us"
+  );
+  const aboutPreviewText = getContentValue(
+    contentMap["home_about_preview_text"],
+    "Since 1982, Neurologic Music Therapy Services of Arizona has been dedicated to unleashing the unique potential of individuals with disabilities through evidence-based music therapy interventions."
+  );
+  const aboutPreviewImage = getContentValue(
+    contentMap["home_about_preview_image"],
+    "https://static.wixstatic.com/media/072f2d_a15cb6cb61a74ff8956322ba1d5028f1.jpg/v1/fill/w_600,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_MG_1270_JPG.jpg"
+  );
 
   // Programs Overview Section
-  const programsBadge = getContentValue(contentMap['home_programs_badge'], 'Our Programs');
-  const programsHeading = getContentValue(contentMap['home_programs_heading'], 'Comprehensive Services');
-  const programsSubtitle = getContentValue(contentMap['home_programs_subtitle'], 'Evidence-based programs designed to meet diverse needs');
+  const programsBadge = getContentValue(
+    contentMap["home_programs_badge"],
+    "Our Programs"
+  );
+  const programsHeading = getContentValue(
+    contentMap["home_programs_heading"],
+    "Comprehensive Services"
+  );
+  const programsSubtitle = getContentValue(
+    contentMap["home_programs_subtitle"],
+    "Evidence-based programs designed to meet diverse needs"
+  );
 
   // Request Service Section
-  const requestServiceHeading = getContentValue(contentMap['home_request_service_heading'], 'Ready to Transform Your Life with Music?');
-  const requestServiceIntro = getContentValue(contentMap['home_request_service_intro'], 'Join hundreds of families who have experienced the life-changing power of music therapy.');
-  const requestServiceTitle = getContentValue(contentMap['home_request_service_title'], 'Ready to Get Started?');
-  const requestServiceDescription = getContentValue(contentMap['home_request_service_description'], 'Take the first step towards transformation. Our team is here to guide you through our services and find the perfect program for your needs.');
-  
+  const requestServiceHeading = getContentValue(
+    contentMap["home_request_service_heading"],
+    "Ready to Transform Your Life with Music?"
+  );
+  const requestServiceIntro = getContentValue(
+    contentMap["home_request_service_intro"],
+    "Join hundreds of families who have experienced the life-changing power of music therapy."
+  );
+  const requestServiceTitle = getContentValue(
+    contentMap["home_request_service_title"],
+    "Ready to Get Started?"
+  );
+  const requestServiceDescription = getContentValue(
+    contentMap["home_request_service_description"],
+    "Take the first step towards transformation. Our team is here to guide you through our services and find the perfect program for your needs."
+  );
+
   const defaultQuickStats = [
     { icon: "Clock", label: "2-minute", description: "consultation form" },
     { icon: "CheckCircle", label: "24-hour", description: "response time" },
-    { icon: "Users", label: "12 families", description: "started this month" }
+    { icon: "Users", label: "12 families", description: "started this month" },
   ];
-  const quickStats = getMetadataArray(contentMap['home_request_service_quick_stats'], 'stats', defaultQuickStats);
-  
-  const requestServicePhone = getContentValue(contentMap['home_request_service_phone'], '(602) 588-7631');
-  const requestServicePhoneLabel = getContentValue(contentMap['home_request_service_phone_label'], 'Have questions? Call us today');
+  const quickStats = getMetadataArray(
+    contentMap["home_request_service_quick_stats"],
+    "stats",
+    defaultQuickStats
+  );
+
+  const requestServicePhone = getContentValue(
+    contentMap["home_request_service_phone"],
+    "(602) 588-7631"
+  );
+  const requestServicePhoneLabel = getContentValue(
+    contentMap["home_request_service_phone_label"],
+    "Have questions? Call us today"
+  );
 
   // Get Involved Section
-  const getInvolvedBadge = getContentValue(contentMap['home_get_involved_badge'], 'Opportunities');
-  const getInvolvedTitle = getContentValue(contentMap['home_get_involved_title'], 'Get Involved');
-  const getInvolvedSubtitle = getContentValue(contentMap['home_get_involved_subtitle'], 'Join our mission and make a meaningful impact in the lives of individuals with neurologic impairments');
-  
+  const getInvolvedBadge = getContentValue(
+    contentMap["home_get_involved_badge"],
+    "Opportunities"
+  );
+  const getInvolvedTitle = getContentValue(
+    contentMap["home_get_involved_title"],
+    "Get Involved"
+  );
+  const getInvolvedSubtitle = getContentValue(
+    contentMap["home_get_involved_subtitle"],
+    "Join our mission and make a meaningful impact in the lives of individuals with neurologic impairments"
+  );
+
   const defaultGetInvolvedOptions = [
     {
       icon: Heart,
@@ -172,15 +253,25 @@ const HomePage = () => {
       link: "/contact",
     },
   ];
-  const getInvolvedOptions = getMetadataArray(contentMap['home_get_involved_options'], 'options', defaultGetInvolvedOptions);
+  const getInvolvedOptions = getMetadataArray(
+    contentMap["home_get_involved_options"],
+    "options",
+    defaultGetInvolvedOptions
+  );
 
   // Use testimonials from CMS (already defined earlier)
   // const testimonials is already defined from contentMap['home_testimonials']
 
   // Trust & Credibility Section
-  const trustSectionTitle = getContentValue(contentMap['home_trust_section_title'], 'Why Choose NMTSA?');
-  const trustSectionSubtitle = getContentValue(contentMap['home_trust_section_subtitle'], 'Trusted by families across Arizona for evidence-based music therapy');
-  
+  const trustSectionTitle = getContentValue(
+    contentMap["home_trust_section_title"],
+    "Why Choose NMTSA?"
+  );
+  const trustSectionSubtitle = getContentValue(
+    contentMap["home_trust_section_subtitle"],
+    "Trusted by families across Arizona for evidence-based music therapy"
+  );
+
   const defaultTrustBuilders = [
     {
       icon: "Award",
@@ -203,25 +294,40 @@ const HomePage = () => {
       description: "Delivering consistent outcomes",
     },
   ];
-  const trustBuilders = getMetadataArray(contentMap['home_trust_builders'], 'trustBuilders', defaultTrustBuilders);
+  const trustBuilders = getMetadataArray(
+    contentMap["home_trust_builders"],
+    "trustBuilders",
+    defaultTrustBuilders
+  );
 
   const defaultTrustSignals = {
     servingLabel: "Proudly Serving",
     signals: [
       { icon: "MapPin", text: "Greater Phoenix Area" },
       { icon: "Award", text: "Board-Certified Staff" },
-      { icon: "CheckCircle", text: "Evidence-Based Approach" }
-    ]
+      { icon: "CheckCircle", text: "Evidence-Based Approach" },
+    ],
   };
-  const trustSignalsData = contentMap['home_trust_signals']?.metadata || defaultTrustSignals;
-  const trustServingLabel = trustSignalsData.servingLabel || defaultTrustSignals.servingLabel;
+  const trustSignalsData =
+    contentMap["home_trust_signals"]?.metadata || defaultTrustSignals;
+  const trustServingLabel =
+    trustSignalsData.servingLabel || defaultTrustSignals.servingLabel;
   const trustSignals = trustSignalsData.signals || defaultTrustSignals.signals;
 
   // Process / How It Works Section
-  const processTitle = getContentValue(contentMap['home_process_title'], 'How Music Therapy Works');
-  const processSubtitle = getContentValue(contentMap['home_process_subtitle'], 'Your journey with NMTSA: Simple, professional, and transformative');
-  const processCTAText = getContentValue(contentMap['home_process_cta_text'], 'Ready to start your transformation journey?');
-  
+  const processTitle = getContentValue(
+    contentMap["home_process_title"],
+    "How Music Therapy Works"
+  );
+  const processSubtitle = getContentValue(
+    contentMap["home_process_subtitle"],
+    "Your journey with NMTSA: Simple, professional, and transformative"
+  );
+  const processCTAText = getContentValue(
+    contentMap["home_process_cta_text"],
+    "Ready to start your transformation journey?"
+  );
+
   const defaultProcessSteps = [
     {
       number: "01",
@@ -254,70 +360,133 @@ const HomePage = () => {
       icon: "TrendingUp",
     },
   ];
-  const processSteps = getMetadataArray(contentMap['home_process_steps'], 'steps', defaultProcessSteps);
+  const processSteps = getMetadataArray(
+    contentMap["home_process_steps"],
+    "steps",
+    defaultProcessSteps
+  );
 
   // Donate Section
-  const donateTitle = getContentValue(contentMap['home_donate_title'], 'Transform Lives Through Music');
-  const donateDescription = getContentValue(contentMap['home_donate_description'], 'Your support helps us provide life-changing music therapy services to individuals with neurologic impairments and their families.');
-  
+  const donateTitle = getContentValue(
+    contentMap["home_donate_title"],
+    "Transform Lives Through Music"
+  );
+  const donateDescription = getContentValue(
+    contentMap["home_donate_description"],
+    "Your support helps us provide life-changing music therapy services to individuals with neurologic impairments and their families."
+  );
+
   const defaultDonateImpact = [
     { amount: "$50", description: "One therapy session" },
     { amount: "$100", description: "Two therapy sessions" },
     { amount: "$250", description: "Five therapy sessions" },
     { amount: "$500", description: "Full month of therapy" },
   ];
-  
-  const donateImpact = getMetadataArray(contentMap['home_donate_impact'], 'impactCards', defaultDonateImpact);
-  const whyChooseNMTSA = getContentValue(contentMap['home_donate_why_choose'], 'Why Choose NMTSA?');
+
+  const donateImpact = getMetadataArray(
+    contentMap["home_donate_impact"],
+    "impactCards",
+    defaultDonateImpact
+  );
+  const whyChooseNMTSA = getContentValue(
+    contentMap["home_donate_why_choose"],
+    "Why Choose NMTSA?"
+  );
 
   // Testimonials Section
-  const testimonialsBadge = getContentValue(contentMap['home_testimonials_badge'], 'Testimonials');
-  const testimonialsHeading = getContentValue(contentMap['home_testimonials_heading'], 'Stories of Transformation');
-  const testimonialsSubtitle = getContentValue(contentMap['home_testimonials_subtitle'], 'Hear from families, clients, and healthcare professionals');
-  
-  const defaultOverallRating = { rating: 5.0, maxRating: 5, reviewCount: "120+" };
-  const overallRatingData = contentMap['home_testimonials_overall_rating']?.metadata || defaultOverallRating;
+  const testimonialsBadge = getContentValue(
+    contentMap["home_testimonials_badge"],
+    "Testimonials"
+  );
+  const testimonialsHeading = getContentValue(
+    contentMap["home_testimonials_heading"],
+    "Stories of Transformation"
+  );
+  const testimonialsSubtitle = getContentValue(
+    contentMap["home_testimonials_subtitle"],
+    "Hear from families, clients, and healthcare professionals"
+  );
+
+  const defaultOverallRating = {
+    rating: 5.0,
+    maxRating: 5,
+    reviewCount: "120+",
+  };
+  const overallRatingData =
+    contentMap["home_testimonials_overall_rating"]?.metadata ||
+    defaultOverallRating;
   const overallRating = overallRatingData.rating || defaultOverallRating.rating;
-  const maxRating = overallRatingData.maxRating || defaultOverallRating.maxRating;
-  const reviewCount = overallRatingData.reviewCount || defaultOverallRating.reviewCount;
-  
-  const testimonialsScrollHint = getContentValue(contentMap['home_testimonials_scroll_hint'], '← Swipe to see more testimonials →');
+  const maxRating =
+    overallRatingData.maxRating || defaultOverallRating.maxRating;
+  const reviewCount =
+    overallRatingData.reviewCount || defaultOverallRating.reviewCount;
+
+  const testimonialsScrollHint = getContentValue(
+    contentMap["home_testimonials_scroll_hint"],
+    "← Swipe to see more testimonials →"
+  );
 
   // Blog Section
-  const blogBadge = getContentValue(contentMap['home_blog_badge'], 'Latest News');
-  const blogHeading = getContentValue(contentMap['home_blog_heading'], 'From Our Blog');
-  const blogSubtitle = getContentValue(contentMap['home_blog_subtitle'], 'Stay updated with the latest insights, research, and stories from NMTSA');
-  
+  const blogBadge = getContentValue(
+    contentMap["home_blog_badge"],
+    "Latest News"
+  );
+  const blogHeading = getContentValue(
+    contentMap["home_blog_heading"],
+    "From Our Blog"
+  );
+  const blogSubtitle = getContentValue(
+    contentMap["home_blog_subtitle"],
+    "Stay updated with the latest insights, research, and stories from NMTSA"
+  );
+
   const defaultBlogPosts = [
     {
       title: "The Science Behind Music Therapy",
-      excerpt: "Exploring how music activates neural pathways to promote healing...",
+      excerpt:
+        "Exploring how music activates neural pathways to promote healing...",
       date: "Oct 5, 2024",
       readTime: "5 min read",
-      link: "/blog"
+      link: "/blog",
     },
     {
       title: "Supporting Families Through Music",
       excerpt: "How our community programs create lasting impact...",
       date: "Sep 28, 2024",
       readTime: "3 min read",
-      link: "/blog"
+      link: "/blog",
     },
     {
       title: "New Research in Neurologic Music Therapy",
       excerpt: "Latest findings in evidence-based interventions...",
       date: "Sep 20, 2024",
       readTime: "4 min read",
-      link: "/blog"
+      link: "/blog",
     },
   ];
-  const blogPosts = getMetadataArray(contentMap['home_blog_posts'], 'posts', defaultBlogPosts);
+  const blogPosts = getMetadataArray(
+    contentMap["home_blog_posts"],
+    "posts",
+    defaultBlogPosts
+  );
 
   // Final CTA Section
-  const finalCTATitle = getContentValue(contentMap['home_final_cta_title'], 'Ready to Begin Your Journey?');
-  const finalCTADescription = getContentValue(contentMap['home_final_cta_description'], 'Whether you\'re seeking music therapy services, want to get involved, or have questions about our programs, we\'re here to help you take the next step.');
-  const finalCTAPhoneLabel = getContentValue(contentMap['home_final_cta_phone_label'], 'Prefer to talk? We\'re here to help');
-  const finalCTAHours = getContentValue(contentMap['home_final_cta_hours'], 'Mon-Fri 9AM-5PM MST');
+  const finalCTATitle = getContentValue(
+    contentMap["home_final_cta_title"],
+    "Ready to Begin Your Journey?"
+  );
+  const finalCTADescription = getContentValue(
+    contentMap["home_final_cta_description"],
+    "Whether you're seeking music therapy services, want to get involved, or have questions about our programs, we're here to help you take the next step."
+  );
+  const finalCTAPhoneLabel = getContentValue(
+    contentMap["home_final_cta_phone_label"],
+    "Prefer to talk? We're here to help"
+  );
+  const finalCTAHours = getContentValue(
+    contentMap["home_final_cta_hours"],
+    "Mon-Fri 9AM-5PM MST"
+  );
 
   const scrollToSection = () => {
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
@@ -330,7 +499,7 @@ const HomePage = () => {
       Users,
       Heart,
       Briefcase,
-      UserPlus
+      UserPlus,
     };
     return icons[iconName] || Music;
   };
@@ -384,9 +553,9 @@ const HomePage = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div className="order-2 lg:order-1">
               <h2 className="text-3xl lg:text-4xl font-bold font-poppins text-gray-900 mb-6">
-                {aboutPreviewHeading.split(' ').slice(0, -3).join(' ')}{' '}
+                {aboutPreviewHeading.split(" ").slice(0, -3).join(" ")}{" "}
                 <span className="gradient-text">
-                  {aboutPreviewHeading.split(' ').slice(-3).join(' ')}
+                  {aboutPreviewHeading.split(" ").slice(-3).join(" ")}
                 </span>
               </h2>
               <p className="text-gray-600 mb-6 leading-relaxed text-responsive-lg">
@@ -405,9 +574,21 @@ const HomePage = () => {
               <div className="glass-card overflow-hidden rounded-3xl transition-all duration-300 hover:shadow-xl">
                 <Image
                   src={aboutPreviewImage}
-                  alt={getMetadataValue(contentMap['home_about_preview_image'], 'alt', 'Music therapy session at NMTSA')}
-                  width={getMetadataValue(contentMap['home_about_preview_image'], 'width', 600)}
-                  height={getMetadataValue(contentMap['home_about_preview_image'], 'height', 450)}
+                  alt={getMetadataValue(
+                    contentMap["home_about_preview_image"],
+                    "alt",
+                    "Music therapy session at NMTSA"
+                  )}
+                  width={getMetadataValue(
+                    contentMap["home_about_preview_image"],
+                    "width",
+                    600
+                  )}
+                  height={getMetadataValue(
+                    contentMap["home_about_preview_image"],
+                    "height",
+                    450
+                  )}
                   className="w-full object-cover aspect-[4/3] h-96 transition-transform duration-300 hover:scale-[1.01]"
                 />
               </div>
@@ -421,8 +602,10 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold font-poppins text-white mb-4">
-              {trustSectionTitle.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="text-nmtsa-200">{trustSectionTitle.split(' ').slice(-1)[0]}</span>
+              {trustSectionTitle.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="text-nmtsa-200">
+                {trustSectionTitle.split(" ").slice(-1)[0]}
+              </span>
             </h2>
             <p className="text-nmtsa-100 text-lg max-w-2xl mx-auto">
               {trustSectionSubtitle}
@@ -431,7 +614,10 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {trustBuilders.map((item, index) => {
-              const IconComponent = typeof item.icon === 'string' ? getIconComponent(item.icon) : item.icon;
+              const IconComponent =
+                typeof item.icon === "string"
+                  ? getIconComponent(item.icon)
+                  : item.icon;
               return (
                 <div
                   key={index}
@@ -454,7 +640,10 @@ const HomePage = () => {
             <p className="text-nmtsa-100 text-sm mb-4">{trustServingLabel}</p>
             <div className="flex flex-wrap justify-center items-center gap-6">
               {trustSignals.map((signal: any, index: number) => {
-                const IconComponent = typeof signal.icon === 'string' ? getIconComponent(signal.icon) : signal.icon;
+                const IconComponent =
+                  typeof signal.icon === "string"
+                    ? getIconComponent(signal.icon)
+                    : signal.icon;
                 return (
                   <div key={index} className="flex items-center text-white">
                     <IconComponent className="w-5 h-5 mr-2 text-nmtsa-200" />
@@ -472,8 +661,10 @@ const HomePage = () => {
         <div className="container-responsive">
           <header className="text-center mb-8 lg:mb-12">
             <h2 className="font-bold font-poppins text-gray-900 mb-4 text-2xl sm:text-3xl lg:text-4xl">
-              {programsHeading.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="gradient-text">{programsHeading.split(' ').slice(-1)[0]}</span>
+              {programsHeading.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="gradient-text">
+                {programsHeading.split(" ").slice(-1)[0]}
+              </span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
               {programsSubtitle}
@@ -482,14 +673,19 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {programs.map((program, index) => {
-              const IconComponent = typeof program.icon === 'string' ? getIconComponent(program.icon) : program.icon;
+              const IconComponent =
+                typeof program.icon === "string"
+                  ? getIconComponent(program.icon)
+                  : program.icon;
               return (
                 <article
                   key={program.title || index}
                   className="glass-card p-4 sm:p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 group"
                 >
                   <div
-                    className={`w-12 h-12 sm:w-14 sm:h-14 ${program.color || 'bg-nmtsa-500'} rounded-xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-[1.05]`}
+                    className={`w-12 h-12 sm:w-14 sm:h-14 ${
+                      program.color || "bg-nmtsa-500"
+                    } rounded-xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-[1.05]`}
                   >
                     <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                   </div>
@@ -511,8 +707,10 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
-              {processTitle.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="gradient-text">{processTitle.split(' ').slice(-1)[0]}</span>
+              {processTitle.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="gradient-text">
+                {processTitle.split(" ").slice(-1)[0]}
+              </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               {processSubtitle}
@@ -525,7 +723,10 @@ const HomePage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 relative">
               {processSteps.map((step, index) => {
-                const IconComponent = typeof step.icon === 'string' ? getIconComponent(step.icon) : step.icon;
+                const IconComponent =
+                  typeof step.icon === "string"
+                    ? getIconComponent(step.icon)
+                    : step.icon;
                 return (
                   <div key={index} className="relative flex">
                     <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-nmtsa-100 hover:border-nmtsa-400 relative z-10 flex flex-col w-full">
@@ -551,9 +752,7 @@ const HomePage = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-6">
-              {processCTAText}
-            </p>
+            <p className="text-gray-600 mb-6">{processCTAText}</p>
             <Link
               href="/contact"
               className="btn-primary text-white font-semibold px-8 py-4 rounded-full inline-flex items-center text-lg"
@@ -578,8 +777,10 @@ const HomePage = () => {
               className="font-bold font-poppins text-gray-900 mb-6"
               style={{ fontSize: "clamp(2rem, 6vw, 3rem)" }}
             >
-              {requestServiceHeading.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="gradient-text">{requestServiceHeading.split(' ').slice(-1)[0]}</span>
+              {requestServiceHeading.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="gradient-text">
+                {requestServiceHeading.split(" ").slice(-1)[0]}
+              </span>
             </h2>
             <p
               className="text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed"
@@ -591,7 +792,10 @@ const HomePage = () => {
             {/* Quick Stats */}
             <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm text-gray-600">
               {quickStats.map((stat: any, index: number) => {
-                const IconComponent = typeof stat.icon === 'string' ? getIconComponent(stat.icon) : stat.icon;
+                const IconComponent =
+                  typeof stat.icon === "string"
+                    ? getIconComponent(stat.icon)
+                    : stat.icon;
                 return (
                   <div key={index} className="flex items-center">
                     <IconComponent className="w-5 h-5 text-nmtsa-600 mr-2" />
@@ -649,11 +853,13 @@ const HomePage = () => {
 
             {/* Contact Info */}
             <div className="pt-6 border-t border-gray-200">
-              <p className="text-gray-600 mb-2">
-                {requestServicePhoneLabel}
-              </p>
+              <p className="text-gray-600 mb-2">{requestServicePhoneLabel}</p>
               <a
-                href={`tel:${getMetadataValue(contentMap['home_request_service_phone'], 'raw', '602-588-7631')}`}
+                href={`tel:${getMetadataValue(
+                  contentMap["home_request_service_phone"],
+                  "raw",
+                  "602-588-7631"
+                )}`}
                 className="text-2xl font-bold text-nmtsa-600 hover:text-nmtsa-700 inline-flex items-center"
               >
                 <Phone className="w-6 h-6 mr-2" />
@@ -672,8 +878,10 @@ const HomePage = () => {
         <div className="container-responsive relative">
           <header className="text-center mb-8 lg:mb-12">
             <h2 className="font-bold font-poppins mb-4 text-2xl sm:text-3xl lg:text-4xl">
-              {getInvolvedTitle.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="text-nmtsa-200">{getInvolvedTitle.split(' ').slice(-1)[0]}</span>
+              {getInvolvedTitle.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="text-nmtsa-200">
+                {getInvolvedTitle.split(" ").slice(-1)[0]}
+              </span>
             </h2>
             <p className="text-nmtsa-100 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
               {getInvolvedSubtitle}
@@ -723,8 +931,10 @@ const HomePage = () => {
           <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
-                {donateTitle.split(' ').slice(0, -2).join(' ')}{' '}
-                <span className="gradient-text">{donateTitle.split(' ').slice(-2).join(' ')}</span>
+                {donateTitle.split(" ").slice(0, -2).join(" ")}{" "}
+                <span className="gradient-text">
+                  {donateTitle.split(" ").slice(-2).join(" ")}
+                </span>
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
                 {donateDescription}
@@ -751,7 +961,10 @@ const HomePage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {/* Impact Cards */}
               {donateImpact.map((impact, index) => (
-                <div key={index} className="glass-card p-4 sm:p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
+                <div
+                  key={index}
+                  className="glass-card p-4 sm:p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300"
+                >
                   <div className="text-2xl sm:text-3xl font-bold text-nmtsa-600 font-poppins mb-2">
                     {impact.amount}
                   </div>
@@ -767,7 +980,11 @@ const HomePage = () => {
                   {whyChooseNMTSA}
                 </h3>
                 <p className="text-nmtsa-100 text-xs sm:text-sm">
-                  {getMetadataValue(contentMap['home_donate_why_choose'], 'features', '40+ years of proven results • Evidence-based therapy • Board-certified therapists • Direct community impact')}
+                  {getMetadataValue(
+                    contentMap["home_donate_why_choose"],
+                    "features",
+                    "40+ years of proven results • Evidence-based therapy • Board-certified therapists • Direct community impact"
+                  )}
                 </p>
               </div>
             </div>
@@ -780,8 +997,10 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins text-gray-900 mb-6">
-              {testimonialsHeading.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="gradient-text">{testimonialsHeading.split(' ').slice(-1)[0]}</span>
+              {testimonialsHeading.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="gradient-text">
+                {testimonialsHeading.split(" ").slice(-1)[0]}
+              </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               {testimonialsSubtitle}
@@ -794,8 +1013,12 @@ const HomePage = () => {
                   className="w-6 h-6 fill-nmtsa-500 text-nmtsa-500"
                 />
               ))}
-              <span className="ml-2 text-2xl font-bold text-gray-900">{overallRating}</span>
-              <span className="text-gray-600">out of {maxRating} ({reviewCount} reviews)</span>
+              <span className="ml-2 text-2xl font-bold text-gray-900">
+                {overallRating}
+              </span>
+              <span className="text-gray-600">
+                out of {maxRating} ({reviewCount} reviews)
+              </span>
             </div>
           </div>
 
@@ -844,9 +1067,7 @@ const HomePage = () => {
 
             {/* Scroll Indicator */}
             <div className="text-center mt-4">
-              <p className="text-gray-500 text-sm">
-                {testimonialsScrollHint}
-              </p>
+              <p className="text-gray-500 text-sm">{testimonialsScrollHint}</p>
             </div>
           </div>
         </div>
@@ -857,8 +1078,10 @@ const HomePage = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div>
             <h2 className="text-4xl lg:text-5xl font-bold font-poppins mb-6">
-              {finalCTATitle.split(' ').slice(0, -1).join(' ')}{' '}
-              <span className="text-nmtsa-200">{finalCTATitle.split(' ').slice(-1)[0]}</span>
+              {finalCTATitle.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="text-nmtsa-200">
+                {finalCTATitle.split(" ").slice(-1)[0]}
+              </span>
             </h2>
             <p className="text-xl text-nmtsa-100 mb-8 max-w-2xl mx-auto leading-relaxed">
               {finalCTADescription}
@@ -882,16 +1105,20 @@ const HomePage = () => {
 
             {/* Additional Contact Options */}
             <div className="pt-8 border-t border-white/30">
-              <p className="text-nmtsa-100 mb-4">
-                {finalCTAPhoneLabel}
-              </p>
+              <p className="text-nmtsa-100 mb-4">{finalCTAPhoneLabel}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
-                  href={`tel:${getMetadataValue(contentMap['home_request_service_phone'], 'raw', '602-588-7631')}`}
+                  href={`tel:${getMetadataValue(
+                    contentMap["home_request_service_phone"],
+                    "raw",
+                    "602-588-7631"
+                  )}`}
                   className="flex items-center text-white hover:text-nmtsa-200 transition-colors"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  <span className="font-semibold text-lg">{requestServicePhone}</span>
+                  <span className="font-semibold text-lg">
+                    {requestServicePhone}
+                  </span>
                 </a>
                 <span className="hidden sm:block text-nmtsa-200">•</span>
                 <div className="flex items-center text-nmtsa-100">
